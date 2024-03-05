@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.SignInFormController">
+    <children>
+        <ImageView fitHeight="650.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/image/Log-In-Page.png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="591.0" layoutY="67.0" prefHeight="495.0" prefWidth="369.0">
+            <children>
+                <Label layoutX="106.0" layoutY="28.0" text="Sign In" textFill="#139547">
+                    <font>
+                        <Font name="System Bold" size="40.0" />
+                    </font>
+                </Label>
+                <Label layoutX="42.0" layoutY="120.0" text="Please enter your account details" textFill="#139547">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <JFXTextField fx:id="txtUsername" focusColor="#139547" layoutX="69.0" layoutY="195.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="35.0" prefWidth="250.0" promptText="Username" unFocusColor="#727374">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXTextField>
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="39.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/icon/user_name.png" />
+                    </image>
+                </ImageView>
+                <JFXPasswordField fx:id="txtPassword" focusColor="#139547" layoutX="69.0" layoutY="276.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="35.0" prefWidth="250.0" promptText="Password" unFocusColor="#727374">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </JFXPasswordField>
+                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="41.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/icon/password.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="btnLogIn" layoutX="40.0" layoutY="368.0" onAction="#btnLogInOnAction" onMouseEntered="#btnLogInOnMouseEnter" onMouseExited="#btnLogInOnMouseExited" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #139547; -fx-background-radius: 10;" text="Log In" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </JFXButton>
+                <Hyperlink layoutX="93.0" layoutY="457.0" onAction="#linkForgotPasswordOnAction" text="Frogot your password ?" textFill="#727374">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Hyperlink>
+                <Label fx:id="lblUserName" layoutX="45.0" layoutY="241.0" prefWidth="274.0" textFill="RED">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblPassword" layoutX="45.0" layoutY="323.0" prefWidth="274.0" textFill="RED">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <JFXButton fx:id="btnSignUp" layoutX="20.0" layoutY="11.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: WHITE; -fx-border-radius: 10; -fx-border-width: 3;" text="Sign Up" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </JFXButton>
+        <Pane fx:id="paneShutDown" layoutX="944.5" layoutY="6.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #C7FFDE; -fx-background-radius: 10;" visible="false" />
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="950.0" layoutY="11.0" onMouseClicked="#imgShutDownOnMouseClicked" onMouseEntered="#imgShutDownOnMouseEntered" onMouseExited="#imgShutDownOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../assets/icon/shut_down.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
