@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1269.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.BookBorrowAddFormController">
+<AnchorPane prefHeight="675.0" prefWidth="1269.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowAddFormController">
     <children>
         <Line endY="330.0" layoutX="312.0" layoutY="337.0" startY="-330.0" stroke="#727374" />
         <Label layoutX="33.0" layoutY="62.0" text="Member DETAIL">
