@@ -1,6 +1,5 @@
 package lk.ijse.library_management.service;
 
-import lk.ijse.library_management.service.custom.BranchService;
 import lk.ijse.library_management.service.custom.impl.BranchServiceImpl;
 
 public class ServiceFactory {
@@ -10,7 +9,7 @@ public class ServiceFactory {
 
     }
 
-    public static ServiceFactory getServiceFactory () {
+    public static ServiceFactory getInstance() {
         return (factory == null) ? factory = new ServiceFactory() : factory;
     }
 

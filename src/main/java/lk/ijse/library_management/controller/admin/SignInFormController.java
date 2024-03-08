@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class SignInFormController {
 
@@ -31,6 +32,8 @@ public class SignInFormController {
 
     @FXML
     private Pane paneShutDown;
+
+    public static Stage stage;
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {

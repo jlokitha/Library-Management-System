@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class AdminGlobalFormController {
 
@@ -78,13 +79,19 @@ public class AdminGlobalFormController {
     private JFXButton btnProfile;
 
     @FXML
-    private AnchorPane pagingPane;
+    public AnchorPane pagingPane;
 
     @FXML
-    private ImageView imgGreyBack;
+    public ImageView imgGreyBack;
 
     @FXML
-    private AnchorPane popUpPane;
+    public AnchorPane popUpPane;
+
+    public Stage popupStage;
+
+    public static String user;
+
+    private static AdminGlobalFormController globalFormController;
 
     @FXML
     void btnBookOnAction(ActionEvent event) {
@@ -199,6 +206,14 @@ public class AdminGlobalFormController {
     @FXML
     void txtSearchOnMouseClicked(MouseEvent event) {
 
+    }
+
+    public static AdminGlobalFormController getInstance() {
+        return globalFormController ;
+    }
+
+    public void setPopupStage(Stage popupStage) {
+        this.popupStage = popupStage;
     }
 
 }

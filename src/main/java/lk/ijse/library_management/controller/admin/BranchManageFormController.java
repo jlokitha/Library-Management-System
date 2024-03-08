@@ -22,6 +22,8 @@ public class BranchManageFormController {
     @FXML
     private Label lblAdd;
 
+    public static BranchManageFormController controller;
+
     @FXML
     void btnAddBranchOnAction(ActionEvent event) {
 
@@ -37,4 +39,7 @@ public class BranchManageFormController {
 
     }
 
+    public void getAllId() {
+
+    }
 }
