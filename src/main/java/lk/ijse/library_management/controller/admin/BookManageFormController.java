@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class BookManageFormController {
 
@@ -24,7 +27,11 @@ public class BookManageFormController {
 
     @FXML
     void btnAddBookOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.popupPane("BookAddForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

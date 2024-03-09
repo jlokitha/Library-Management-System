@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class SignUpVerifyOtpFormController {
 
@@ -23,7 +26,11 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void btnBackOMouseEntered(MouseEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignUpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -38,7 +45,11 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

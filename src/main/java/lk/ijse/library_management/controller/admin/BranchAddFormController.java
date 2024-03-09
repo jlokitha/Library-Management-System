@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.BranchDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BranchService;
-import lk.ijse.library_management.util.Navigation;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 public class BranchAddFormController {
 
@@ -59,7 +59,7 @@ public class BranchAddFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        AdminNavigation.closePane();
     }
 
     @FXML

@@ -43,14 +43,6 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="imgUpdate" fitHeight="30.0" fitWidth="30.0" layoutX="1278.0" layoutY="30.0" onMouseClicked="#imgUpdateOnMouseClicked" onMouseEntered="#imgUpdateOnMouseEntered" onMouseExited="#imgUpdateOnMouseExited" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/update.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
-            </ImageView>
             <ImageView fx:id="imgDelete" fitHeight="30.0" fitWidth="30.0" layoutX="1308.0" layoutY="30.0" onMouseClicked="#imgDeleteOnMouseClicked" onMouseEntered="#imgDeleteOnMouseEntered" onMouseExited="#imgDeleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/delete_default.png" />

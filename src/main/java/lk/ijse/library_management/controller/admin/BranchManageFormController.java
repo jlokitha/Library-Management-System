@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class BranchManageFormController {
 
@@ -26,7 +29,11 @@ public class BranchManageFormController {
 
     @FXML
     void btnAddBranchOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.popupPane("BranchAddForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

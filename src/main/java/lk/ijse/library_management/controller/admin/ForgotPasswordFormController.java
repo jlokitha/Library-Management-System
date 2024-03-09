@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class ForgotPasswordFormController {
 
@@ -23,7 +26,11 @@ public class ForgotPasswordFormController {
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignInForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -48,7 +55,11 @@ public class ForgotPasswordFormController {
 
     @FXML
     void btnRequesOtpOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignInVerifyOtpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

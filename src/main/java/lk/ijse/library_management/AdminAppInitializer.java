@@ -7,14 +7,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AppInitializer extends Application {
+public class AdminAppInitializer extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/admin/BranchAddForm.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/admin/AdminGlobalForm.fxml"));
         stage.setScene(new Scene(root));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.centerOnScreen();

@@ -17,12 +17,12 @@
         </ImageView>
         <AnchorPane layoutX="591.0" prefHeight="650.0" prefWidth="369.0">
             <children>
-                <Label layoutX="71.0" layoutY="165.0" text="Enter OTP" textFill="#139547">
+                <Label layoutX="91.0" layoutY="164.0" text="Enter OTP" textFill="#139547">
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="245.0" text="OTP has been sent to company email" textFill="#139547">
+                <Label layoutX="54.0" layoutY="244.0" text="OTP has been sent to company email" textFill="#139547">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>

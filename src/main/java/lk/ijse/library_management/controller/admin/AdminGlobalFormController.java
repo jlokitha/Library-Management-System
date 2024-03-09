@@ -4,13 +4,19 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
-public class AdminGlobalFormController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AdminGlobalFormController implements Initializable {
 
     @FXML
     private JFXButton btnDashboard;
@@ -93,14 +99,30 @@ public class AdminGlobalFormController {
 
     private static AdminGlobalFormController globalFormController;
 
+    public AdminGlobalFormController() {
+        globalFormController = this;
+    }
+
+    public static AdminGlobalFormController getInstance() {
+        return globalFormController;
+    }
+
     @FXML
     void btnBookOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchPaging("BookManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnBranchOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchPaging("BranchManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -115,7 +137,11 @@ public class AdminGlobalFormController {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchPaging("DashboardForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -130,7 +156,11 @@ public class AdminGlobalFormController {
 
     @FXML
     void btnIssuedOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchPaging("BookBorrowManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -155,7 +185,11 @@ public class AdminGlobalFormController {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchNavigation("SignInForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -170,7 +204,11 @@ public class AdminGlobalFormController {
 
     @FXML
     void btnMemberOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchPaging("MemberManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -208,12 +246,12 @@ public class AdminGlobalFormController {
 
     }
 
-    public static AdminGlobalFormController getInstance() {
-        return globalFormController ;
-    }
-
     public void setPopupStage(Stage popupStage) {
         this.popupStage = popupStage;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnDashboardOnAction(new ActionEvent());
+    }
 }

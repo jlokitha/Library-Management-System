@@ -1,4 +1,4 @@
-package lk.ijse.library_management.util;
+package lk.ijse.library_management.util.navigation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,14 +15,14 @@ import lk.ijse.library_management.controller.admin.SignInFormController;
 
 import java.io.IOException;
 
-public class Navigation {
+public class AdminNavigation {
 
     private static Parent parent;
     private static Stage stage;
     private static Scene scene;
 
     public static void switchNavigation(String path, ActionEvent event) throws IOException {
-        parent = FXMLLoader.load(Navigation.class.getResource("/view/" + path));
+        parent = FXMLLoader.load(AdminNavigation.class.getResource("/view/admin/" + path));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SignInFormController.stage = stage;
         scene = new Scene(parent);
@@ -33,7 +33,7 @@ public class Navigation {
 
     public static void switchPaging(String path) throws IOException {
         AdminGlobalFormController.getInstance().pagingPane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/"+path));
+        FXMLLoader loader = new FXMLLoader(AdminNavigation.class.getResource("/view/admin/"+path));
         Parent root = loader.load();
         AdminGlobalFormController.getInstance().pagingPane.getChildren().add(root);
     }
@@ -43,7 +43,7 @@ public class Navigation {
         AdminGlobalFormController.getInstance().popUpPane.setVisible(true);
         AdminGlobalFormController.getInstance().imgGreyBack.setVisible(true);
 
-        AnchorPane root = FXMLLoader.load(Navigation.class.getResource("/view/" + path));
+        AnchorPane root = FXMLLoader.load(AdminNavigation.class.getResource("/view/admin/" + path));
 
         Stage popupStage = new Stage();
         AdminGlobalFormController.getInstance().setPopupStage(popupStage);
@@ -56,7 +56,7 @@ public class Navigation {
 
     public static void switchLoginPage(String path) throws IOException {
         AdminGlobalLoginFormController.getInstance().loginPane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/"+path));
+        FXMLLoader loader = new FXMLLoader(AdminNavigation.class.getResource("/view/admin/"+path));
         Parent root = loader.load();
         AdminGlobalLoginFormController.getInstance().loginPane.getChildren().add(root);
     }

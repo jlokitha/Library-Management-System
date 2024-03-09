@@ -3,7 +3,7 @@ package lk.ijse.library_management.controller.admin;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.library_management.util.Navigation;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +27,7 @@ public class AdminGlobalLoginFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Navigation.switchLoginPage("SignInForm.fxml");
+            AdminNavigation.switchLoginPage("SignInForm.fxml");
         } catch (IOException e) {
             e.printStackTrace ();
         }
