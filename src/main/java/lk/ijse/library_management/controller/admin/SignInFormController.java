@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class SignInFormController {
 
@@ -32,9 +36,15 @@ public class SignInFormController {
     @FXML
     private Pane paneShutDown;
 
+    public static Stage stage;
+
     @FXML
     void btnLogInOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -79,7 +89,11 @@ public class SignInFormController {
 
     @FXML
     void linkForgotPasswordOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("FrogotPasswordForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

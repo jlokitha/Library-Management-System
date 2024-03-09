@@ -1,31 +1,42 @@
 package lk.ijse.library_management.controller.admin;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
-public class MemberViewFormController {
+public class BookBorrowViewFormController {
+
+    @FXML
+    private JFXTextField txtMemberName;
+
+    @FXML
+    private VBox vBox;
 
     @FXML
     private JFXButton btnCancel;
 
     @FXML
-    private Label lblMemberId;
+    private Label labelTotal;
 
     @FXML
-    private Label lblMemberName;
+    private Label lblMobile;
 
     @FXML
-    private Label lblMemberMobile;
+    private Label lblQty;
 
     @FXML
-    private Label lblMemberEmail;
+    private JFXTextField txtIssedDate;
 
     @FXML
-    private Label lblMemberAddress;
+    private JFXTextField txtMemberMobile;
+
+    @FXML
+    private JFXTextField txtDueDate;
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {

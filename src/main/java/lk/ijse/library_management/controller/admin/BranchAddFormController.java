@@ -6,11 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.BranchDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.BranchService;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 public class BranchAddFormController {
-
-    @FXML
-    private JFXTextField txtBranchName;
 
     @FXML
     private JFXTextField txtBranchMobile;
@@ -28,9 +29,6 @@ public class BranchAddFormController {
     private JFXButton btnAdd;
 
     @FXML
-    private Label lblname;
-
-    @FXML
     private Label lblMobile;
 
     @FXML
@@ -39,24 +37,29 @@ public class BranchAddFormController {
     @FXML
     private Label lblAddress;
 
+    private final BranchService branchService =
+            (BranchService) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BRANCH);
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        if (true) {
+            boolean isSaved = branchService.saveBranch( new BranchDto(
+                    -1,
+                    txtBranchLocation.getText(),
+                    txtBranchMobile.getText(),
+                    txtBranchEmail.getText()
+            ) );
 
-    }
-
-    @FXML
-    void btnAddOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnAddOnMouseExited(MouseEvent event) {
-
+            if (isSaved) {
+//                Navigation.closePane();
+//                BranchManageFormController.controller.getAllId();
+            }
+        }
     }
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        AdminNavigation.closePane();
     }
 
     @FXML
@@ -99,14 +102,14 @@ public class BranchAddFormController {
 
     }
 
+
     @FXML
-    void txtNameOnAction(ActionEvent event) {
+    void btnAddOnMouseEntered(MouseEvent event) {
 
     }
 
     @FXML
-    void txtNameOnMouseClicked(MouseEvent event) {
+    void btnAddOnMouseExited(MouseEvent event) {
 
     }
-
 }

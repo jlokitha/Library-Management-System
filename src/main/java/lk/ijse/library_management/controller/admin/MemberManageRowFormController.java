@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class MemberManageRowFormController {
 
@@ -21,9 +24,6 @@ public class MemberManageRowFormController {
 
     @FXML
     private ImageView imgView;
-
-    @FXML
-    private ImageView imgUpdate;
 
     @FXML
     private ImageView imgDelete;
@@ -44,23 +44,12 @@ public class MemberManageRowFormController {
     }
 
     @FXML
-    void imgUpdateOnMouseClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void imgUpdateOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void imgUpdateOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
     void imgViewOnMouseClicked(MouseEvent event) {
-
+        try {
+            AdminNavigation.popupPane("MemberViewForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

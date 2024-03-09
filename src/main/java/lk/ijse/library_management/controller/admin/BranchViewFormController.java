@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 public class BranchViewFormController {
 
@@ -28,7 +29,7 @@ public class BranchViewFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        AdminNavigation.closePane();
     }
 
     @FXML

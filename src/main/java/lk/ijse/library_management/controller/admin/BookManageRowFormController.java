@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class BookManageRowFormController {
 
@@ -45,7 +48,11 @@ public class BookManageRowFormController {
 
     @FXML
     void imgUpdateOnMouseClicked(MouseEvent event) {
-
+        try {
+            AdminNavigation.popupPane("BookUpdateForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -60,7 +67,11 @@ public class BookManageRowFormController {
 
     @FXML
     void imgViewOnMouseClicked(MouseEvent event) {
-
+        try {
+            AdminNavigation.popupPane("BookViewForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

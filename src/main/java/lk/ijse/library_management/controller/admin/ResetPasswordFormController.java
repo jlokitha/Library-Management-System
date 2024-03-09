@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+
+import java.io.IOException;
 
 public class ResetPasswordFormController {
 
@@ -30,7 +33,11 @@ public class ResetPasswordFormController {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignInForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -55,7 +62,11 @@ public class ResetPasswordFormController {
 
     @FXML
     void btnResetPasswordOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
