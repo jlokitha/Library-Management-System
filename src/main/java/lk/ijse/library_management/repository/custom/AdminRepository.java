@@ -7,4 +7,10 @@ public interface AdminRepository extends SuperRepository {
     int save(Admin entity);
 
     Admin get(int id);
+
+    int getIdFormUsernamePassword(String username, String password);
+
+    void delete(Admin entity);
+
+    int getIdFormUsername(String username);
 }

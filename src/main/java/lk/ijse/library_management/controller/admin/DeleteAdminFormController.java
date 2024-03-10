@@ -4,10 +4,21 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.ProfileService;
+import lk.ijse.library_management.service.custom.impl.ProfileServiceImpl;
+import lk.ijse.library_management.util.Regex;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
-public class DeleteAdminFormController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class DeleteAdminFormController implements Initializable {
 
     @FXML
     private JFXTextField txtPassword;
@@ -24,9 +35,33 @@ public class DeleteAdminFormController {
     @FXML
     private Label lblOtp;
 
+    private final ProfileService profileService =
+            (ProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.PROFILE);
+
+    @FXML
+    void btnDeleteOnAction(ActionEvent event) {
+
+        if (validatePassword()) {
+            int id = profileService.getIdFromUsernamePassword(lblUserName.getText(), txtPassword.getText());
+
+            if (id > 0) {
+
+                try {
+                    profileService.deleteAdmin(id);
+                    SignInFormController.stage.close();
+                    AdminNavigation.switchNavigation("SignInForm.fxml", event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+    }
+
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-
+        AdminNavigation.closePane();
     }
 
     @FXML
@@ -36,11 +71,6 @@ public class DeleteAdminFormController {
 
     @FXML
     void btnCancelOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
 
     }
 
@@ -64,4 +94,19 @@ public class DeleteAdminFormController {
 
     }
 
+    public boolean validatePassword() {
+        String password = txtPassword.getText();
+
+        if (Regex.password(password)) {
+            lblOtp.setText("Password should contain at least 6 characters");
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblUserName.setText(AdminGlobalFormController.username);
+    }
 }

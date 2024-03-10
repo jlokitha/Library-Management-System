@@ -1,7 +1,5 @@
 package lk.ijse.library_management.service.custom.impl;
 
-import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
-import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.AdminRepository;
@@ -17,8 +15,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     private final AdminRepository adminRepository =
             (AdminRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.ADMIN);
+
     @Override
-    public AdminDto getAdminData() {
+    public Admin getAdminData(int id) {
 
         session = SessionFactoryConfig.getInstance().getSession();
 
@@ -28,11 +27,11 @@ public class ProfileServiceImpl implements ProfileService {
 
             adminRepository.setSession(session);
 
-            Admin admin = adminRepository.get(AdminGlobalFormController.id);
+            Admin admin = adminRepository.get(id);
 
             transaction.commit();
 
-            return admin.toDto();
+            return admin;
 
         } catch (Exception e) {
 
@@ -43,5 +42,81 @@ public class ProfileServiceImpl implements ProfileService {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public int getIdFromUsernamePassword(String username, String password) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+            int id = adminRepository.getIdFormUsernamePassword(username, password);
+            transaction.commit();
+            return id;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public int getIdFromUsername(String username) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+            int id = adminRepository.getIdFormUsername(username);
+            transaction.commit();
+            return id;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void deleteAdmin(int id) {
+
+        Admin entity = getAdminData(id);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+            adminRepository.delete(entity);
+            transaction.commit();
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+
+        } finally {
+            session.close();
+        }
+
     }
 }

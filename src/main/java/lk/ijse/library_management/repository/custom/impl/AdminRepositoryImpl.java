@@ -3,6 +3,7 @@ package lk.ijse.library_management.repository.custom.impl;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.custom.AdminRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class AdminRepositoryImpl implements AdminRepository {
 
@@ -16,6 +17,34 @@ public class AdminRepositoryImpl implements AdminRepository {
     @Override
     public Admin get(int id) {
         return session.get(Admin.class, id);
+    }
+
+    @Override
+    public int getIdFormUsernamePassword(String username, String password) {
+        String hql = "SELECT a.id FROM Admin a WHERE a.username = :username AND a.password = :password";
+
+        Query<Integer> query = session.createQuery(hql, Integer.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+
+        Integer id = query.uniqueResult();
+        return id;
+    }
+
+    @Override
+    public void delete(Admin entity) {
+        session.delete(entity);
+    }
+
+    @Override
+    public int getIdFormUsername(String username) {
+        String hql = "SELECT a.id FROM Admin a WHERE a.username = :username";
+
+        Query<Integer> query = session.createQuery(hql, Integer.class);
+        query.setParameter("username", username);
+
+        Integer id = query.uniqueResult();
+        return id;
     }
 
     @Override

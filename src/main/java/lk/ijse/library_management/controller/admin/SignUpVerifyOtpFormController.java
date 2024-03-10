@@ -51,7 +51,7 @@ public class SignUpVerifyOtpFormController {
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
         try {
-            AdminGlobalFormController.name = dto.getFName() + " " + dto.getLName();
+            AdminGlobalFormController.username = dto.getUsername();
             AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();

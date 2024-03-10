@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 public class AdminGlobalFormController implements Initializable {
 
-    public static String name;
     @FXML
     private JFXButton btnDashboard;
 
@@ -96,7 +95,7 @@ public class AdminGlobalFormController implements Initializable {
 
     public Stage popupStage;
 
-    public static int id = 1;
+    public static String username;
 
     private static AdminGlobalFormController globalFormController;
 
@@ -257,7 +256,7 @@ public class AdminGlobalFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        labelUser.setText(name);
+        labelUser.setText(username);
         btnDashboardOnAction(new ActionEvent());
     }
 }

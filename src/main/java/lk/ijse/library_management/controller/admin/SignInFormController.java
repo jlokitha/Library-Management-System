@@ -9,6 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.SignInService;
+import lk.ijse.library_management.service.custom.impl.SignInServiceImpl;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -38,12 +42,26 @@ public class SignInFormController {
 
     public static Stage stage;
 
+    private final SignInService signInService =
+            (SignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNIN);
+
     @FXML
     void btnLogInOnAction(ActionEvent event) {
-        try {
-            AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (validateSignIn()) {
+            String username = txtUsername.getText();
+            String password = txtPassword.getText();
+
+            int id = signInService.getIdFromUsernamePassword(username, password);
+
+            if (id > 0) {
+                try {
+                    AdminGlobalFormController.username = username;
+                    AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -118,6 +136,24 @@ public class SignInFormController {
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
 
+    }
+
+    public boolean validateSignIn() {
+        String userName = txtUsername.getText();
+
+        if (Regex.userName(userName)) {
+            lblUserName.setText("Invalid Username");
+            return false;
+        }
+
+        String password = txtPassword.getText();
+
+        if ( Regex.password(password) ) {
+            lblPassword.setText("Please enter a password");
+            return false;
+        }
+
+        return true;
     }
 
 }
