@@ -47,7 +47,8 @@ public class BranchAddFormController {
                     -1,
                     txtBranchLocation.getText(),
                     txtBranchMobile.getText(),
-                    txtBranchEmail.getText()
+                    txtBranchEmail.getText(),
+                    null
             ) );
 
             if (isSaved) {

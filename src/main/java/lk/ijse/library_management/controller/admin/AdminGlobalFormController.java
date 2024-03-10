@@ -95,7 +95,7 @@ public class AdminGlobalFormController implements Initializable {
 
     public Stage popupStage;
 
-    public static String user;
+    public static String username;
 
     private static AdminGlobalFormController globalFormController;
 
@@ -223,7 +223,11 @@ public class AdminGlobalFormController implements Initializable {
 
     @FXML
     void btnProfileOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.popupPane("AdminProfileForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -252,6 +256,7 @@ public class AdminGlobalFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        labelUser.setText(username);
         btnDashboardOnAction(new ActionEvent());
     }
 }
