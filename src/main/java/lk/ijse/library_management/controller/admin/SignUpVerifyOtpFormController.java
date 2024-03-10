@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -24,13 +25,13 @@ public class SignUpVerifyOtpFormController {
     @FXML
     private Label lblOtp;
 
+    public static AdminDto dto;
+
+    public static String otp;
+
     @FXML
     void btnBackOMouseEntered(MouseEvent event) {
-        try {
-            AdminNavigation.switchLoginPage("SignUpForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @FXML
@@ -40,12 +41,17 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignUpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
         try {
+            AdminGlobalFormController.name = dto.getFName() + " " + dto.getLName();
             AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();

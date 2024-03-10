@@ -1,5 +1,6 @@
 package lk.ijse.library_management.repository;
 
+import lk.ijse.library_management.repository.custom.impl.AdminRepositoryImpl;
 import lk.ijse.library_management.repository.custom.impl.BranchRepositoryImpl;
 
 public class RepositoryFactory {
@@ -14,13 +15,15 @@ public class RepositoryFactory {
     }
 
     public enum RepositoryType {
-        BRANCH
+        BRANCH, ADMIN
     }
 
     public SuperRepository getRepository (RepositoryType type) {
         switch (type) {
             case BRANCH:
                 return new BranchRepositoryImpl();
+            case ADMIN:
+                return new AdminRepositoryImpl();
             default:
                 return null;
         }

@@ -59,7 +59,11 @@ public class SignInFormController {
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.switchLoginPage("SignUpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -74,7 +78,7 @@ public class SignInFormController {
 
     @FXML
     void imgShutDownOnMouseClicked(MouseEvent event) {
-
+        System.exit(0);
     }
 
     @FXML

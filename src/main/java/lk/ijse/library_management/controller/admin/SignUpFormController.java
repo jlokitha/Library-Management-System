@@ -5,13 +5,31 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.SignUpService;
+import lk.ijse.library_management.util.OTPGenerator;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
 
 public class SignUpFormController {
+
+    @FXML
+    public JFXTextField txtLastName;
+
+    @FXML
+    public Label lblLastName;
+
+    @FXML
+    public JFXTextField txtFirstName;
+
+    @FXML
+    public Label lblFirstName;
 
     @FXML
     private JFXTextField txtUsername;
@@ -32,9 +50,6 @@ public class SignUpFormController {
     private Label lblUsername;
 
     @FXML
-    private JFXTextField txtFullName;
-
-    @FXML
     private JFXTextField txtMobile;
 
     @FXML
@@ -46,8 +61,41 @@ public class SignUpFormController {
     @FXML
     private Label lblMobile;
 
+    private final String subject = "Admin Sign Up Verification Code";
+
+    private final SignUpService signUpService =
+            (SignUpService) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNUP);
+
     @FXML
-    private Label lblFullName;
+    void btnSignUpOnAction(ActionEvent event) {
+
+        if (true) {
+            String otp = OTPGenerator.generateOTP();
+
+            AdminDto adminDto = new AdminDto(
+                    -1,
+                    txtFirstName.getText(),
+                    txtLastName.getText(),
+                    txtMobile.getText(),
+                    txtEmail.getText()
+            );
+
+            SignUpVerifyOtpFormController.dto = adminDto;
+            SignUpVerifyOtpFormController.otp = otp;
+//
+//            signUpService.sendEmail(txtEmail.getText(), subject, "SignUpEmail.html", otp);
+
+            boolean isSaved = signUpService.saveAdmin(adminDto);
+
+            if (isSaved) {
+                try {
+                    AdminNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
@@ -66,15 +114,6 @@ public class SignUpFormController {
     @FXML
     void btnCancelOnMouseExited(MouseEvent event) {
 
-    }
-
-    @FXML
-    void btnSignUpOnAction(ActionEvent event) {
-        try {
-            AdminNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
@@ -98,12 +137,22 @@ public class SignUpFormController {
     }
 
     @FXML
-    void txtFullNameOnAction(ActionEvent event) {
+    void txtFirstNameOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void txtFullNameOnMouseClicked(MouseEvent event) {
+    void txtFirstNameOnMouseClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void txtLastNameOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtLastNameOnMouseClicked(MouseEvent event) {
 
     }
 
@@ -135,6 +184,52 @@ public class SignUpFormController {
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
 
+    }
+
+    public boolean validateSignUp() {
+        String firstName = txtFirstName.getText();
+
+        if (Regex.name(firstName)) {
+            lblFirstName.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String lastName = txtLastName.getText();
+
+        if (Regex.name(lastName)) {
+            lblLastName.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String mobile = txtMobile.getText();
+
+        if (Regex.mobile(mobile)) {
+            lblMobile.setText("Please enter valid mobile number");
+            return false;
+        }
+
+        String email = txtEmail.getText();
+
+        if (Regex.email(email)) {
+            lblEmail.setText("Please enter valid email");
+            return false;
+        }
+
+        String userName = txtUsername.getText();
+
+        if (Regex.userName(userName)) {
+            lblUsername.setText("Please enter a username");
+            return false;
+        }
+
+        String password = txtPassword.getText();
+
+        if ( Regex.password(password) ) {
+            lblPassword.setText("Password should contain at least 6 characters");
+            return false;
+        }
+
+        return true;
     }
 
 }

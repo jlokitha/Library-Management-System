@@ -14,7 +14,7 @@ public class AdminAppInitializer extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/admin/AdminGlobalForm.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/admin/AdminGlobalLoginForm.fxml"));
         stage.setScene(new Scene(root));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.centerOnScreen();

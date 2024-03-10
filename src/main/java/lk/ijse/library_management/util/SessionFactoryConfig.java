@@ -1,5 +1,6 @@
 package lk.ijse.library_management.util;
 
+import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.entity.Branch;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -28,6 +29,7 @@ public class SessionFactoryConfig {
         sessionFactory = new Configuration()
                 .mergeProperties(Utility.getProperties())
                 .addAnnotatedClass(Branch.class)
+                .addAnnotatedClass(Admin.class)
                 .buildSessionFactory();
     }
 
