@@ -33,6 +33,12 @@ public class Admin {
     @Column(name = "admin_email")
     private String email;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @CreationTimestamp
     @Column(name = "admin_added")
     private Timestamp addedDate;
@@ -47,7 +53,9 @@ public class Admin {
                 name.getFName(),
                 name.getLName(),
                 mobile,
-                email
+                email,
+                username,
+                password
         );
     }
 }

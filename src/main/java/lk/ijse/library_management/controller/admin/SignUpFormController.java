@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.SignUpService;
+import lk.ijse.library_management.service.custom.impl.SignUpServiceImpl;
 import lk.ijse.library_management.util.OTPGenerator;
 import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
@@ -64,7 +65,7 @@ public class SignUpFormController {
     private final String subject = "Admin Sign Up Verification Code";
 
     private final SignUpService signUpService =
-            (SignUpService) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNUP);
+            (SignUpServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNUP);
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
@@ -77,7 +78,9 @@ public class SignUpFormController {
                     txtFirstName.getText(),
                     txtLastName.getText(),
                     txtMobile.getText(),
-                    txtEmail.getText()
+                    txtEmail.getText(),
+                    txtUsername.getText(),
+                    txtPassword.getText()
             );
 
             SignUpVerifyOtpFormController.dto = adminDto;

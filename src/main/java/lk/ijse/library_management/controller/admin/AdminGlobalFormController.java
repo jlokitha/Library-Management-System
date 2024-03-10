@@ -96,7 +96,7 @@ public class AdminGlobalFormController implements Initializable {
 
     public Stage popupStage;
 
-    public static String user;
+    public static int id = 1;
 
     private static AdminGlobalFormController globalFormController;
 
@@ -224,7 +224,11 @@ public class AdminGlobalFormController implements Initializable {
 
     @FXML
     void btnProfileOnAction(ActionEvent event) {
-
+        try {
+            AdminNavigation.popupPane("AdminProfileForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -14,6 +14,11 @@ public class AdminRepositoryImpl implements AdminRepository {
     }
 
     @Override
+    public Admin get(int id) {
+        return session.get(Admin.class, id);
+    }
+
+    @Override
     public void setSession(Session session) {
         this.session = session;
     }

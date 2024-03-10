@@ -15,6 +15,8 @@ public class AdminDto {
     private String lName;
     private String mobile;
     private String email;
+    private String username;
+    private String password;
 
     public Admin toEntity() {
         Admin admin = new Admin();
@@ -22,6 +24,8 @@ public class AdminDto {
         admin.setName(new NameIdentifier(fName, lName));
         admin.setMobile(mobile);
         admin.setEmail(email);
+        admin.setUsername(username);
+        admin.setPassword(password);
 
         return admin;
     }
