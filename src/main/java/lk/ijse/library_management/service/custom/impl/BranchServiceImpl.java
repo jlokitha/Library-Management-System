@@ -13,6 +13,9 @@ import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BranchServiceImpl implements BranchService {
 
     private Session session;
@@ -97,7 +100,7 @@ public class BranchServiceImpl implements BranchService {
 
         try {
 
-            adminRepository.setSession(session);
+            branchRepository.setSession(session);
 
             Branch branch = branchRepository.get(id);
 
@@ -120,7 +123,7 @@ public class BranchServiceImpl implements BranchService {
 
         try {
 
-            adminRepository.setSession(session);
+            branchRepository.setSession(session);
 
             branchRepository.update(branchDto.toEntity());
 
@@ -133,6 +136,60 @@ public class BranchServiceImpl implements BranchService {
             transaction.rollback();
             e.printStackTrace();
             return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void deleteBranch(int id) {
+
+        BranchDto dto = getBranchData(id);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+
+            branchRepository.delete(dto.toEntity());
+
+            transaction.commit();
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<BranchDto> getAllBranchData() {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            branchRepository.setSession(session);
+
+            List<Branch> ids = branchRepository.getAllId();
+
+            List<BranchDto> dtos = new ArrayList<>();
+
+            for (Branch entity : ids) {
+                dtos.add(entity.toDto());
+            }
+
+            return dtos;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
 
         } finally {
             session.close();

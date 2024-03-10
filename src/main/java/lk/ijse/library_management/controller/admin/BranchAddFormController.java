@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.BranchDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BranchService;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 public class BranchAddFormController {
@@ -49,7 +50,7 @@ public class BranchAddFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        if (true) {
+        if (validate()) {
             int id = branchService.getIdFromUsername(AdminGlobalFormController.username);
 
             boolean isSaved = branchService.saveBranch( new BranchDto(
@@ -63,7 +64,7 @@ public class BranchAddFormController {
 
             if (isSaved) {
                 AdminNavigation.closePane();
-//                BranchManageFormController.controller.getAllId();
+                BranchManageFormController.controller.getAllData();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong !").show();
             }
@@ -132,5 +133,37 @@ public class BranchAddFormController {
 
     @FXML
     public void txtNameOnMouseClicked(MouseEvent mouseEvent) {
+    }
+
+    public boolean validate() {
+        String name = txtBranchName.getText();
+
+        if (Regex.fullName(name)) {
+            lblName.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String location = txtBranchLocation.getText();
+
+        if (Regex.address(location)) {
+            lblAddress.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String mobile = txtBranchMobile.getText();
+
+        if (Regex.mobile(mobile)) {
+            lblMobile.setText("Please enter valid mobile number");
+            return false;
+        }
+
+        String email = txtBranchEmail.getText();
+
+        if (Regex.email(email)) {
+            lblEmail.setText("Please enter valid email");
+            return false;
+        }
+
+        return true;
     }
 }

@@ -4,6 +4,8 @@ import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.dto.BranchDto;
 import lk.ijse.library_management.service.SuperService;
 
+import java.util.List;
+
 public interface BranchService extends SuperService {
     boolean saveBranch(BranchDto branchDto);
 
@@ -14,4 +16,8 @@ public interface BranchService extends SuperService {
     BranchDto getBranchData(int id);
 
     boolean updateBranch(BranchDto branchDto);
+
+    void deleteBranch(int id);
+
+    List<BranchDto> getAllBranchData();
 }

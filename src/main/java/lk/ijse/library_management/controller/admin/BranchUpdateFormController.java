@@ -72,6 +72,7 @@ public class BranchUpdateFormController implements Initializable {
 
             if (isUpdated) {
                 AdminNavigation.closePane();
+                BranchManageFormController.controller.getAllData();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Branch does not updated !").show();
             }

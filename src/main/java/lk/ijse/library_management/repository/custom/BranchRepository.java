@@ -4,6 +4,8 @@ import lk.ijse.library_management.entity.Branch;
 import lk.ijse.library_management.repository.SuperRepository;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public interface BranchRepository extends SuperRepository {
     void setSession(Session session);
 
@@ -12,4 +14,8 @@ public interface BranchRepository extends SuperRepository {
     Branch get(int id);
 
     void update(Branch entity);
+
+    void delete(Branch entity);
+
+    List<Branch> getAllId();
 }
