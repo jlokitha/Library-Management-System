@@ -4,11 +4,22 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.BranchDto;
+import lk.ijse.library_management.entity.Admin;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.BranchService;
+import lk.ijse.library_management.service.custom.impl.BranchServiceImpl;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
-public class BranchUpdateFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BranchUpdateFormController implements Initializable {
 
     @FXML
     private JFXTextField txtBranchName;
@@ -40,6 +51,35 @@ public class BranchUpdateFormController {
     @FXML
     private Label lblAddress;
 
+    public static int id;
+
+    private Admin admin;
+
+    private final BranchService branchService =
+            (BranchServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BRANCH);
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent event) {
+        if (validate()) {
+            boolean isUpdated = branchService.updateBranch(new BranchDto(
+                    id,
+                    txtBranchName.getText(),
+                    txtBranchLocation.getText(),
+                    txtBranchMobile.getText(),
+                    txtBranchEmail.getText(),
+                    admin
+            ));
+
+            if (isUpdated) {
+                AdminNavigation.closePane();
+                BranchManageFormController.controller.getAllData();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Branch does not updated !").show();
+            }
+
+        }
+    }
+
     @FXML
     void btnCancelOnAction(ActionEvent event) {
         AdminNavigation.closePane();
@@ -52,11 +92,6 @@ public class BranchUpdateFormController {
 
     @FXML
     void btnCancelOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
 
     }
 
@@ -110,4 +145,46 @@ public class BranchUpdateFormController {
 
     }
 
+    public boolean validate() {
+        String name = txtBranchName.getText();
+
+        if (Regex.fullName(name)) {
+            lblName.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String location = txtBranchLocation.getText();
+
+        if (Regex.address(location)) {
+            lblAddress.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        String mobile = txtBranchMobile.getText();
+
+        if (Regex.mobile(mobile)) {
+            lblMobile.setText("Please enter valid mobile number");
+            return false;
+        }
+
+        String email = txtBranchEmail.getText();
+
+        if (Regex.email(email)) {
+            lblEmail.setText("Please enter valid email");
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        BranchDto dto = branchService.getBranchData(id);
+
+        txtBranchName.setText(dto.getName());
+        txtBranchLocation.setText(dto.getLocation());
+        txtBranchMobile.setText(dto.getMobile());
+        txtBranchEmail.setText(dto.getEmail());
+        admin = dto.getAdmin();
+    }
 }

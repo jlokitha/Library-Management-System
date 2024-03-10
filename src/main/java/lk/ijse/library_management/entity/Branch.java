@@ -21,6 +21,9 @@ public class Branch implements Serializable {
     @Column(name = "branch_id")
     private int id;
 
+    @Column(name = "branch_name")
+    private String name;
+
     @Column(name = "branch_location")
     private String location;
 
@@ -37,6 +40,7 @@ public class Branch implements Serializable {
     public BranchDto toDto() {
         return new BranchDto(
                 id,
+                name,
                 location,
                 mobile,
                 email,
