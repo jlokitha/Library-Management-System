@@ -119,4 +119,38 @@ public class ProfileServiceImpl implements ProfileService {
         }
 
     }
+
+    @Override
+    public boolean updateAdminPassword(int id, String oldPassword, String newPassword) {
+
+        Admin entity = getAdminData(id);
+
+        if (oldPassword.equals(entity.getPassword())) {
+
+            entity.setPassword(newPassword);
+
+            session = SessionFactoryConfig.getInstance().getSession();
+
+            Transaction transaction = session.beginTransaction();
+
+            try {
+
+                adminRepository.setSession(session);
+                adminRepository.update(entity);
+                transaction.commit();
+                return true;
+
+            } catch (Exception e) {
+
+                transaction.rollback();
+                e.printStackTrace();
+                return false;
+
+            } finally {
+                session.close();
+            }
+        } else {
+            return false;
+        }
+    }
 }

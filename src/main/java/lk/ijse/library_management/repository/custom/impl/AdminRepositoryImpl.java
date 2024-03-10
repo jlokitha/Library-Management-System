@@ -48,6 +48,11 @@ public class AdminRepositoryImpl implements AdminRepository {
     }
 
     @Override
+    public void update(Admin entity) {
+        session.update(entity);
+    }
+
+    @Override
     public void setSession(Session session) {
         this.session = session;
     }

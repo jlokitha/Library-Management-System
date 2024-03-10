@@ -13,4 +13,6 @@ public interface AdminRepository extends SuperRepository {
     void delete(Admin entity);
 
     int getIdFormUsername(String username);
+
+    void update(Admin entity);
 }

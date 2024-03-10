@@ -12,4 +12,6 @@ public interface ProfileService extends SuperService {
     int getIdFromUsername(String username);
 
     void deleteAdmin(int id);
+
+    boolean updateAdminPassword(int id, String oldPassword, String newPassword);
 }

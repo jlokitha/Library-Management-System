@@ -7,6 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.ProfileService;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -62,6 +65,9 @@ public class ResetPasswordFormController {
 
     @FXML
     void btnResetPasswordOnAction(ActionEvent event) {
+
+
+
         try {
             AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
         } catch (IOException e) {
@@ -87,6 +93,17 @@ public class ResetPasswordFormController {
     @FXML
     void txtNewOnMouseClicked(MouseEvent event) {
 
+    }
+
+    public boolean validatePassword() {
+        String password = txtNewPassword.getText();
+
+        if (Regex.password(password)) {
+            lblNewPass.setText("Password should have at least 6 and less than 20 characters");
+            return false;
+        }
+
+        return true;
     }
 
 }
