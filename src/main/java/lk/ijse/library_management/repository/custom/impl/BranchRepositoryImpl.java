@@ -16,4 +16,14 @@ public class BranchRepositoryImpl implements BranchRepository {
     public int save(Branch branch) {
         return (int) session.save(branch);
     }
+
+    @Override
+    public Branch get(int id) {
+        return session.get(Branch.class, id);
+    }
+
+    @Override
+    public void update(Branch entity) {
+        session.update(entity);
+    }
 }

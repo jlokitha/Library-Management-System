@@ -9,4 +9,7 @@ public interface BranchRepository extends SuperRepository {
 
     int save(Branch branch);
 
+    Branch get(int id);
+
+    void update(Branch entity);
 }

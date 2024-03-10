@@ -49,6 +49,7 @@ public class BranchManageRowFormController {
     @FXML
     void imgUpdateOnMouseClicked(MouseEvent event) {
         try {
+            BranchUpdateFormController.id = Integer.parseInt(lblId.getText());
             AdminNavigation.popupPane("BranchUpdateForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();

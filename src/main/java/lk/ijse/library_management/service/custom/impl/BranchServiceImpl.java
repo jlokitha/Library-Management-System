@@ -1,9 +1,13 @@
 package lk.ijse.library_management.service.custom.impl;
 
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.dto.BranchDto;
+import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.entity.Branch;
 import lk.ijse.library_management.repository.RepositoryFactory;
+import lk.ijse.library_management.repository.custom.AdminRepository;
 import lk.ijse.library_management.repository.custom.BranchRepository;
+import lk.ijse.library_management.repository.custom.impl.AdminRepositoryImpl;
 import lk.ijse.library_management.service.custom.BranchService;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
@@ -11,12 +15,18 @@ import org.hibernate.Transaction;
 
 public class BranchServiceImpl implements BranchService {
 
+    private Session session;
+
     private final BranchRepository branchRepository =
             (BranchRepository) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.BRANCH);
+
+    private final AdminRepository adminRepository =
+            (AdminRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.ADMIN);
+
     @Override
     public boolean saveBranch(BranchDto branchDto) {
 
-        Session session = SessionFactoryConfig.getInstance().getSession();
+        session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
@@ -25,6 +35,98 @@ public class BranchServiceImpl implements BranchService {
             int id = branchRepository.save(branchDto.toEntity());
             transaction.commit();
             return id > 0;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public int getIdFromUsername(String username) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            adminRepository.setSession(session);
+            int id = adminRepository.getIdFormUsername(username);
+            return id;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public AdminDto getAdminData(int id) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            adminRepository.setSession(session);
+
+            Admin admin = adminRepository.get(id);
+
+            return admin.toDto();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public BranchDto getBranchData(int id) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            adminRepository.setSession(session);
+
+            Branch branch = branchRepository.get(id);
+
+            return branch.toDto();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean updateBranch(BranchDto branchDto) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+
+            branchRepository.update(branchDto.toEntity());
+
+            transaction.commit();
+
+            return true;
 
         } catch (Exception e) {
 
