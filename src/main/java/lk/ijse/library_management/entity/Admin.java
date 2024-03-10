@@ -10,6 +10,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,6 +49,12 @@ public class Admin {
     @Column(name = "admin_updated")
     private Timestamp updatedDate;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "admin")
+    private List<Branch> branches = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "admin")
+    private List<Book> books = new ArrayList<>();
+
     public AdminDto toDto() {
         return new AdminDto(
                 id,
@@ -55,7 +63,9 @@ public class Admin {
                 mobile,
                 email,
                 username,
-                password
+                password,
+                addedDate,
+                updatedDate
         );
     }
 }

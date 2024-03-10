@@ -1,5 +1,6 @@
 package lk.ijse.library_management.repository.custom.impl;
 
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.custom.AdminRepository;
 import org.hibernate.Session;

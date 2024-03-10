@@ -1,5 +1,6 @@
 package lk.ijse.library_management.entity;
 
+import lk.ijse.library_management.dto.BranchDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,18 @@ public class Branch implements Serializable {
 
     @Column(name = "branch_email")
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+
+    public BranchDto toDto() {
+        return new BranchDto(
+                id,
+                location,
+                mobile,
+                email,
+                admin
+        );
+    }
 }

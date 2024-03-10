@@ -80,7 +80,9 @@ public class SignUpFormController {
                     txtMobile.getText(),
                     txtEmail.getText(),
                     txtUsername.getText(),
-                    txtPassword.getText()
+                    txtPassword.getText(),
+                    null,
+                    null
             );
 
             SignUpVerifyOtpFormController.dto = adminDto;

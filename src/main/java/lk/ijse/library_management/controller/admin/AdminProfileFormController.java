@@ -104,7 +104,7 @@ public class AdminProfileFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int id = profileService.getIdFromUsername(AdminGlobalFormController.username);
-        AdminDto dto = profileService.getAdminData(id).toDto();
+        AdminDto dto = profileService.getAdminData(id);
 
         lblAdminId.setText(String.valueOf(dto.getId()));
         lblName.setText(dto.getFName() + " " + dto.getLName());

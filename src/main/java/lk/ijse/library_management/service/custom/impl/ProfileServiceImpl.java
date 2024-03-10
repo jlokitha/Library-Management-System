@@ -1,5 +1,6 @@
 package lk.ijse.library_management.service.custom.impl;
 
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.AdminRepository;
@@ -17,7 +18,7 @@ public class ProfileServiceImpl implements ProfileService {
             (AdminRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.ADMIN);
 
     @Override
-    public Admin getAdminData(int id) {
+    public AdminDto getAdminData(int id) {
 
         session = SessionFactoryConfig.getInstance().getSession();
 
@@ -31,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService {
 
             transaction.commit();
 
-            return admin;
+            return admin.toDto();
 
         } catch (Exception e) {
 
@@ -97,7 +98,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public void deleteAdmin(int id) {
 
-        Admin entity = getAdminData(id);
+        AdminDto dto = getAdminData(id);
 
         session = SessionFactoryConfig.getInstance().getSession();
 
@@ -106,7 +107,7 @@ public class ProfileServiceImpl implements ProfileService {
         try {
 
             adminRepository.setSession(session);
-            adminRepository.delete(entity);
+            adminRepository.delete(dto.toEntity());
             transaction.commit();
 
         } catch (Exception e) {
@@ -123,11 +124,11 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public boolean updateAdminPassword(int id, String oldPassword, String newPassword) {
 
-        Admin entity = getAdminData(id);
+        AdminDto dto = getAdminData(id);
 
-        if (oldPassword.equals(entity.getPassword())) {
+        if (oldPassword.equals(dto.getPassword())) {
 
-            entity.setPassword(newPassword);
+            dto.setPassword(newPassword);
 
             session = SessionFactoryConfig.getInstance().getSession();
 
@@ -136,7 +137,7 @@ public class ProfileServiceImpl implements ProfileService {
             try {
 
                 adminRepository.setSession(session);
-                adminRepository.update(entity);
+                adminRepository.update(dto.toEntity());
                 transaction.commit();
                 return true;
 
