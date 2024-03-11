@@ -36,6 +36,12 @@ public class BookManageFormController implements Initializable {
     @FXML
     private Label lblAdd;
 
+    public static BookManageFormController controller;
+
+    public BookManageFormController() {
+        controller = this;
+    }
+
     private final BookService bookService =
             (BookServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BOOK);
 
@@ -71,7 +77,7 @@ public class BookManageFormController implements Initializable {
 
     private void loadDataTable(BookDto dto) {
         try {
-            FXMLLoader loader = new FXMLLoader(BookManageFormController.class.getResource("/view/admin/BookManageForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(BookManageFormController.class.getResource("/view/admin/BookManageRowForm.fxml"));
             Parent root = loader.load();
             BookManageRowFormController controller = loader.getController();
             controller.setData(dto);

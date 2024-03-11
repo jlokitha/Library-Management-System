@@ -18,12 +18,32 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> getAllData() {
-        String hql = "SELECT x FROM Book x";
+        String hql = "SELECT b FROM Book b";
 
         Query<Book> query = session.createQuery(hql, Book.class);
 
         List<Book> list = query.list();
 
          return list;
+    }
+
+    @Override
+    public int save(Book entity) {
+       return (int) session.save(entity);
+    }
+
+    @Override
+    public Book get(int id) {
+        return session.get(Book.class, id);
+    }
+
+    @Override
+    public void delete(Book book) {
+        session.delete(book);
+    }
+
+    @Override
+    public void update(Book entity) {
+        session.update(entity);
     }
 }

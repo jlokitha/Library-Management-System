@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.BookDto;
@@ -46,6 +47,25 @@ public class BookAddFormController {
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
+        if (validate()) {
+            boolean isSaved = bookService.saveBook(new BookDto(
+                    -1,
+                    txtTitle.getText(),
+                    txtAuthor.getText(),
+                    txtGenre.getText(),
+                    "Available",
+                    null,
+                    null,
+                    null
+            ));
+
+            if (isSaved) {
+                AdminNavigation.closePane();
+                BookManageFormController.controller.getAllData();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Book does not saved !").show();
+            }
+        }
     }
 
     @FXML
@@ -106,7 +126,7 @@ public class BookAddFormController {
     public boolean validate() {
         String title = txtTitle.getText();
 
-        if (Regex.title(title)) {
+        if (Regex.fullName(title)) {
             lblTitle.setText("Should contain at least 3 letters");
             return false;
         }
