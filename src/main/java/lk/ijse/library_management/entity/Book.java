@@ -4,6 +4,8 @@ import lk.ijse.library_management.dto.BookDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -33,9 +35,11 @@ public class Book {
     @Column(name = "book_availability")
     private String availability;
 
+    @CreationTimestamp
     @Column(name = "book_added")
     private Timestamp addedDate;
 
+    @UpdateTimestamp
     @Column(name = "book_updated")
     private Timestamp updatedDate;
 

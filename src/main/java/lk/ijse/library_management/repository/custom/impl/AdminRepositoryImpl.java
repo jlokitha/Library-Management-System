@@ -1,6 +1,5 @@
 package lk.ijse.library_management.repository.custom.impl;
 
-import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.custom.AdminRepository;
 import org.hibernate.Session;
@@ -29,7 +28,7 @@ public class AdminRepositoryImpl implements AdminRepository {
         query.setParameter("password", password);
 
         Integer id = query.uniqueResult();
-        return id;
+        return (id != null) ? id : -1;
     }
 
     @Override

@@ -4,9 +4,12 @@ import lk.ijse.library_management.dto.BranchDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,6 +36,14 @@ public class Branch implements Serializable {
     @Column(name = "branch_email")
     private String email;
 
+    @CreationTimestamp
+    @Column(name = "branch_added")
+    private Timestamp createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "branch_updated")
+    private Timestamp updatedDate;
+
     @ManyToOne
     @JoinColumn(name = "admin_id")
     private Admin admin;
@@ -44,6 +55,8 @@ public class Branch implements Serializable {
                 location,
                 mobile,
                 email,
+                createdDate,
+                updatedDate,
                 admin
         );
     }
