@@ -53,7 +53,7 @@ public class BranchUpdateFormController implements Initializable {
 
     public static int id;
 
-    private Admin admin;
+    private BranchDto dto;
 
     private final BranchService branchService =
             (BranchServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BRANCH);
@@ -61,14 +61,13 @@ public class BranchUpdateFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         if (validate()) {
-            boolean isUpdated = branchService.updateBranch(new BranchDto(
-                    id,
-                    txtBranchName.getText(),
-                    txtBranchLocation.getText(),
-                    txtBranchMobile.getText(),
-                    txtBranchEmail.getText(),
-                    admin
-            ));
+
+            dto.setName(txtBranchName.getText());
+            dto.setLocation(txtBranchLocation.getText());
+            dto.setMobile(txtBranchMobile.getText());
+            dto.setEmail(txtBranchEmail.getText());
+
+            boolean isUpdated = branchService.updateBranch(dto);
 
             if (isUpdated) {
                 AdminNavigation.closePane();
@@ -185,6 +184,6 @@ public class BranchUpdateFormController implements Initializable {
         txtBranchLocation.setText(dto.getLocation());
         txtBranchMobile.setText(dto.getMobile());
         txtBranchEmail.setText(dto.getEmail());
-        admin = dto.getAdmin();
+        this.dto = dto;
     }
 }

@@ -59,6 +59,8 @@ public class BranchAddFormController {
                     txtBranchLocation.getText(),
                     txtBranchMobile.getText(),
                     txtBranchEmail.getText(),
+                    null,
+                    null,
                     branchService.getAdminData(id).toEntity()
             ) );
 

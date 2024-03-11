@@ -7,6 +7,10 @@ public class Regex {
         return !Pattern.matches("([A-Za-z\\s]{3,})", name);
     }
 
+    public static boolean genre(String genre) {
+        return !Pattern.matches("([A-Za-z\\s]{3,})", genre);
+    }
+
     public static boolean name(String name) {
         return !Pattern.matches("([A-Za-z]{3,})", name);
     }
@@ -55,7 +59,7 @@ public class Regex {
         return !Pattern.matches("[A-Za-z]+", user);
     }
 
-    public static boolean description(String desc) {
+    public static boolean title(String desc) {
         return !Pattern.matches("[A-Z][A-Za-z\\s]{2,}", desc);
     }
 

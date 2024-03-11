@@ -1,9 +1,6 @@
 package lk.ijse.library_management.service;
 
-import lk.ijse.library_management.service.custom.impl.ProfileServiceImpl;
-import lk.ijse.library_management.service.custom.impl.SignInServiceImpl;
-import lk.ijse.library_management.service.custom.impl.SignUpServiceImpl;
-import lk.ijse.library_management.service.custom.impl.BranchServiceImpl;
+import lk.ijse.library_management.service.custom.impl.*;
 
 public class ServiceFactory {
     public static ServiceFactory factory;
@@ -17,7 +14,7 @@ public class ServiceFactory {
     }
 
     public enum ServiceType {
-        BRANCH, SIGNIN, SIGNUP, PROFILE
+        BRANCH, SIGNIN, SIGNUP, PROFILE, BOOK
     }
 
     public SuperService getService (ServiceType type) {
@@ -30,6 +27,8 @@ public class ServiceFactory {
                 return new ProfileServiceImpl();
             case SIGNIN:
                 return new SignInServiceImpl();
+            case BOOK:
+                return new BookServiceImpl();
             default:
                 return null;
         }
