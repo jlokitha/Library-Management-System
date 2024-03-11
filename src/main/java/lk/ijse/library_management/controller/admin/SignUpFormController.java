@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.SignUpService;
@@ -73,17 +74,14 @@ public class SignUpFormController {
         if (true) {
             String otp = OTPGenerator.generateOTP();
 
-            AdminDto adminDto = new AdminDto(
-                    -1,
-                    txtFirstName.getText(),
-                    txtLastName.getText(),
-                    txtMobile.getText(),
-                    txtEmail.getText(),
-                    txtUsername.getText(),
-                    txtPassword.getText(),
-                    null,
-                    null
-            );
+            AdminDto adminDto = new AdminDto();
+
+            adminDto.setFName(txtFirstName.getText());
+            adminDto.setLName(txtLastName.getText());
+            adminDto.setMobile(txtMobile.getText());
+            adminDto.setEmail(txtEmail.getText());
+            adminDto.setUsername(txtUsername.getText());
+            adminDto.setPassword(txtPassword.getText());
 
             SignUpVerifyOtpFormController.dto = adminDto;
             SignUpVerifyOtpFormController.otp = otp;

@@ -3,6 +3,7 @@ package lk.ijse.library_management.repository;
 import lk.ijse.library_management.repository.custom.impl.AdminRepositoryImpl;
 import lk.ijse.library_management.repository.custom.impl.BookRepositoryImpl;
 import lk.ijse.library_management.repository.custom.impl.BranchRepositoryImpl;
+import lk.ijse.library_management.repository.custom.impl.MemberRepositoryImpl;
 
 public class RepositoryFactory {
     public static RepositoryFactory factory;
@@ -16,7 +17,7 @@ public class RepositoryFactory {
     }
 
     public enum RepositoryType {
-        BRANCH, ADMIN, BOOK
+        BRANCH, ADMIN, BOOK, MEMBER
     }
 
     public SuperRepository getRepository (RepositoryType type) {
@@ -27,6 +28,8 @@ public class RepositoryFactory {
                 return new AdminRepositoryImpl();
             case BOOK:
                 return new BookRepositoryImpl();
+            case MEMBER:
+                return new MemberRepositoryImpl();
             default:
                 return null;
         }
