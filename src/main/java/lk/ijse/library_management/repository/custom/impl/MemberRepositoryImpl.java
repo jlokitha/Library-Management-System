@@ -34,4 +34,37 @@ public class MemberRepositoryImpl implements MemberRepository {
     public void delete(Member entity) {
         session.delete(entity);
     }
+
+    @Override
+    public int getIdFormUsername(String username) {
+        String hql = "SELECT m.id FROM Member m WHERE m.username = :username";
+
+        Query<Integer> query = session.createQuery(hql, Integer.class);
+        query.setParameter("username", username);
+
+        Integer id = query.uniqueResult();
+        return (id != null) ? id : -1;
+    }
+
+    @Override
+    public int save(Member entity) {
+        return (int) session.save(entity);
+    }
+
+    @Override
+    public int getIdFormUsernamePassword(String username, String password) {
+        String hql = "SELECT m.id FROM Member m WHERE m.username = :username AND m.password = :password";
+
+        Query<Integer> query = session.createQuery(hql, Integer.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+
+        Integer id = query.uniqueResult();
+        return (id != null) ? id : -1;
+    }
+
+    @Override
+    public void update(Member entity) {
+        session.update(entity);
+    }
 }

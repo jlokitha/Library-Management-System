@@ -5,12 +5,12 @@ import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.AdminRepository;
 import lk.ijse.library_management.repository.custom.impl.AdminRepositoryImpl;
-import lk.ijse.library_management.service.custom.ProfileService;
+import lk.ijse.library_management.service.custom.AdminProfileService;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ProfileServiceImpl implements ProfileService {
+public class AdminProfileServiceImpl implements AdminProfileService {
 
     private Session session;
 
@@ -22,21 +22,16 @@ public class ProfileServiceImpl implements ProfileService {
 
         session = SessionFactoryConfig.getInstance().getSession();
 
-        Transaction transaction = session.beginTransaction();
-
         try {
 
             adminRepository.setSession(session);
 
             Admin admin = adminRepository.get(id);
 
-            transaction.commit();
-
             return admin.toDto();
 
         } catch (Exception e) {
 
-            transaction.rollback();
             e.printStackTrace();
             return null;
 
@@ -50,18 +45,14 @@ public class ProfileServiceImpl implements ProfileService {
 
         session = SessionFactoryConfig.getInstance().getSession();
 
-        Transaction transaction = session.beginTransaction();
-
         try {
 
             adminRepository.setSession(session);
             int id = adminRepository.getIdFormUsernamePassword(username, password);
-            transaction.commit();
             return id;
 
         } catch (Exception e) {
 
-            transaction.rollback();
             e.printStackTrace();
             return -1;
 
@@ -75,18 +66,14 @@ public class ProfileServiceImpl implements ProfileService {
 
         session = SessionFactoryConfig.getInstance().getSession();
 
-        Transaction transaction = session.beginTransaction();
-
         try {
 
             adminRepository.setSession(session);
             int id = adminRepository.getIdFormUsername(username);
-            transaction.commit();
             return id;
 
         } catch (Exception e) {
 
-            transaction.rollback();
             e.printStackTrace();
             return -1;
 

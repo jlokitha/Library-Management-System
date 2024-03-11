@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 import lk.ijse.library_management.controller.admin.AdminGlobalLoginFormController;
 import lk.ijse.library_management.controller.admin.SignInFormController;
 import lk.ijse.library_management.controller.member.MemberGlobalFormController;
+import lk.ijse.library_management.controller.member.MemberGlobalLoginFormController;
 
 
 import java.io.IOException;
@@ -55,10 +56,10 @@ public class MemberNavigation {
     }
 
     public static void switchLoginPage(String path) throws IOException {
-        AdminGlobalLoginFormController.getInstance().loginPane.getChildren().clear();
+        MemberGlobalLoginFormController.getInstance().loginPane.getChildren().clear();
         FXMLLoader loader = new FXMLLoader(AdminNavigation.class.getResource("/view/member/"+path));
         Parent root = loader.load();
-        AdminGlobalLoginFormController.getInstance().loginPane.getChildren().add(root);
+        MemberGlobalLoginFormController.getInstance().loginPane.getChildren().add(root);
     }
 
     public static void closePane(){

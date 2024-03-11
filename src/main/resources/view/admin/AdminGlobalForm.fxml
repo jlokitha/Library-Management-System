@@ -259,7 +259,7 @@
       <AnchorPane fx:id="pagingPane" layoutX="251.0" layoutY="101.0" prefHeight="979.0" prefWidth="1670.0" />
       <ImageView fx:id="imgGreyBack" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/image/grey_background.png" />
+            <Image url="@../../../../../../Library-Management-System/src/main/resources/assests/img/grey_background.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="popUpPane" prefHeight="1080.0" prefWidth="1920.0" visible="false" />

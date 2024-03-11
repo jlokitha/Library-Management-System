@@ -4,14 +4,20 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
-public class MemberGlobalFormController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MemberGlobalFormController implements Initializable {
 
     @FXML
     private JFXButton btnDashboard;
@@ -79,6 +85,8 @@ public class MemberGlobalFormController {
     @FXML
     public AnchorPane popUpPane;
 
+    public static String username;
+
     public Stage popupStage;
 
     private static MemberGlobalFormController globalFormController;
@@ -97,12 +105,20 @@ public class MemberGlobalFormController {
 
     @FXML
     void btnBookOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchPaging("BookManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnBranchOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchPaging("BranchManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -117,7 +133,11 @@ public class MemberGlobalFormController {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchPaging("DashboardForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -132,7 +152,11 @@ public class MemberGlobalFormController {
 
     @FXML
     void btnIssuedOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchPaging("BookBorrowManageForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -157,7 +181,11 @@ public class MemberGlobalFormController {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchNavigation("SignInForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -172,7 +200,11 @@ public class MemberGlobalFormController {
 
     @FXML
     void btnProfileOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.popupPane("MemberProfileForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -195,4 +227,10 @@ public class MemberGlobalFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        labelUser.setText(username);
+        System.out.println(imgGreyBack.isVisible());
+        btnDashboardOnAction(new ActionEvent());
+    }
 }

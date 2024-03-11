@@ -14,7 +14,7 @@ public class MemberAppInitializer extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/member/MemberGlobalForm.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/member/MemberGlobalLoginForm.fxml"));
         stage.setScene(new Scene(root));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.centerOnScreen();

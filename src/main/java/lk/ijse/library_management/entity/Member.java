@@ -27,9 +27,6 @@ public class Member {
     @Column(name = "member_name")
     private String name;
 
-    @Column(name = "member_address")
-    private String address;
-
     @Column(name = "member_mobile")
     private String mobile;
 
@@ -54,7 +51,6 @@ public class Member {
         return new MemberDto(
                 id,
                 name,
-                address,
                 mobile,
                 email,
                 username,

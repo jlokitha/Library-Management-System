@@ -11,4 +11,12 @@ public interface MemberRepository extends SuperRepository {
     List<Member> getAll();
 
     void delete(Member entity);
+
+    int getIdFormUsername(String username);
+
+    int save(Member entity);
+
+    int getIdFormUsernamePassword(String username, String password);
+
+    void update(Member entity);
 }

@@ -18,6 +18,9 @@ import java.util.ResourceBundle;
 public class MemberViewFormController implements Initializable {
 
     @FXML
+    public Label lblMemberUsername;
+
+    @FXML
     private JFXButton btnCancel;
 
     @FXML
@@ -31,9 +34,6 @@ public class MemberViewFormController implements Initializable {
 
     @FXML
     private Label lblMemberEmail;
-
-    @FXML
-    private Label lblMemberAddress;
 
     public static int id;
 
@@ -59,8 +59,8 @@ public class MemberViewFormController implements Initializable {
         MemberDto dto = memberService.getMemberData(id);
 
         lblMemberId.setText(String.valueOf(dto.getId()));
+        lblMemberUsername.setText(dto.getUsername());
         lblMemberName.setText(dto.getName());
-        lblMemberAddress.setText(dto.getAddress());
         lblMemberMobile.setText(dto.getMobile());
         lblMemberEmail.setText(dto.getEmail());
     }

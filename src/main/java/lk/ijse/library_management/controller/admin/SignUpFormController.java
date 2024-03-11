@@ -5,14 +5,12 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
 import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
-import lk.ijse.library_management.service.custom.SignUpService;
-import lk.ijse.library_management.service.custom.impl.SignUpServiceImpl;
+import lk.ijse.library_management.service.custom.AdminSignUpService;
+import lk.ijse.library_management.service.custom.impl.AdminSignUpServiceImpl;
 import lk.ijse.library_management.util.OTPGenerator;
 import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
@@ -65,8 +63,8 @@ public class SignUpFormController {
 
     private final String subject = "Admin Sign Up Verification Code";
 
-    private final SignUpService signUpService =
-            (SignUpServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNUP);
+    private final AdminSignUpService signUpService =
+            (AdminSignUpServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNUP);
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {

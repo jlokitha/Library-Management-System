@@ -1,4 +1,4 @@
-package lk.ijse.library_management.controller.admin;
+package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -7,17 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.controller.admin.SignInFormController;
 import lk.ijse.library_management.service.ServiceFactory;
-import lk.ijse.library_management.service.custom.AdminProfileService;
-import lk.ijse.library_management.service.custom.impl.AdminProfileServiceImpl;
+import lk.ijse.library_management.service.custom.MemberProfileService;
+import lk.ijse.library_management.service.custom.impl.MemberProfileServiceImpl;
 import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DeleteAdminFormController implements Initializable {
+public class DeleteMemberFormController implements Initializable {
 
     @FXML
     private JFXTextField txtPassword;
@@ -34,19 +37,18 @@ public class DeleteAdminFormController implements Initializable {
     @FXML
     private Label lblOtp;
 
-    private final AdminProfileService profileService =
-            (AdminProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.ADMINPROFILE);
+    private final MemberProfileService profileService =
+            (MemberProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERPROFILE);
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
         if (validatePassword()) {
             int id = profileService.getIdFromUsernamePassword(lblUserName.getText(), txtPassword.getText());
 
             if (id > 0) {
 
                 try {
-                    profileService.deleteAdmin(id);
+                    profileService.deleteMember(id);
                     SignInFormController.stage.close();
                     AdminNavigation.switchNavigation("SignInForm.fxml", event);
                 } catch (IOException e) {
@@ -55,12 +57,11 @@ public class DeleteAdminFormController implements Initializable {
 
             }
         }
-
     }
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-        AdminNavigation.closePane();
+        MemberNavigation.closePane();
     }
 
     @FXML
@@ -106,6 +107,6 @@ public class DeleteAdminFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblUserName.setText(AdminGlobalFormController.username);
+        lblUserName.setText(MemberGlobalFormController.username);
     }
 }

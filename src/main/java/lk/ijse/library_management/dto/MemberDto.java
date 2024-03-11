@@ -19,8 +19,6 @@ public class MemberDto {
 
     private String name;
 
-    private String address;
-
     private String mobile;
 
     private String email;
@@ -37,7 +35,6 @@ public class MemberDto {
         return new Member(
                 id,
                 name,
-                address,
                 mobile,
                 email,
                 username,
