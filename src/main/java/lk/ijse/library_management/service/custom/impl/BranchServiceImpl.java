@@ -153,7 +153,7 @@ public class BranchServiceImpl implements BranchService {
 
         try {
 
-            adminRepository.setSession(session);
+            branchRepository.setSession(session);
 
             branchRepository.delete(dto.toEntity());
 

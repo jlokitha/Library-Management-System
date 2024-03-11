@@ -71,6 +71,7 @@ public class BookManageRowFormController {
     @FXML
     void imgViewOnMouseClicked(MouseEvent event) {
         try {
+            BookViewFormController.id = Integer.parseInt(lblId.getText());
             AdminNavigation.popupPane("BookViewForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();
@@ -107,6 +108,7 @@ public class BookManageRowFormController {
         lblId.setText(String.valueOf(dto.getId()));
         lblGenre.setText(dto.getGenre());
         lblTitle.setText(dto.getTitle());
+        lblAvailability.setText(dto.getAvailability());
         setStatus(dto.getAvailability());
     }
 }
