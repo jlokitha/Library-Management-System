@@ -1,4 +1,4 @@
-package lk.ijse.library_management.controller.admin;
+package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
 import lk.ijse.library_management.service.ServiceFactory;
-import lk.ijse.library_management.service.custom.AdminProfileService;
-import lk.ijse.library_management.service.custom.impl.AdminProfileServiceImpl;
+import lk.ijse.library_management.service.custom.MemberProfileService;
+import lk.ijse.library_management.service.custom.impl.MemberProfileServiceImpl;
 import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 public class ChangeCredentialFormController {
 
@@ -40,12 +42,29 @@ public class ChangeCredentialFormController {
     @FXML
     private Label lblConPass;
 
-    private final AdminProfileService profileService =
-            (AdminProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.ADMINPROFILE);
+    private final MemberProfileService profileService =
+            (MemberProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERPROFILE);
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent event) {
+        if (validatePassword()) {
+            int id = profileService.getIdFromUsername(MemberGlobalFormController.username);
+
+            if (txtNEWPass.getText().equals(txtConNewPass.getText())) {
+                boolean isUpdated = profileService.updateMemberPassword(id, txtCurrentPass.getText(), txtNEWPass.getText());
+
+                if (isUpdated) {
+                    MemberNavigation.closePane();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Provided Password Incorrect !").show();
+                }
+            }
+        }
+    }
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-        AdminNavigation.closePane();
+        MemberNavigation.closePane();
     }
 
     @FXML
@@ -56,24 +75,6 @@ public class ChangeCredentialFormController {
     @FXML
     void btnCancelOnMoseExited(MouseEvent event) {
 
-    }
-
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-
-        if (validatePassword()) {
-            int id = profileService.getIdFromUsername(AdminGlobalFormController.username);
-
-            if (txtNEWPass.getText().equals(txtConNewPass.getText())) {
-                boolean isUpdated = profileService.updateAdminPassword(id, txtCurrentPass.getText(), txtNEWPass.getText());
-
-                if (isUpdated) {
-                    AdminNavigation.closePane();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Provided Password Incorrect !").show();
-                }
-            }
-        }
     }
 
     @FXML

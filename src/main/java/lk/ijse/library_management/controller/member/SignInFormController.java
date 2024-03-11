@@ -8,6 +8,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.MemberSignInService;
+import lk.ijse.library_management.service.custom.impl.MemberSignInServiceImpl;
+import lk.ijse.library_management.util.Regex;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
+
+import java.io.IOException;
 
 public class SignInFormController {
 
@@ -32,9 +41,27 @@ public class SignInFormController {
     @FXML
     private Pane paneShutDown;
 
+    private final MemberSignInService signInService =
+            (MemberSignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERSIGNIN);
+
     @FXML
     void btnLogInOnAction(ActionEvent event) {
 
+        if (true) {
+            String username = txtUsername.getText();
+            String password = txtPassword.getText();
+
+            int id = signInService.getIdFromUsernamePassword(username, password);
+
+            if (id > 0) {
+                try {
+                    MemberGlobalFormController.username = username;
+                    MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @FXML
@@ -49,7 +76,11 @@ public class SignInFormController {
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchLoginPage("SignUpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -100,6 +131,24 @@ public class SignInFormController {
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
 
+    }
+
+    public boolean validateSignIn() {
+        String userName = txtUsername.getText();
+
+        if (Regex.userName(userName)) {
+            lblUserName.setText("Invalid Username");
+            return false;
+        }
+
+        String password = txtPassword.getText();
+
+        if ( Regex.password(password) ) {
+            lblPassword.setText("Please enter a password");
+            return false;
+        }
+
+        return true;
     }
 
 }

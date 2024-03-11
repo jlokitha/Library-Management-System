@@ -3,7 +3,7 @@ package lk.ijse.library_management.service.custom.impl;
 import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.AdminRepository;
-import lk.ijse.library_management.service.custom.SignUpService;
+import lk.ijse.library_management.service.custom.AdminSignUpService;
 import lk.ijse.library_management.util.SendEmail;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 
 import javax.mail.MessagingException;
 
-public class SignUpServiceImpl implements SignUpService {
+public class AdminSignUpServiceImpl implements AdminSignUpService {
 
     private Session session;
 

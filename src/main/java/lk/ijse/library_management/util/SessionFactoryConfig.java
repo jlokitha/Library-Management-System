@@ -3,6 +3,7 @@ package lk.ijse.library_management.util;
 import lk.ijse.library_management.entity.Admin;
 import lk.ijse.library_management.entity.Book;
 import lk.ijse.library_management.entity.Branch;
+import lk.ijse.library_management.entity.Member;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,6 +20,7 @@ public class SessionFactoryConfig {
                 .addAnnotatedClass(Branch.class)
                 .addAnnotatedClass(Admin.class)
                 .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(Member.class)
                 .buildSessionFactory();
     }
 

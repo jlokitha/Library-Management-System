@@ -6,6 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.MemberDto;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
+
+import java.io.IOException;
 
 public class SignUpVerifyOtpFormController {
 
@@ -20,6 +24,10 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     private Label lblOtp;
+
+    public static MemberDto dto;
+
+    public static String otp;
 
     @FXML
     void btnBackOMouseEntered(MouseEvent event) {
@@ -38,7 +46,12 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
-
+        try {
+            MemberGlobalFormController.username = dto.getUsername();
+            MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

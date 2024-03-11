@@ -3,12 +3,12 @@ package lk.ijse.library_management.service.custom.impl;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.AdminRepository;
 import lk.ijse.library_management.repository.custom.impl.AdminRepositoryImpl;
-import lk.ijse.library_management.service.custom.SignInService;
+import lk.ijse.library_management.service.custom.AdminSignInService;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class SignInServiceImpl implements SignInService {
+public class AdminSignInServiceImpl implements AdminSignInService {
 
     private Session session;
 

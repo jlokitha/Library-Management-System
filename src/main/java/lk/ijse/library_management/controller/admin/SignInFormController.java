@@ -10,8 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lk.ijse.library_management.service.ServiceFactory;
-import lk.ijse.library_management.service.custom.SignInService;
-import lk.ijse.library_management.service.custom.impl.SignInServiceImpl;
+import lk.ijse.library_management.service.custom.AdminSignInService;
+import lk.ijse.library_management.service.custom.impl.AdminSignInServiceImpl;
 import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
@@ -42,8 +42,8 @@ public class SignInFormController {
 
     public static Stage stage;
 
-    private final SignInService signInService =
-            (SignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNIN);
+    private final AdminSignInService signInService =
+            (AdminSignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNIN);
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {
@@ -96,6 +96,7 @@ public class SignInFormController {
 
     @FXML
     void imgShutDownOnMouseClicked(MouseEvent event) {
+        AdminGlobalLoginFormController.stage.close();
         System.exit(0);
     }
 

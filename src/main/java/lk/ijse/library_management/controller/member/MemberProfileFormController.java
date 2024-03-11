@@ -1,4 +1,4 @@
-package lk.ijse.library_management.controller.admin;
+package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -7,17 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.library_management.dto.AdminDto;
+import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.service.ServiceFactory;
-import lk.ijse.library_management.service.custom.AdminProfileService;
-import lk.ijse.library_management.service.custom.impl.AdminProfileServiceImpl;
-import lk.ijse.library_management.util.navigation.AdminNavigation;
+import lk.ijse.library_management.service.custom.MemberProfileService;
+import lk.ijse.library_management.service.custom.impl.MemberProfileServiceImpl;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminProfileFormController implements Initializable {
+public class MemberProfileFormController implements Initializable {
 
     @FXML
     private JFXButton btnDelete;
@@ -35,7 +35,7 @@ public class AdminProfileFormController implements Initializable {
     private Label lblEmail;
 
     @FXML
-    private Label lblAdminId;
+    private Label lblMemberId;
 
     @FXML
     private ImageView imgClose;
@@ -43,14 +43,14 @@ public class AdminProfileFormController implements Initializable {
     @FXML
     private Label lblMobile;
 
-    private final AdminProfileService profileService =
-            (AdminProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.ADMINPROFILE);
+    private final MemberProfileService memberProfileService =
+            (MemberProfileServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERPROFILE);
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         try {
-            AdminNavigation.closePane();
-            AdminNavigation.popupPane("DeleteAdminForm.fxml");
+            MemberNavigation.closePane();
+            MemberNavigation.popupPane("DeleteMemberForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,8 +69,8 @@ public class AdminProfileFormController implements Initializable {
     @FXML
     void btnResetOnAction(ActionEvent event) {
         try {
-            AdminNavigation.closePane();
-            AdminNavigation.popupPane("ChangeCredentialForm.fxml");
+            MemberNavigation.closePane();
+            MemberNavigation.popupPane("ChangeCredentialForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class AdminProfileFormController implements Initializable {
 
     @FXML
     void imgCloseOnMouseClicked(MouseEvent event) {
-        AdminNavigation.closePane();
+        MemberNavigation.closePane();
     }
 
     @FXML
@@ -102,11 +102,11 @@ public class AdminProfileFormController implements Initializable {
     }
 
     private void setData() {
-        int id = profileService.getIdFromUsername(AdminGlobalFormController.username);
-        AdminDto dto = profileService.getAdminData(id);
+        int id = memberProfileService.getIdFromUsername(MemberGlobalFormController.username);
+        MemberDto dto = memberProfileService.getMemberData(id);
 
-        lblAdminId.setText(String.valueOf(dto.getId()));
-        lblName.setText(dto.getFName() + " " + dto.getLName());
+        lblMemberId.setText(String.valueOf(dto.getId()));
+        lblName.setText(dto.getName());
         lblUserName.setText(dto.getUsername());
         lblMobile.setText(dto.getMobile());
         lblEmail.setText(dto.getEmail());

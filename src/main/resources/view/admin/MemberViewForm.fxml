@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="490.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.MemberViewFormController">
+<AnchorPane prefHeight="490.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.MemberViewFormController">
    <children>
       <Button layoutX="-96.0" layoutY="104.0" mnemonicParsing="false" text="Button" />
       <Line endX="478.0" layoutX="118.0" layoutY="99.0" startX="-115.0" />
@@ -33,22 +31,22 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblMemberName" layoutX="310.0" layoutY="130.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
+      <Label fx:id="lblMemberUsername" layoutX="310.0" layoutY="130.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblMemberMobile" layoutX="20.0" layoutY="230.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
+      <Label fx:id="lblMemberName" layoutX="20.0" layoutY="230.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblMemberEmail" layoutX="310.0" layoutY="230.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
+      <Label fx:id="lblMemberMobile" layoutX="310.0" layoutY="230.0" prefHeight="40.0" prefWidth="270.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblMemberAddress" layoutX="20.0" layoutY="330.0" prefHeight="40.0" prefWidth="560.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
+      <Label fx:id="lblMemberEmail" layoutX="20.0" layoutY="330.0" prefHeight="40.0" prefWidth="560.0" style="-fx-border-color: #727374; -fx-border-width: 0 0 1 0;" text="Label">
          <font>
             <Font size="16.0" />
          </font>
