@@ -12,4 +12,8 @@ public interface BookRepository extends SuperRepository {
     int save(Book entity);
 
     Book get(int id);
+
+    void delete(Book book);
+
+    void update(Book entity);
 }

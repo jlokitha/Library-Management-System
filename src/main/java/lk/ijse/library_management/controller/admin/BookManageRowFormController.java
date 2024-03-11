@@ -2,10 +2,15 @@ package lk.ijse.library_management.controller.admin;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.BookDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.BookService;
+import lk.ijse.library_management.service.custom.impl.BookServiceImpl;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -34,9 +39,21 @@ public class BookManageRowFormController {
     @FXML
     private ImageView imgDelete;
 
+    private final BookService bookService =
+            (BookServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BOOK);
+
     @FXML
     void imgDeleteOnMouseClicked(MouseEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Delete Book");
+        alert.setContentText("Are you sure you want to delete this Book?");
 
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+        if (result == ButtonType.OK) {
+            boolean isDeleted = bookService.deleteBook(Integer.parseInt(lblId.getText()));
+            BookManageFormController.controller.getAllData();
+        }
     }
 
     @FXML
@@ -52,6 +69,7 @@ public class BookManageRowFormController {
     @FXML
     void imgUpdateOnMouseClicked(MouseEvent event) {
         try {
+            BookUpdateFormController.id = Integer.parseInt(lblId.getText());
             AdminNavigation.popupPane("BookUpdateForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();

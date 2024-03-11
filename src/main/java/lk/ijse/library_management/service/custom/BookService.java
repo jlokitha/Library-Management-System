@@ -16,4 +16,8 @@ public interface BookService extends SuperService {
     boolean saveBook(BookDto dto);
 
     BookDto getBookData(int id);
+
+    boolean deleteBook(int id);
+
+    boolean updateBook(BookDto dto);
 }

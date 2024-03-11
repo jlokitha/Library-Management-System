@@ -36,4 +36,14 @@ public class BookRepositoryImpl implements BookRepository {
     public Book get(int id) {
         return session.get(Book.class, id);
     }
+
+    @Override
+    public void delete(Book book) {
+        session.delete(book);
+    }
+
+    @Override
+    public void update(Book entity) {
+        session.update(entity);
+    }
 }

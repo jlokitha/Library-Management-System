@@ -141,6 +141,7 @@ public class BookServiceImpl implements BookService {
         try {
 
             bookRepository.setSession(session);
+            System.out.println(id);
 
             Book book = bookRepository.get(id);
 
@@ -150,6 +151,62 @@ public class BookServiceImpl implements BookService {
 
             e.printStackTrace();
             return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean deleteBook(int id) {
+        BookDto dto = getBookData(id);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            bookRepository.setSession(session);
+
+            bookRepository.delete(dto.toEntity());
+
+            transaction.commit();
+
+            return true;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean updateBook(BookDto dto) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            bookRepository.setSession(session);
+
+            bookRepository.update(dto.toEntity());
+
+            transaction.commit();
+
+            return true;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
 
         } finally {
             session.close();
