@@ -21,7 +21,7 @@
                 <Font size="25.0" />
             </font>
         </Label>
-        <JFXButton fx:id="btnCancel" layoutX="20.0" layoutY="408.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="60.0" prefWidth="560.0" style="-fx-border-color: #139547; -fx-border-radius: 15; -fx-border-width: 2;" text="Cancel" textFill="#139547">
+        <JFXButton fx:id="btnCancel" layoutX="20.0" layoutY="408.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="60.0" prefWidth="560.0" style="-fx-border-color: #1351CB; -fx-border-radius: 15; -fx-border-width: 2;" text="Cancel" textFill="#1351cb">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>

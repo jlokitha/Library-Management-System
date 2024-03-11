@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="461.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.DeleteMemberFormController">
     <children>
-        <JFXTextField fx:id="txtPassword" focusColor="#139547" focusTraversable="false" layoutX="20.0" layoutY="256.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="50.0" prefWidth="560.0" unFocusColor="#727374">
+        <JFXTextField fx:id="txtPassword" focusColor="#1351cb" focusTraversable="false" layoutX="20.0" layoutY="256.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="50.0" prefWidth="560.0" unFocusColor="#727374">
             <font>
                 <Font size="16.0" />
             </font></JFXTextField>

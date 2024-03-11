@@ -20,37 +20,27 @@
         </ImageView>
         <AnchorPane layoutX="591.0" layoutY="67.0" prefHeight="495.0" prefWidth="369.0">
             <children>
-                <Label layoutX="106.0" layoutY="28.0" text="Sign In" textFill="#139547">
+                <Label layoutX="106.0" layoutY="28.0" text="Sign In" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
-                <Label layoutX="42.0" layoutY="120.0" text="Please enter your account details" textFill="#139547">
+                <Label layoutX="55.0" layoutY="119.0" text="Please enter your account details" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="txtUsername" focusColor="#139547" layoutX="69.0" layoutY="195.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="35.0" prefWidth="250.0" promptText="Username" unFocusColor="#727374">
+                <JFXTextField fx:id="txtUsername" focusColor="#1351cb" layoutX="39.0" layoutY="195.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="35.0" prefWidth="280.0" promptText="Username" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </JFXTextField>
-                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="39.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/icon/user_name.png" />
-                    </image>
-                </ImageView>
-                <JFXPasswordField fx:id="txtPassword" focusColor="#139547" layoutX="69.0" layoutY="276.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="35.0" prefWidth="250.0" promptText="Password" unFocusColor="#727374">
+                <JFXPasswordField fx:id="txtPassword" focusColor="#1351cb" layoutX="39.0" layoutY="276.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="35.0" prefWidth="280.0" promptText="Password" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </JFXPasswordField>
-                <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="41.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/icon/password.png" />
-                    </image>
-                </ImageView>
-                <JFXButton fx:id="btnLogIn" layoutX="40.0" layoutY="368.0" onAction="#btnLogInOnAction" onMouseEntered="#btnLogInOnMouseEnter" onMouseExited="#btnLogInOnMouseExited" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #139547; -fx-background-radius: 10;" text="Log In" textFill="WHITE">
+                <JFXButton fx:id="btnLogIn" layoutX="40.0" layoutY="368.0" onAction="#btnLogInOnAction" onMouseEntered="#btnLogInOnMouseEnter" onMouseExited="#btnLogInOnMouseExited" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #1351CB; -fx-background-radius: 10;" text="Log In" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -80,7 +70,7 @@
         <Pane fx:id="paneShutDown" layoutX="944.5" layoutY="6.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #C7FFDE; -fx-background-radius: 10;" visible="false" />
         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="950.0" layoutY="11.0" onMouseClicked="#imgShutDownOnMouseClicked" onMouseEntered="#imgShutDownOnMouseEntered" onMouseExited="#imgShutDownOnMouseExited" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../assets/icon/shut_down.png" />
+                <Image url="@../../assests/icon/close.png" />
             </image>
         </ImageView>
     </children>

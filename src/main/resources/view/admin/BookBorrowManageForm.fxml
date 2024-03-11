@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.BookBorrowManageFormController">
+<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.BookBorrowManageFormController">
    <children>
-      <AnchorPane layoutX="57.0" layoutY="157.0" prefHeight="771.0" prefWidth="1551.0" style="-fx-background-radius: 20; -fx-background-color: #CEFFE1;">
+      <AnchorPane layoutX="57.0" layoutY="157.0" prefHeight="771.0" prefWidth="1551.0" style="-fx-background-radius: 20; -fx-background-color: #A0C0FF;">
          <children>
             <ScrollPane focusTraversable="false" layoutY="70.0" prefHeight="702.0" prefWidth="1551.0" style="-fx-border-color: white;">
                <content>
                   <VBox fx:id="vBox" prefHeight="698.0" prefWidth="1547.0" style="-fx-background-color: white; -fx-border-color: white;" />
                </content>
             </ScrollPane>
-            <HBox alignment="CENTER_LEFT" layoutY="1.0" prefHeight="70.0" prefWidth="1551.0" style="-fx-background-color: #CEFFE1; -fx-background-radius: 20;">
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1551.0" style="-fx-background-color: #A0C0FF; -fx-background-radius: 20;">
                <children>
                   <Label focusTraversable="false" prefHeight="30.0" prefWidth="178.0" text="Id">
                      <font>

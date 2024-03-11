@@ -42,7 +42,7 @@
                 </Label>
                 <ImageView fx:id="imgView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#imgViewOnMouseClicked" onMouseEntered="#imgViewOnMouseEntered" onMouseExited="#imgViewOnMouseExited" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../assets/icon/view_default.png" />
+                        <Image url="@../../assests/icon/view.png" />
                     </image>
                     <HBox.margin>
                         <Insets left="40.0" />

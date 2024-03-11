@@ -37,7 +37,7 @@
             </Label>
             <ImageView fx:id="imgView" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#imgViewOnMouseClicked" onMouseEntered="#imgViewOnMouseEntered" onMouseExited="#imgViewOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/view_default.png" />
+                  <Image url="@../../assests/icon/view.png" />
                </image>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -45,7 +45,7 @@
             </ImageView>
             <ImageView fx:id="imgUpdate" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#imgUpdateOnMouseClicked" onMouseEntered="#imgUpdateOnMouseEntered" onMouseExited="#imgUpdateOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/update.png" />
+                  <Image url="@../../assests/icon/update.png" />
                </image>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -53,7 +53,7 @@
             </ImageView>
             <ImageView fx:id="imgDelete" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#imgDeleteOnMouseClicked" onMouseEntered="#imgDeleteOnMouseEntered" onMouseExited="#imgDeleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/delete_default.png" />
+                  <Image url="@../../assests/icon/delete.png" />
                </image>
                <HBox.margin>
                   <Insets left="20.0" />

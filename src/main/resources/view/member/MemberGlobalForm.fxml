@@ -188,8 +188,8 @@
         </AnchorPane>
         <AnchorPane layoutX="251.0" prefHeight="100.0" prefWidth="1670.0" style="-fx-background-color: #FFFFFF;">
             <children>
-                <Line endX="-15.0" layoutX="70.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#139547" strokeLineCap="ROUND" strokeWidth="5.0" />
-                <Line endX="-15.0" layoutX="80.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#139547" strokeLineCap="ROUND" strokeWidth="5.0" />
+                <Line endX="-15.0" layoutX="70.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#1351cb" strokeLineCap="ROUND" strokeWidth="5.0" />
+                <Line endX="-15.0" layoutX="80.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#1351cb" strokeLineCap="ROUND" strokeWidth="5.0" />
                 <Label layoutX="46.0" layoutY="24.0" text="Welcome back">
                     <font>
                         <Font size="16.0" />
@@ -205,7 +205,7 @@
                         <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/hand_wave.png" />
                     </image>
                 </ImageView>
-                <JFXTextField fx:id="txtSearch" focusColor="#139547" layoutX="1082.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="470.0" promptText="Search by book name " unFocusColor="#727374">
+                <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1082.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="470.0" promptText="Search by book name " unFocusColor="#727374">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -217,7 +217,7 @@
                 </ImageView>
                 <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1584.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/profile_default.png" />
+                        <Image url="@../../assests/icon/profile.png" />
                     </image>
                 </ImageView>
                 <JFXButton fx:id="btnProfile" focusTraversable="false" layoutX="1584.0" layoutY="25.0" onAction="#btnProfileOnAction" onMouseEntered="#btnProfileOnMouseEntered" onMouseExited="#btnProfileOnMouseExited" prefHeight="50.0" prefWidth="50.0" text=" " />
