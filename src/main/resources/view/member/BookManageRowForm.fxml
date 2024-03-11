@@ -30,7 +30,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblAvailability" layoutX="851.0" layoutY="33.0" prefHeight="25.0" prefWidth="375.0" text="Availability">
+            <Label fx:id="lblAvailability" layoutX="851.0" layoutY="33.0" prefHeight="30.0" prefWidth="144.0" text="Not Available">
                <font>
                   <Font size="20.0" />
                </font>
@@ -40,12 +40,12 @@
                   <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/view_default.png" />
                </image>
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="250.0" />
                </HBox.margin>
             </ImageView>
          </children>
          <padding>
-            <Insets bottom="12.0" left="50.0" top="12.0" />
+            <Insets bottom="12.0" left="20.0" top="12.0" />
          </padding>
          <opaqueInsets>
             <Insets />

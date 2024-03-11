@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import lk.ijse.library_management.dto.BookDto;
-import lk.ijse.library_management.dto.BranchDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BookService;
 import lk.ijse.library_management.service.custom.impl.BookServiceImpl;
