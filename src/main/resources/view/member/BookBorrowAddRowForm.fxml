@@ -35,9 +35,9 @@
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="imgDelete" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#imgDeleteOnMouseClicked" onMouseEntered="#imgDeleteOnMouseEntered" onMouseExited="#imgDeleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imgDelete" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#imgDeleteOnMouseClicked" onMouseEntered="#imgDeleteOnMouseEntered" onMouseExited="#imgDeleteOnMouseExited" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../assets/icon/delete_default.png" />
+                        <Image url="@../../assests/icon/delete.png" />
                     </image>
                     <HBox.margin>
                         <Insets left="25.0" />

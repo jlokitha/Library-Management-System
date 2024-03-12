@@ -13,12 +13,12 @@
    <children>
       <Button layoutX="-96.0" layoutY="104.0" mnemonicParsing="false" text="Button" />
       <Line endX="478.0" layoutX="118.0" layoutY="99.0" startX="-115.0" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assests/icon/member.png" />
          </image>
       </ImageView>
-      <Label layoutX="99.0" layoutY="42.0" text="Member Information">
+      <Label layoutX="99.0" layoutY="35.0" text="Member Information">
          <font>
             <Font size="25.0" />
          </font>

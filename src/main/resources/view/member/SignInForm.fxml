@@ -15,7 +15,7 @@
     <children>
         <ImageView fitHeight="650.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../assets/image/Log-In-Page.png" />
+                <Image url="@../../assests/img/login_background.png" />
             </image>
         </ImageView>
         <AnchorPane layoutX="591.0" layoutY="67.0" prefHeight="495.0" prefWidth="369.0">

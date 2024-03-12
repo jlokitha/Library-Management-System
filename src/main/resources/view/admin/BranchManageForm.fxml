@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -71,7 +72,7 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAdd" focusTraversable="false" layoutX="1358.0" layoutY="70.0" onAction="#btnAddBranchOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="250.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: #727374; -fx-border-radius: 20;" text=" ">
+      <JFXButton fx:id="btnAdd" focusTraversable="false" layoutX="1030.0" layoutY="70.0" onAction="#btnAddBranchOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="250.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: #727374; -fx-border-radius: 20;" text=" ">
          <graphic>
             <GridPane prefHeight="60.0" prefWidth="215.0">
                <columnConstraints>
@@ -96,5 +97,10 @@
             </GridPane>
          </graphic>
       </JFXButton>
+      <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1311.0" layoutY="78.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="300.0" promptText="Search by branch ID" unFocusColor="#727374">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>
