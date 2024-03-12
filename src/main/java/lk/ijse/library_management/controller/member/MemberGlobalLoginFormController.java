@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MemberGlobalLoginFormController implements Initializable {
+
     public static Stage stage;
 
     @FXML

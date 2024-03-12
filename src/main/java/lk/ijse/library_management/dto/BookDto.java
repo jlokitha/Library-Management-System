@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,7 +38,8 @@ public class BookDto {
                 availability,
                 addedDate,
                 updatedDate,
-                admin
+                admin,
+                new ArrayList<>()
         );
     }
 }

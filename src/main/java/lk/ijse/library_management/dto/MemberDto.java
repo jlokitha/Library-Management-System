@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,7 +41,8 @@ public class MemberDto {
                 username,
                 password,
                 addedDate,
-                updatedDate
+                updatedDate,
+                new ArrayList<>()
         );
     }
 }

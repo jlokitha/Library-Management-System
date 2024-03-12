@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.controller.admin.AdminGlobalLoginFormController;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.MemberSignInService;
 import lk.ijse.library_management.service.custom.impl.MemberSignInServiceImpl;
@@ -95,7 +96,8 @@ public class SignInFormController {
 
     @FXML
     void imgShutDownOnMouseClicked(MouseEvent event) {
-
+        MemberGlobalLoginFormController.stage.close();
+        System.exit(0);
     }
 
     @FXML

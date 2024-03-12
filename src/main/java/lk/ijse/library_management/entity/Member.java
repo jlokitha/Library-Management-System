@@ -1,6 +1,7 @@
 package lk.ijse.library_management.entity;
 
 import lk.ijse.library_management.dto.MemberDto;
+import lk.ijse.library_management.dto.TransactionDto;
 import lk.ijse.library_management.embedded.NameIdentifier;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,6 +49,9 @@ public class Member {
     @UpdateTimestamp
     @Column(name = "member_updated")
     private Timestamp updatedDate;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "member")
+    private List<Transaction> transactions = new ArrayList<>();
 
     public MemberDto toDto() {
         return new MemberDto(
