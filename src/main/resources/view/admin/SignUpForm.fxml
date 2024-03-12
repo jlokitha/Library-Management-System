@@ -13,32 +13,32 @@
     <children>
         <ImageView fitHeight="650.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../assets/image/Log-In-Page.png" />
+                <Image url="@../../assests/img/login_background.png" />
             </image>
         </ImageView>
         <AnchorPane layoutX="591.0" prefHeight="650.0" prefWidth="369.0">
             <children>
-                <Label layoutX="111.0" layoutY="13.0" text="Sign Up" textFill="#139547">
+                <Label layoutX="111.0" layoutY="13.0" text="Sign Up" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
-                <Label layoutX="36.0" layoutY="101.0" text="Enter details below to create your account" textFill="#139547">
+                <Label layoutX="36.0" layoutY="101.0" text="Enter details below to create your account" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="txtUsername" focusColor="#139547" layoutX="48.0" layoutY="422.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Username" unFocusColor="#727374">
+                <JFXTextField fx:id="txtUsername" focusColor="#1351cb" layoutX="48.0" layoutY="422.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Username" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </JFXTextField>
-                <JFXPasswordField fx:id="txtPassword" focusColor="#139547" layoutX="48.0" layoutY="495.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Password" unFocusColor="#727374">
+                <JFXPasswordField fx:id="txtPassword" focusColor="#1351cb" layoutX="48.0" layoutY="495.0" onAction="#txtPasswordOnAction" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Password" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </JFXPasswordField>
-                <JFXButton fx:id="btnSignUp" layoutX="195.0" layoutY="579.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #139547; -fx-background-radius: 15;" text="SIGN UP" textFill="WHITE">
+                <JFXButton fx:id="btnSignUp" layoutX="195.0" layoutY="579.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #1351CB; -fx-background-radius: 15;" text="SIGN UP" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
@@ -58,17 +58,17 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-            <JFXTextField fx:id="txtLastName" focusColor="#139547" layoutX="48.0" layoutY="216.0" onAction="#txtLastNameOnAction" onMouseClicked="#txtLastNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Last Name" unFocusColor="#727374">
+            <JFXTextField fx:id="txtLastName" focusColor="#1351cb" layoutX="48.0" layoutY="216.0" onAction="#txtLastNameOnAction" onMouseClicked="#txtLastNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Last Name" unFocusColor="#727374">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtMobile" focusColor="#139547" layoutX="48.0" layoutY="286.0" onAction="#txtMobileOnAction" onMouseClicked="#txtMobileOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Mobile" unFocusColor="#727374">
+            <JFXTextField fx:id="txtMobile" focusColor="#1351cb" layoutX="48.0" layoutY="286.0" onAction="#txtMobileOnAction" onMouseClicked="#txtMobileOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Mobile" unFocusColor="#727374">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtEmail" focusColor="#139547" layoutX="48.0" layoutY="355.0" onAction="#txtEmailOnAction" onMouseClicked="#txtEmailOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Email" unFocusColor="#727374">
+            <JFXTextField fx:id="txtEmail" focusColor="#1351cb" layoutX="48.0" layoutY="355.0" onAction="#txtEmailOnAction" onMouseClicked="#txtEmailOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Email" unFocusColor="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -88,7 +88,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtFirstName" focusColor="#139547" layoutX="48.0" layoutY="145.0" onAction="#txtFirstNameOnAction" onMouseClicked="#txtFirstNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="First Name" unFocusColor="#727374">
+            <JFXTextField fx:id="txtFirstName" focusColor="#1351cb" layoutX="48.0" layoutY="145.0" onAction="#txtFirstNameOnAction" onMouseClicked="#txtFirstNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="First Name" unFocusColor="#727374">
                <font>
                   <Font size="16.0" />
                </font>
@@ -100,5 +100,10 @@
             </Label>
             </children>
         </AnchorPane>
+      <JFXButton fx:id="btnSignUp1" layoutX="15.0" layoutY="15.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: WHITE; -fx-border-radius: 10; -fx-border-width: 3;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>

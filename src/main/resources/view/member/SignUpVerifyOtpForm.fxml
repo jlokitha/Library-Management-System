@@ -12,32 +12,27 @@
     <children>
         <ImageView fitHeight="650.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../assets/image/Log-In-Page.png" />
+                <Image url="@../../assests/img/login_background.png" />
             </image>
         </ImageView>
         <AnchorPane layoutX="591.0" prefHeight="650.0" prefWidth="369.0">
             <children>
-                <Label layoutX="71.0" layoutY="165.0" text="Enter OTP" textFill="#139547">
+                <Label layoutX="91.0" layoutY="165.0" text="Enter OTP" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
-                <Label layoutX="28.0" layoutY="245.0" text="OTP has been sent to company email" textFill="#139547">
+                <Label layoutX="54.0" layoutY="242.0" text="OTP has been sent to company email" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="txtOtp" focusColor="#139547" layoutX="69.0" layoutY="316.0" onAction="#txtOtpOnAction" onMouseClicked="#txtOtpOnMouseClicked" prefHeight="35.0" prefWidth="250.0" promptText="OTP" unFocusColor="#727374">
+                <JFXTextField fx:id="txtOtp" focusColor="#1351cb" layoutX="45.0" layoutY="316.0" onAction="#txtOtpOnAction" onMouseClicked="#txtOtpOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="OTP" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </JFXTextField>
-                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="36.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/icon/verify.png" />
-                    </image>
-                </ImageView>
-                <JFXButton fx:id="btnVerify" layoutX="195.0" layoutY="412.0" onAction="#btnVerifyOnAction" onMouseEntered="#btnVerifyOnMouseEntered" onMouseExited="#btnVerifyOnMouseExited" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #139547; -fx-background-radius: 15;" text="VERIFY" textFill="WHITE">
+                <JFXButton fx:id="btnVerify" layoutX="195.0" layoutY="412.0" onAction="#btnVerifyOnAction" onMouseEntered="#btnVerifyOnMouseEntered" onMouseExited="#btnVerifyOnMouseExited" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #1351CB; -fx-background-radius: 15;" text="VERIFY" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
