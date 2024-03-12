@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1269.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowAddFormController">
+<AnchorPane prefHeight="675.0" prefWidth="1269.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowAddFormController">
     <children>
         <Line endY="330.0" layoutX="312.0" layoutY="337.0" startY="-330.0" stroke="#727374" />
-        <Label layoutX="33.0" layoutY="62.0" text="Member DETAIL">
+        <Label layoutX="33.0" layoutY="57.0" text="Member DETAIL">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
-        <Label layoutX="33.0" layoutY="389.0" text="Book DETAIL">
+        <Label layoutX="33.0" layoutY="385.0" text="Book DETAIL">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
-        <JFXComboBox fx:id="cmbMobile" editable="true" focusColor="#1351cb" layoutX="33.0" layoutY="96.0" onAction="#cmbMobileOnAction" onMouseClicked="#cmbMobileOnMouseClicked" prefHeight="40.0" prefWidth="246.0" promptText="Member Mobile" unFocusColor="#727374" />
         <JFXTextField fx:id="txtMemberName" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="158.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Name" unFocusColor="#727374">
             <font>
                 <Font size="16.0" />
@@ -94,42 +98,36 @@
                 <Font size="22.0" />
             </font>
         </Label>
-        <JFXComboBox fx:id="cmbBookTitle" focusColor="#1351cb" layoutX="33.0" layoutY="423.0" onAction="#cmbBookTitleOnAction" onMouseClicked="#cmbBookTitleOnMouseClicked" prefHeight="40.0" prefWidth="246.0" promptText="Book Title" unFocusColor="#727374" />
         <Label fx:id="labelTotal" layoutX="393.0" layoutY="620.0" text="0.00">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label fx:id="lblMobile" layoutX="32.0" layoutY="136.0" prefWidth="245.0" textFill="RED">
+        <Label fx:id="lblTitle" layoutX="34.0" layoutY="475.0" prefWidth="245.0" textFill="RED">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label fx:id="lblDesc" layoutX="34.0" layoutY="275.0" prefWidth="245.0" textFill="RED">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblStockId" layoutX="34.0" layoutY="336.0" prefWidth="245.0" textFill="RED">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="lblQty" layoutX="34.0" layoutY="559.0" prefWidth="245.0" textFill="RED">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-      <JFXTextField fx:id="txtIssedDate" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="33.0" layoutY="220.0" prefHeight="40.0" prefWidth="246.0" promptText="IssedDate" unFocusColor="#727374">
+      <JFXTextField fx:id="txtIssedDate" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="33.0" layoutY="220.0" prefHeight="40.0" prefWidth="246.0" promptText="Issed Date" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXDatePicker fx:id="dpReturningDate" defaultColor="#1351cb" layoutX="31.0" layoutY="284.0" prefHeight="40.0" prefWidth="246.0" promptText="Returning Date" />
-      <JFXTextField fx:id="txtAuthor" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="487.0" prefHeight="40.0" prefWidth="246.0" promptText="Author" unFocusColor="#727374">
+      <JFXTextField fx:id="txtAuthor" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="505.0" prefHeight="40.0" prefWidth="246.0" promptText="Author" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
+      <JFXTextField fx:id="txtMemberId" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="96.0" prefHeight="40.0" prefWidth="246.0" promptText="Member ID" unFocusColor="#727374">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtDueDate" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="31.0" layoutY="284.0" prefHeight="40.0" prefWidth="246.0" promptText="Due Date" unFocusColor="#727374">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
+      <TextField fx:id="txtBookTitle" layoutX="33.0" layoutY="423.0" onAction="#txtBookTitleOnAction" onMouseClicked="#txtBookTitleOnMouseClicked" prefHeight="40.0" prefWidth="246.0" promptText="Book Title" style="-fx-background-color: rgba(0,0,0,0); -fx-border-color: #727374; -fx-border-width: 0 0 1 0; -fx-font-size: 16;" />
     </children>
 </AnchorPane>

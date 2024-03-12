@@ -1,6 +1,7 @@
 package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,9 @@ import java.util.ResourceBundle;
 public class BranchManageFormController implements Initializable {
 
     @FXML
+    public JFXTextField txtSearch;
+
+    @FXML
     private VBox vBox;
 
     @FXML
@@ -45,21 +49,12 @@ public class BranchManageFormController implements Initializable {
             (BranchServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BRANCH);
 
     @FXML
-    void btnAddBranchOnAction(ActionEvent event) {
-        try {
-            MemberNavigation.popupPane("BranchAddForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void btnAddOnMouseEntered(MouseEvent event) {
+    public void txtSearchOnAction(ActionEvent actionEvent) {
 
     }
 
     @FXML
-    void btnAddOnMouseExited(MouseEvent event) {
+    public void txtSearchOnMouseClicked(MouseEvent mouseEvent) {
 
     }
 

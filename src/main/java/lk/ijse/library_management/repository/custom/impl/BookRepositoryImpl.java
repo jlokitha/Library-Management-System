@@ -46,4 +46,37 @@ public class BookRepositoryImpl implements BookRepository {
     public void update(Book entity) {
         session.update(entity);
     }
+
+    @Override
+    public List<String> getAllTitles() {
+        String status = "Available";
+        String hql = "SELECT b.title FROM Book b WHERE b.availability = :availability";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("availability", status);
+
+        return query.list();
+    }
+
+    @Override
+    public Book getBookFormTitle(String title) {
+        String status = "Available";
+        String hql = "SELECT b FROM Book b WHERE b.title = :title AND b.availability = :availability";
+
+        Query<Book> query = session.createQuery(hql, Book.class);
+        query.setParameter("title", title);
+        query.setParameter("availability", status);
+
+        return query.uniqueResult();
+    }
+
+    @Override
+    public String getAuthorFormTitle(String title) {
+        String hql = "SELECT b.author FROM Book b WHERE b.title = :title";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("title", title);
+
+        return (String) query.uniqueResult();
+    }
 }
