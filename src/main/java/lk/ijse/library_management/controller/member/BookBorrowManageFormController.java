@@ -19,6 +19,7 @@ import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,8 +40,17 @@ public class BookBorrowManageFormController implements Initializable {
     @FXML
     private Label lblAdd;
 
+    public List<TransactionDto> updateList;
+
+    public static BookBorrowManageFormController controller;
+
     private final TransactionService transactionService =
             (TransactionServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.TRANSACTION);
+
+    public BookBorrowManageFormController() {
+        controller = this;
+        updateList = new ArrayList<>();
+    }
 
     @FXML
     void btnAddBorrowOnAction(ActionEvent event) {
@@ -73,12 +83,14 @@ public class BookBorrowManageFormController implements Initializable {
 
     public void getAllData() {
 
-        List<TransactionDto> data = transactionService.getAllTransactionData();
+        List<TransactionDto> data = transactionService.getAllTransactionDataToUsername(MemberGlobalFormController.username);
 
         vBox.getChildren().clear();
 
-        for(TransactionDto dto : data) {
-            loadDataTable(dto);
+        if (data != null) {
+            for(TransactionDto dto : data) {
+                loadDataTable(dto);
+            }
         }
     }
 
@@ -97,5 +109,9 @@ public class BookBorrowManageFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getAllData();
+
+        if (!updateList.isEmpty()) {
+            transactionService.updateTransactionStatus(updateList);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.library_management.repository.custom.impl;
 
+import lk.ijse.library_management.entity.Member;
 import lk.ijse.library_management.entity.Transaction;
 import lk.ijse.library_management.entity.TransactionDetails;
 import lk.ijse.library_management.repository.custom.TransactionRepository;
@@ -50,5 +51,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     @Override
     public void update(Transaction entity) {
         session.update(entity);
+    }
+
+    @Override
+    public List<Transaction> getAllToMember(Member member) {
+        String hql = "SELECT t FROM Transaction t WHERE t.member = :member";
+
+        Query<Transaction> query = session.createQuery(hql, Transaction.class);
+        query.setParameter("member", member);
+
+        return query.list();
     }
 }

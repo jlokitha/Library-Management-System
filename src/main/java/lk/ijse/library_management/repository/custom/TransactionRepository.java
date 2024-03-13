@@ -1,5 +1,6 @@
 package lk.ijse.library_management.repository.custom;
 
+import lk.ijse.library_management.entity.Member;
 import lk.ijse.library_management.entity.Transaction;
 import lk.ijse.library_management.entity.TransactionDetails;
 import lk.ijse.library_management.repository.SuperRepository;
@@ -16,4 +17,6 @@ public interface TransactionRepository extends SuperRepository {
     List<TransactionDetails> getTransactionDetails(Transaction entity);
 
     void update(Transaction entity);
+
+    List<Transaction> getAllToMember(Member member);
 }

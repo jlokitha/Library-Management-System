@@ -251,6 +251,7 @@ public class TransactionServiceImpl implements TransactionService {
         try {
 
             transactionRepository.setSession(session);
+            transactionData.setStatus("Returned");
             transactionRepository.update(transactionData.toEntity());
 
             for (TransactionDetailsDto transactionDetailsDto : transactionDetails) {
@@ -268,6 +269,61 @@ public class TransactionServiceImpl implements TransactionService {
             transaction.rollback();
             e.printStackTrace();
             return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<TransactionDto> getAllTransactionDataToUsername(String username) {
+        MemberDto member = getMemberFromUsername(username);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            transactionRepository.setSession(session);
+            List<Transaction> list = transactionRepository.getAllToMember(member.toEntity());
+
+            List<TransactionDto> dto = new ArrayList<>();
+
+            for (Transaction entity : list) {
+                dto.add(entity.toDto());
+            }
+
+            return dto;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void updateTransactionStatus(List<TransactionDto> updateList) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        org.hibernate.Transaction transaction = session.beginTransaction();
+
+        try {
+
+            transactionRepository.setSession(session);
+
+            for (TransactionDto transactionDto : updateList) {
+                transactionRepository.update(transactionDto.toEntity());
+            }
+
+            transaction.commit();
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
 
         } finally {
             session.close();

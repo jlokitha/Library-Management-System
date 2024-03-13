@@ -132,6 +132,7 @@ public class BookBorrowAddFormController implements Initializable {
 
             if (isSaved) {
                 MemberNavigation.closePane();
+                BookBorrowManageFormController.controller.getAllData();
             }
         }
     }

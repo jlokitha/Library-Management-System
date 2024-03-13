@@ -26,4 +26,8 @@ public interface TransactionService extends SuperService {
     List<TransactionDetailsDto> getTransactionDetails(TransactionDto dto);
 
     boolean updateTransaction(int id);
+
+    List<TransactionDto> getAllTransactionDataToUsername(String username);
+
+    void updateTransactionStatus(List<TransactionDto> updateList);
 }
