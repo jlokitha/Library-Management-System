@@ -6,11 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
 
 public class SignInVerifyOtpFormController {
+
+    public static String otp;
+
+    public static AdminDto dto;
 
     @FXML
     private JFXTextField txtOtp;
@@ -27,6 +32,8 @@ public class SignInVerifyOtpFormController {
     @FXML
     void btnBackOnAction(ActionEvent event) {
         try {
+            dto = null;
+            otp= null;
             AdminNavigation.switchLoginPage("FrogotPasswordForm.fxml");
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,10 +52,16 @@ public class SignInVerifyOtpFormController {
 
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
-        try {
-            AdminNavigation.switchLoginPage("ResetPasswordForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (txtOtp.getText().equals(otp)) {
+            try {
+                ResetPasswordFormController.dto = dto;
+                AdminNavigation.switchLoginPage("ResetPasswordForm.fxml");
+                dto = null;
+                otp= null;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

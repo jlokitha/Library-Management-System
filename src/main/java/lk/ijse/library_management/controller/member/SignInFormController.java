@@ -112,7 +112,11 @@ public class SignInFormController {
 
     @FXML
     void linkForgotPasswordOnAction(ActionEvent event) {
-
+        try {
+            MemberNavigation.switchLoginPage("FrogotPasswordForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

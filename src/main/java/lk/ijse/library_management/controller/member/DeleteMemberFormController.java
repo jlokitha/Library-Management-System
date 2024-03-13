@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
 import lk.ijse.library_management.controller.admin.SignInFormController;
+import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.MemberProfileService;
 import lk.ijse.library_management.service.custom.impl.MemberProfileServiceImpl;
@@ -47,10 +48,13 @@ public class DeleteMemberFormController implements Initializable {
 
             if (id > 0) {
 
+                MemberDto memberData = profileService.getMemberData(id);
+
                 try {
                     profileService.deleteMember(id);
                     SignInFormController.stage.close();
                     AdminNavigation.switchNavigation("SignInForm.fxml", event);
+                    profileService.sendAccountDeletionEmail(memberData.getEmail());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

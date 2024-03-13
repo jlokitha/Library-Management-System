@@ -7,4 +7,6 @@ public interface AdminSignUpService extends SuperService {
     void sendEmail ( String... data);
 
     boolean saveAdmin(AdminDto adminDto);
+
+    boolean updateAdmin(AdminDto dto);
 }

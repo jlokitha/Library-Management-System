@@ -53,4 +53,28 @@ public class AdminSignUpServiceImpl implements AdminSignUpService {
             session.close();
         }
     }
+
+    @Override
+    public boolean updateAdmin(AdminDto dto) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            adminRepository.setSession(session);
+            adminRepository.update(dto.toEntity());
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            session.close();
+        }
+    }
 }

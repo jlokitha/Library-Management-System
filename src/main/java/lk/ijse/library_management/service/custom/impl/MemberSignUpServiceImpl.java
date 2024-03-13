@@ -5,9 +5,12 @@ import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.MemberRepository;
 import lk.ijse.library_management.repository.custom.impl.MemberRepositoryImpl;
 import lk.ijse.library_management.service.custom.MemberSignUpService;
+import lk.ijse.library_management.util.SendEmail;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import javax.mail.MessagingException;
 
 public class MemberSignUpServiceImpl implements MemberSignUpService {
 
@@ -38,5 +41,41 @@ public class MemberSignUpServiceImpl implements MemberSignUpService {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public boolean updateMember(MemberDto dto) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+
+            memberRepository.setSession(session);
+            memberRepository.update(dto.toEntity());
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void sendEmail(String... data) {
+        SendEmail sendEmail = new SendEmail ();
+        new Thread(()->{
+            try {
+                sendEmail.sendEmail(data[0], data[1], data[2], data[3]);
+            } catch ( MessagingException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }

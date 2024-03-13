@@ -6,9 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.AdminSignInService;
+import lk.ijse.library_management.service.custom.impl.AdminSignInServiceImpl;
+import lk.ijse.library_management.util.OTPGenerator;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
+
+import static lk.ijse.library_management.service.ServiceFactory.ServiceType.SIGNIN;
 
 public class ForgotPasswordFormController {
 
@@ -23,6 +30,11 @@ public class ForgotPasswordFormController {
 
     @FXML
     private Label lblUserName;
+
+    private String subject = "Admin Password Reset Verification Code";
+
+    private final AdminSignInService adminSignInService =
+            (AdminSignInServiceImpl) ServiceFactory.getInstance().getService(SIGNIN);
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
@@ -55,10 +67,24 @@ public class ForgotPasswordFormController {
 
     @FXML
     void btnRequesOtpOnAction(ActionEvent event) {
-        try {
-            AdminNavigation.switchLoginPage("SignInVerifyOtpForm.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        int id = adminSignInService.getIdFormUsername(txtUsername.getText());
+
+        if (id > 0) {
+            AdminDto dto = adminSignInService.getAdminData(id);
+
+            String otp = OTPGenerator.generateOTP();
+
+            SignInVerifyOtpFormController.otp = otp;
+            SignInVerifyOtpFormController.dto = dto;
+
+            adminSignInService.sendEmail(dto.getEmail(), subject , "ForgotPasswordEmail.html", otp);
+
+            try {
+                AdminNavigation.switchLoginPage("SignInVerifyOtpForm.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

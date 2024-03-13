@@ -13,4 +13,8 @@ public interface MemberProfileService extends SuperService {
     void deleteMember(int id);
 
     boolean updateMemberPassword(int id, String currentPass, String newPass);
+
+    void sendAccountDeletionEmail(String email);
+
+    void sendPasswordChangeEmail(String email);
 }

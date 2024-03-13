@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.MemberProfileService;
 import lk.ijse.library_management.service.custom.impl.MemberProfileServiceImpl;
@@ -51,10 +52,14 @@ public class ChangeCredentialFormController {
             int id = profileService.getIdFromUsername(MemberGlobalFormController.username);
 
             if (txtNEWPass.getText().equals(txtConNewPass.getText())) {
+
+                MemberDto memberData = profileService.getMemberData(id);
+
                 boolean isUpdated = profileService.updateMemberPassword(id, txtCurrentPass.getText(), txtNEWPass.getText());
 
                 if (isUpdated) {
                     MemberNavigation.closePane();
+                    profileService.sendPasswordChangeEmail(memberData.getEmail());
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Provided Password Incorrect !").show();
                 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.AdminProfileService;
 import lk.ijse.library_management.service.custom.impl.AdminProfileServiceImpl;
@@ -45,10 +46,13 @@ public class DeleteAdminFormController implements Initializable {
 
             if (id > 0) {
 
+                AdminDto adminData = profileService.getAdminData(id);
+
                 try {
                     profileService.deleteAdmin(id);
                     SignInFormController.stage.close();
                     AdminNavigation.switchNavigation("SignInForm.fxml", event);
+                    profileService.sendAccountDeletionEmail(adminData.getEmail());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

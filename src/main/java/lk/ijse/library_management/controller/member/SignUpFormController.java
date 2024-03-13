@@ -55,6 +55,8 @@ public class SignUpFormController {
     @FXML
     private Label lblFullName;
 
+    private final String subject = "Member Sign Up Verification Code";
+
     private final MemberSignUpService signUpService =
             (MemberSignUpServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERSIGNUP);
 
@@ -73,17 +75,13 @@ public class SignUpFormController {
 
             SignUpVerifyOtpFormController.dto = memberDto;
             SignUpVerifyOtpFormController.otp = otp;
-//
-//            signUpService.sendEmail(txtEmail.getText(), subject, "SignUpEmail.html", otp);
 
-            boolean isSaved = signUpService.saveMember(memberDto);
+            signUpService.sendEmail(txtEmail.getText(), subject, "SignUpEmail.html", otp);
 
-            if (isSaved) {
-                try {
-                    MemberNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                MemberNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

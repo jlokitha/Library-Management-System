@@ -13,4 +13,8 @@ public interface AdminProfileService extends SuperService {
     void deleteAdmin(int id);
 
     boolean updateAdminPassword(int id, String oldPassword, String newPassword);
+
+    void sendAccountDeletionEmail(String email);
+
+    void sendPasswordChangeEmail(String email);
 }

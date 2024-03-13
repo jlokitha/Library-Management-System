@@ -83,17 +83,13 @@ public class SignUpFormController {
 
             SignUpVerifyOtpFormController.dto = adminDto;
             SignUpVerifyOtpFormController.otp = otp;
-//
-//            signUpService.sendEmail(txtEmail.getText(), subject, "SignUpEmail.html", otp);
 
-            boolean isSaved = signUpService.saveAdmin(adminDto);
+            signUpService.sendEmail(txtEmail.getText(), subject, "SignUpEmail.html", otp);
 
-            if (isSaved) {
-                try {
-                    AdminNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                AdminNavigation.switchLoginPage("SignUpVerifyOtpForm.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

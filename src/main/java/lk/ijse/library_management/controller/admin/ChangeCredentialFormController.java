@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.AdminProfileService;
 import lk.ijse.library_management.service.custom.impl.AdminProfileServiceImpl;
@@ -65,10 +66,14 @@ public class ChangeCredentialFormController {
             int id = profileService.getIdFromUsername(AdminGlobalFormController.username);
 
             if (txtNEWPass.getText().equals(txtConNewPass.getText())) {
+
+                AdminDto adminData = profileService.getAdminData(id);
+
                 boolean isUpdated = profileService.updateAdminPassword(id, txtCurrentPass.getText(), txtNEWPass.getText());
 
                 if (isUpdated) {
                     AdminNavigation.closePane();
+                    profileService.sendPasswordChangeEmail(adminData.getEmail());
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Provided Password Incorrect !").show();
                 }

@@ -32,7 +32,7 @@ public class SendEmail {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        newSession = Session.getInstance(properties, new javax.mail.Authenticator() {
+        newSession = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("alokagreenofficial@gmail.com", "izue ksnw vqye lhbi");
             }
@@ -69,7 +69,7 @@ public class SendEmail {
 
     private String loadTemplate(String templateName) throws IOException {
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(templateName)) {
-            return IOUtils.toString(inputStream, String.valueOf(StandardCharsets.UTF_8));
+            return IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         }
     }
 

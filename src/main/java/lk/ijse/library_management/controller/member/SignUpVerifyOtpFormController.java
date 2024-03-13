@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.MemberDto;
+import lk.ijse.library_management.service.ServiceFactory;
+import lk.ijse.library_management.service.custom.MemberSignUpService;
+import lk.ijse.library_management.service.custom.impl.MemberSignUpServiceImpl;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
@@ -29,6 +32,9 @@ public class SignUpVerifyOtpFormController {
 
     public static String otp;
 
+    private final MemberSignUpService memberSignUpService =
+            (MemberSignUpServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERSIGNUP);
+
     @FXML
     void btnBackOMouseEntered(MouseEvent event) {
 
@@ -41,16 +47,33 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void btnBackOnAction(ActionEvent event) {
-
+        try {
+            dto = null;
+            otp = null;
+            MemberNavigation.switchLoginPage("SignUpForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
-        try {
-            MemberGlobalFormController.username = dto.getUsername();
-            MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (txtOtp.getText().equals(otp)) {
+            boolean isSaved = memberSignUpService.saveMember(dto);
+
+            if (isSaved) {
+                try {
+                    MemberGlobalFormController.username = dto.getUsername();
+                    MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
+                    dto = null;
+                    otp = null;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            lblOtp.setText("Please enter valid OTP !");
         }
     }
 
