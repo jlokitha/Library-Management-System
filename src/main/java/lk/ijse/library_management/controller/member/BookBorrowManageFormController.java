@@ -74,6 +74,18 @@ public class BookBorrowManageFormController implements Initializable {
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
 
+        TransactionDto transactionData = transactionService.getTransactionData(Integer.parseInt(txtSearch.getText()));
+
+        if (transactionData.getMember().getUsername().equals(MemberGlobalFormController.username)) {
+            try {
+                BookBorrowViewFormController.id = Integer.parseInt(txtSearch.getText());
+                MemberNavigation.popupPane("BookBorrowViewForm.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        txtSearch.clear();
     }
 
     @FXML

@@ -66,7 +66,7 @@ public class BookBorrowManageRowFormController {
         boolean isUpdated = transactionService.updateTransaction(Integer.parseInt(lblBorrowId.getText()));
 
         if (isUpdated) {
-            BookBorrowManageFormController.controller.getAllData();
+            BookBorrowManageFormController.controller.invokeGetAllData();
         } else {
             new Alert(Alert.AlertType.ERROR, "Transaction could not mark as returned").show();
         }

@@ -44,7 +44,9 @@ public class BookBorrowManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
-
+        List<TransactionDto> data = transactionService.getAllTransactionDataToId(Integer.parseInt(txtSearch.getText()));
+        getAllData(data);
+        txtSearch.clear();
     }
 
     @FXML
@@ -52,9 +54,13 @@ public class BookBorrowManageFormController implements Initializable {
 
     }
 
-    public void getAllData() {
-
+    public void invokeGetAllData() {
         List<TransactionDto> data = transactionService.getAllTransactionData();
+
+        getAllData(data);
+    }
+
+    public void getAllData(List<TransactionDto> data) {
 
         vBox.getChildren().clear();
 
@@ -77,7 +83,7 @@ public class BookBorrowManageFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        getAllData();
+        invokeGetAllData();
 
         if (!updateList.isEmpty()) {
             transactionService.updateTransactionStatus(updateList);

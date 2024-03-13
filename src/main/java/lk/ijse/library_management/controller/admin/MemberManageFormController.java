@@ -16,6 +16,7 @@ import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.MemberService;
 import lk.ijse.library_management.service.custom.impl.MemberServiceImpl;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,15 +31,6 @@ public class MemberManageFormController implements Initializable {
     @FXML
     private VBox vBox;
 
-    @FXML
-    private JFXButton btnAdd;
-
-    @FXML
-    private ImageView imgAdd;
-
-    @FXML
-    private Label lblAdd;
-
     public static MemberManageFormController controller;
 
     public MemberManageFormController() {
@@ -49,23 +41,14 @@ public class MemberManageFormController implements Initializable {
             (MemberServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBER);
 
     @FXML
-    void btnAddCustomerOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnAddOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnAddOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
-
+        try {
+            MemberViewFormController.id = Integer.parseInt(txtSearch.getText());
+            AdminNavigation.popupPane("MemberViewForm.fxml");
+            txtSearch.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
