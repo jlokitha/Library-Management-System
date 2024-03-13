@@ -24,12 +24,6 @@ public class BookBorrowViewFormController {
     private Label labelTotal;
 
     @FXML
-    private Label lblMobile;
-
-    @FXML
-    private Label lblQty;
-
-    @FXML
     private JFXTextField txtIssedDate;
 
     @FXML
@@ -37,6 +31,11 @@ public class BookBorrowViewFormController {
 
     @FXML
     private JFXTextField txtDueDate;
+
+    @FXML
+    private JFXTextField txtTransactionId;
+
+    public static int id;
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {

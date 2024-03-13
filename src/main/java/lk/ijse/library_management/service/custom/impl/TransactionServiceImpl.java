@@ -2,6 +2,7 @@ package lk.ijse.library_management.service.custom.impl;
 
 import lk.ijse.library_management.dto.BookDto;
 import lk.ijse.library_management.dto.MemberDto;
+import lk.ijse.library_management.dto.TransactionDetailsDto;
 import lk.ijse.library_management.dto.TransactionDto;
 import lk.ijse.library_management.embedded.TransactionDetailPK;
 import lk.ijse.library_management.entity.Book;
@@ -23,6 +24,8 @@ import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static lk.ijse.library_management.controller.admin.SignUpVerifyOtpFormController.dto;
 
 public class TransactionServiceImpl implements TransactionService {
 
@@ -162,53 +165,77 @@ public class TransactionServiceImpl implements TransactionService {
         }
     }
 
-
-/*    public boolean saveTransaction(TransactionDto dto) {
-        Transaction transactionEntity = convertToEntity(dto);
-
-        initializeSession();
-        org.hibernate.Transaction transaction = session.beginTransaction();
-
-        TransactionRepositoryImpl.setSession(session);
-        transactionRepository.save(transactionEntity);
-
-        org.hibernate.Transaction bookTransaction = null;
-        org.hibernate.Transaction transactionDetailTransaction;
-        for (BookDto borrowedBook : UserBorrowBooksFormController.getInstance().borrowedBooks) {
-
-            Book bookEntity = convertToBookEntity(borrowedBook);
-
-            //initializeSession();
-            //bookTransaction = session.beginTransaction();
-            BookRepositoryImpl.setSession(session);
-            bookRepository.update(bookEntity);
-
-            TransactionDetail transactionDetail = new TransactionDetail();
-            transactionDetail.setTransaction(transactionEntity);
-            transactionDetail.setBook(bookEntity);
-            transactionDetail.setBookId(bookEntity.getId());
-            transactionDetail.setTransactionDetailPK(
-                    new TransactionDetailPK(
-                            transactionEntity.getId(),
-                            bookEntity.getId()
-                    )
-            );
-
-            //initializeSession();
-            //transactionDetailTransaction = session.beginTransaction();
-            TransactionDetailRepositoryImpl.setSession(session);
-            transactionDetailRepository.save(transactionDetail);
-        }
+    @Override
+    public List<TransactionDto> getAllTransactionData() {
+        session = SessionFactoryConfig.getInstance().getSession();
 
         try {
-            transaction.commit();
-            return true;
+
+            transactionRepository.setSession(session);
+            List<Transaction> list = transactionRepository.getAll();
+
+            List<TransactionDto> dto = new ArrayList<>();
+
+            for (Transaction entity : list) {
+                dto.add(entity.toDto());
+            }
+
+            return dto;
+
         } catch (Exception e) {
-            transaction.rollback();
+
             e.printStackTrace();
-            return false;
+            return null;
+
         } finally {
             session.close();
         }
-    }*/
+    }
+
+    @Override
+    public TransactionDto getTransactionData(int id) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            transactionRepository.setSession(session);
+            Transaction entity = transactionRepository.get(id);
+            return entity.toDto();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<TransactionDetailsDto> getTransactionDetails(TransactionDto dto) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            transactionRepository.setSession(session);
+            List<TransactionDetails> list = transactionRepository.getTransactionDetails(dto.toEntity());
+
+            List<TransactionDetailsDto> dtos = new ArrayList<>();
+
+            for (TransactionDetails detail : list) {
+                dtos.add(detail.toDto());
+            }
+
+            return dtos;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
 }
