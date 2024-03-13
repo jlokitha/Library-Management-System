@@ -34,7 +34,6 @@ public class MemberServiceImpl implements MemberService {
 
         } catch (Exception e) {
 
-            e.printStackTrace();
             return null;
 
         } finally {
@@ -91,6 +90,27 @@ public class MemberServiceImpl implements MemberService {
             transaction.rollback();
             e.printStackTrace();
             return false;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public int getMemberIdFormMobile(String mobile) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+            memberRepository.setSession(session);
+
+            int id  = memberRepository.getIdFormMobile(mobile);
+
+            return id;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return -1;
 
         } finally {
             session.close();

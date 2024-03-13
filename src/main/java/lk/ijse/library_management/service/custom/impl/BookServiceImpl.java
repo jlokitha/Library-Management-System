@@ -212,4 +212,24 @@ public class BookServiceImpl implements BookService {
             session.close();
         }
     }
+
+    @Override
+    public int getBookIdFormTitle(String title) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            bookRepository.setSession(session);
+            int id = bookRepository.getIdFormTitle(title);
+            return id;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
 }

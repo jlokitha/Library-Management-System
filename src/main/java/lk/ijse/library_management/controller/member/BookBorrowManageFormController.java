@@ -26,6 +26,9 @@ import java.util.ResourceBundle;
 public class BookBorrowManageFormController implements Initializable {
 
     @FXML
+    public JFXButton btnReset;
+
+    @FXML
     private JFXTextField txtSearch;
 
     @FXML
@@ -90,6 +93,21 @@ public class BookBorrowManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnMouseClicked(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void btnResetOnAction(ActionEvent actionEvent) {
+        getAllData();
+    }
+
+    @FXML
+    public void btnResetOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void btnResetOnMouseExited(MouseEvent mouseEvent) {
 
     }
 

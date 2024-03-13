@@ -20,4 +20,6 @@ public interface BookService extends SuperService {
     boolean deleteBook(int id);
 
     boolean updateBook(BookDto dto);
+
+    int getBookIdFormTitle(String title);
 }

@@ -1,5 +1,6 @@
 package lk.ijse.library_management.controller.admin;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +24,9 @@ public class BookBorrowManageFormController implements Initializable {
 
     @FXML
     public JFXTextField txtSearch;
+
+    @FXML
+    public JFXButton btnReset;
 
 
     @FXML
@@ -54,9 +58,27 @@ public class BookBorrowManageFormController implements Initializable {
 
     }
 
+    @FXML
+    public void btnResetOnAction(ActionEvent actionEvent) {
+        invokeGetAllData();
+    }
+
+    @FXML
+    public void btnResetOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void btnResetOnMouseExited(MouseEvent mouseEvent) {
+
+    }
+
     public void invokeGetAllData() {
         List<TransactionDto> data = transactionService.getAllTransactionData();
 
+        if (data == null) {
+            data = new ArrayList<>();
+        }
         getAllData(data);
     }
 

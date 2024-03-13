@@ -79,4 +79,14 @@ public class BookRepositoryImpl implements BookRepository {
 
         return (String) query.uniqueResult();
     }
+
+    @Override
+    public int getIdFormTitle(String title) {
+        String hql = "SELECT b.id FROM Book b WHERE b.title = :title";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("title", title);
+
+        return (int) query.uniqueResult();
+    }
 }

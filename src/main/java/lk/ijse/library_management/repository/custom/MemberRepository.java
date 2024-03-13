@@ -19,4 +19,6 @@ public interface MemberRepository extends SuperRepository {
     int getIdFormUsernamePassword(String username, String password);
 
     void update(Member entity);
+
+    int getIdFormMobile(String mobile);
 }

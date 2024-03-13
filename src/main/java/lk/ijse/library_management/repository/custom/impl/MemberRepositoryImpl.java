@@ -67,4 +67,15 @@ public class MemberRepositoryImpl implements MemberRepository {
     public void update(Member entity) {
         session.update(entity);
     }
+
+    @Override
+    public int getIdFormMobile(String mobile) {
+        String hql = "SELECT m.id FROM Member m WHERE m.mobile = :mobile";
+
+        Query<Integer> query = session.createQuery(hql, Integer.class);
+        query.setParameter("mobile", mobile);
+
+        Integer id = query.uniqueResult();
+        return (id != null) ? id : -1;
+    }
 }

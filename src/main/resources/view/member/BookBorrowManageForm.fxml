@@ -77,7 +77,7 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnAdd" focusTraversable="false" layoutX="1030.0" layoutY="71.0" onAction="#btnAddBorrowOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="250.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: #727374; -fx-border-radius: 20;" text=" ">
+      <JFXButton fx:id="btnAdd" focusTraversable="false" layoutX="977.0" layoutY="71.0" onAction="#btnAddBorrowOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="250.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: #727374; -fx-border-radius: 20;" text=" ">
          <graphic>
             <GridPane prefHeight="60.0" prefWidth="215.0">
                <columnConstraints>
@@ -102,10 +102,16 @@
             </GridPane>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1311.0" layoutY="80.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="300.0" promptText="Search by borrow ID" unFocusColor="#727374">
+      <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1258.0" layoutY="80.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="300.0" promptText="Search by borrow ID" unFocusColor="#727374">
          <font>
             <Font size="20.0" />
          </font>
       </JFXTextField>
+      <ImageView fx:id="imgReset" fitHeight="40.0" fitWidth="40.0" layoutX="1568.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assests/icon/redo.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnReset" focusTraversable="false" layoutX="1568.0" layoutY="86.0" onAction="#btnResetOnAction" onMouseEntered="#btnResetOnMouseEntered" onMouseExited="#btnResetOnMouseExited" prefHeight="40.0" prefWidth="40.0" text=" " />
    </children>
 </AnchorPane>

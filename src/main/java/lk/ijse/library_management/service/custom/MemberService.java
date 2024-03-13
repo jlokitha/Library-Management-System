@@ -11,4 +11,6 @@ public interface MemberService extends SuperService {
     List<MemberDto> getAllMemberData();
 
     boolean deleteMember(int id);
+
+    int getMemberIdFormMobile(String mobile);
 }

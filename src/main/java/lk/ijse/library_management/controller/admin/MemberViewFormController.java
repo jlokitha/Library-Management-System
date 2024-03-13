@@ -56,13 +56,17 @@ public class MemberViewFormController implements Initializable {
     }
 
     public void setData() {
-        MemberDto dto = memberService.getMemberData(id);
+        try {
+            MemberDto dto = memberService.getMemberData(id);
 
-        lblMemberId.setText(String.valueOf(dto.getId()));
-        lblMemberUsername.setText(dto.getUsername());
-        lblMemberName.setText(dto.getName());
-        lblMemberMobile.setText(dto.getMobile());
-        lblMemberEmail.setText(dto.getEmail());
+            lblMemberId.setText(String.valueOf(dto.getId()));
+            lblMemberUsername.setText(dto.getUsername());
+            lblMemberName.setText(dto.getName());
+            lblMemberMobile.setText(dto.getMobile());
+            lblMemberEmail.setText(dto.getEmail());
+        } catch (NumberFormatException e) {
+
+        }
     }
 
     @Override

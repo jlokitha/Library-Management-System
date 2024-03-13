@@ -21,4 +21,7 @@ public interface BookRepository extends SuperRepository {
     Book getBookFormTitle(String title);
 
     String getAuthorFormTitle(String title);
+
+    int getIdFormTitle(String title);
+
 }
