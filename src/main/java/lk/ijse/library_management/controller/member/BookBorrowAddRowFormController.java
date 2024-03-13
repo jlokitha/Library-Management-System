@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.library_management.dto.BookDto;
 
 public class BookBorrowAddRowFormController {
 
@@ -22,9 +23,12 @@ public class BookBorrowAddRowFormController {
     @FXML
     private ImageView imgDelete;
 
+    private BookDto dto;
+
     @FXML
     void imgDeleteOnMouseClicked(MouseEvent event) {
-
+        BookBorrowAddFormController.controller.removeBook(dto);
+        BookBorrowAddFormController.controller.getBooks();
     }
 
     @FXML
@@ -37,4 +41,12 @@ public class BookBorrowAddRowFormController {
 
     }
 
+    public void setData(BookDto dto) {
+        lblBookId.setText(String.valueOf(dto.getId()));
+        lblAuthor.setText(dto.getAuthor());
+        lblTitle.setText(dto.getTitle());
+        lblGenre.setText(dto.getGenre());
+
+        this.dto = dto;
+    }
 }

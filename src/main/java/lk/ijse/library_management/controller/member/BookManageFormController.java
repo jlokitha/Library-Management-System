@@ -1,6 +1,7 @@
 package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,9 @@ import java.util.ResourceBundle;
 public class BookManageFormController implements Initializable {
 
     @FXML
+    public JFXTextField txtSearch;
+
+    @FXML
     private VBox vBox;
 
     @FXML
@@ -42,6 +46,16 @@ public class BookManageFormController implements Initializable {
 
     private final BookService bookService =
             (BookServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BOOK);
+
+    @FXML
+    public void txtSearchOnAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void txtSearchOnMouseClicked(MouseEvent mouseEvent) {
+
+    }
 
     public void getAllData() {
 

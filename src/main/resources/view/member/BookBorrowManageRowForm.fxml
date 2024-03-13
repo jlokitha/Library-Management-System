@@ -9,52 +9,52 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1548.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowManageRowFormController">
-    <children>
-        <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1548.0" style="-fx-background-color: white; -fx-border-color: #A8A9AB; -fx-border-width: 0 0 1 0;">
-            <children>
-                <Label fx:id="lblBorrowId" prefHeight="30.0" prefWidth="192.0" text="Borrow ID">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="80.0" />
-                    </HBox.margin>
-                </Label>
-                <Label fx:id="lblMemberId" layoutX="30.0" layoutY="33.0" prefHeight="25.0" prefWidth="240.0" text="Member ID">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lblBookAmount" layoutX="249.0" layoutY="33.0" prefHeight="25.0" prefWidth="285.0" text="Book Amount">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lblReturnDate" layoutX="572.0" layoutY="33.0" prefHeight="25.0" prefWidth="266.0" text="Returning Date">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lblStatus" layoutX="851.0" layoutY="33.0" prefHeight="25.0" prefWidth="221.0" text="Status">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-                <ImageView fx:id="imgView" fitHeight="27.0" fitWidth="27.0" onMouseClicked="#imgViewOnMouseClicked" onMouseEntered="#imgViewOnMouseEntered" onMouseExited="#imgViewOnMouseExited" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../assests/icon/view.png" />
-                    </image>
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </ImageView>
-            </children>
-            <padding>
-                <Insets bottom="12.0" left="55.0" top="12.0" />
-            </padding>
-            <opaqueInsets>
-                <Insets />
-            </opaqueInsets>
-        </HBox>
-    </children>
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1548.0" style="-fx-background-color: white; -fx-border-color: #A8A9AB; -fx-border-width: 0 0 1 0;">
+         <children>
+            <Label fx:id="lblBorrowId" prefHeight="30.0" prefWidth="203.0" text="Borrow ID">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="80.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblMemberId" layoutX="30.0" layoutY="33.0" prefHeight="25.0" prefWidth="240.0" text="Member ID">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBookAmount" layoutX="249.0" layoutY="33.0" prefHeight="25.0" prefWidth="285.0" text="Book Amount">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblReturnDate" layoutX="572.0" layoutY="33.0" prefHeight="25.0" prefWidth="266.0" text="Returning Date">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblStatus" layoutX="851.0" layoutY="33.0" prefHeight="25.0" prefWidth="109.0" text="Status">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgView" fitHeight="27.0" fitWidth="27.0" onMouseClicked="#imgViewOnMouseClicked" onMouseEntered="#imgViewOnMouseEntered" onMouseExited="#imgViewOnMouseExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assests/icon/view.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="12.0" left="40.0" top="12.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </children>
 </AnchorPane>

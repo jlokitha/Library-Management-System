@@ -1,6 +1,7 @@
 package lk.ijse.library_management.controller.admin;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class BranchManageFormController implements Initializable {
+
+    @FXML
+    public JFXTextField txtSearch;
 
     @FXML
     private VBox vBox;
@@ -61,6 +65,16 @@ public class BranchManageFormController implements Initializable {
 
     @FXML
     void btnAddOnMouseExited(MouseEvent event) {
+
+    }
+
+    @FXML
+    public void txtSearchOnAction(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void txtSearchOnMouseClicked(MouseEvent mouseEvent) {
 
     }
 

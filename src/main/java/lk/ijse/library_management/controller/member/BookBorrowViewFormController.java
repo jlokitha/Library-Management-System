@@ -1,4 +1,4 @@
-package lk.ijse.library_management.controller.admin;
+package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -16,7 +16,7 @@ import lk.ijse.library_management.dto.TransactionDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.TransactionService;
 import lk.ijse.library_management.service.custom.impl.TransactionServiceImpl;
-import lk.ijse.library_management.util.navigation.AdminNavigation;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class BookBorrowViewFormController implements Initializable {
 
     @FXML
     void btnCancelOnAction(ActionEvent event) {
-        AdminNavigation.closePane();
+        MemberNavigation.closePane();
     }
 
     @FXML
@@ -80,7 +80,7 @@ public class BookBorrowViewFormController implements Initializable {
 
     private void loadDataTable(BookDto dto) {
         try {
-            FXMLLoader loader = new FXMLLoader(BookBorrowViewFormController.class.getResource("/view/admin/BookBorrowViewRowForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(BookBorrowViewFormController.class.getResource("/view/member/BookBorrowViewRowForm.fxml"));
             Parent root = loader.load();
             BookBorrowViewRowFormController controller = loader.getController();
             controller.setData(dto);
@@ -105,5 +105,4 @@ public class BookBorrowViewFormController implements Initializable {
 
         getAllData(detailsDtos);
     }
-
 }

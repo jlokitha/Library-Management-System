@@ -1,6 +1,5 @@
 package lk.ijse.library_management.repository.custom;
 
-import lk.ijse.library_management.dto.BookDto;
 import lk.ijse.library_management.entity.Book;
 import lk.ijse.library_management.repository.SuperRepository;
 
@@ -16,4 +15,10 @@ public interface BookRepository extends SuperRepository {
     void delete(Book book);
 
     void update(Book entity);
+
+    List<String> getAllTitles();
+
+    Book getBookFormTitle(String title);
+
+    String getAuthorFormTitle(String title);
 }

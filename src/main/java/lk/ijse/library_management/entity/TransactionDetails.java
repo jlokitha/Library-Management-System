@@ -1,5 +1,6 @@
 package lk.ijse.library_management.entity;
 
+import lk.ijse.library_management.dto.TransactionDetailsDto;
 import lk.ijse.library_management.embedded.TransactionDetailPK;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 
-@Entity(name = "transaction_details")
+@Entity
+@Table(name = "transaction_details")
 public class TransactionDetails {
 
     @EmbeddedId
@@ -24,4 +26,12 @@ public class TransactionDetails {
     @ManyToOne
     @JoinColumn(name = "book_id", insertable = false, updatable = false)
     private Book book;
+
+    public TransactionDetailsDto toDto() {
+        return new TransactionDetailsDto(
+                id,
+                transaction.toDto(),
+                book.toDto()
+        );
+    }
 }

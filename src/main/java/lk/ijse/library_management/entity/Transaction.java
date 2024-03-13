@@ -42,7 +42,7 @@ public class Transaction {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "transaction")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "transaction")
     private List<TransactionDetails> details = new ArrayList<>();
 
     public TransactionDto toDto() {

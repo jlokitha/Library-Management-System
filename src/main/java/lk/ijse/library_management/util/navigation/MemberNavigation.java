@@ -23,7 +23,7 @@ public class MemberNavigation {
     private static Scene scene;
 
     public static void switchNavigation(String path, ActionEvent event) throws IOException {
-        parent = FXMLLoader.load(AdminNavigation.class.getResource("/view/member/" + path));
+        parent = FXMLLoader.load(MemberNavigation.class.getResource("/view/member/" + path));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SignInFormController.stage = stage;
         scene = new Scene(parent);
@@ -34,7 +34,7 @@ public class MemberNavigation {
 
     public static void switchPaging(String path) throws IOException {
         MemberGlobalFormController.getInstance().pagingPane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(AdminNavigation.class.getResource("/view/member/"+path));
+        FXMLLoader loader = new FXMLLoader(MemberNavigation.class.getResource("/view/member/"+path));
         Parent root = loader.load();
         MemberGlobalFormController.getInstance().pagingPane.getChildren().add(root);
     }
@@ -44,7 +44,7 @@ public class MemberNavigation {
         MemberGlobalFormController.getInstance().popUpPane.setVisible(true);
         MemberGlobalFormController.getInstance().imgGreyBack.setVisible(true);
 
-        AnchorPane root = FXMLLoader.load(AdminNavigation.class.getResource("/view/member/" + path));
+        AnchorPane root = FXMLLoader.load(MemberNavigation.class.getResource("/view/member/" + path));
 
         Stage popupStage = new Stage();
         MemberGlobalFormController.getInstance().setPopupStage(popupStage);
@@ -57,7 +57,7 @@ public class MemberNavigation {
 
     public static void switchLoginPage(String path) throws IOException {
         MemberGlobalLoginFormController.getInstance().loginPane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(AdminNavigation.class.getResource("/view/member/"+path));
+        FXMLLoader loader = new FXMLLoader(MemberNavigation.class.getResource("/view/member/"+path));
         Parent root = loader.load();
         MemberGlobalLoginFormController.getInstance().loginPane.getChildren().add(root);
     }
