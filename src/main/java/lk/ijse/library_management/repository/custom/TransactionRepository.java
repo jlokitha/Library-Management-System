@@ -14,4 +14,6 @@ public interface TransactionRepository extends SuperRepository {
     Transaction get(int id);
 
     List<TransactionDetails> getTransactionDetails(Transaction entity);
+
+    void update(Transaction entity);
 }

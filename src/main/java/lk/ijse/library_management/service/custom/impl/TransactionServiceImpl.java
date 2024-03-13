@@ -238,4 +238,39 @@ public class TransactionServiceImpl implements TransactionService {
             session.close();
         }
     }
+
+    @Override
+    public boolean updateTransaction(int id) {
+
+        TransactionDto transactionData = getTransactionData(id);
+        List<TransactionDetailsDto> transactionDetails = getTransactionDetails(transactionData);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+        org.hibernate.Transaction transaction = session.beginTransaction();
+
+        try {
+
+            transactionRepository.setSession(session);
+            transactionRepository.update(transactionData.toEntity());
+
+            for (TransactionDetailsDto transactionDetailsDto : transactionDetails) {
+
+                transactionDetailsDto.getBook().setAvailability("Available");
+                bookRepository.setSession(session);
+                bookRepository.update(transactionDetailsDto.getBook().toEntity());
+            }
+
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+
+            transaction.rollback();
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            session.close();
+        }
+    }
 }

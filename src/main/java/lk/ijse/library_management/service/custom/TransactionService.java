@@ -24,4 +24,6 @@ public interface TransactionService extends SuperService {
     TransactionDto getTransactionData(int id);
 
     List<TransactionDetailsDto> getTransactionDetails(TransactionDto dto);
+
+    boolean updateTransaction(int id);
 }
