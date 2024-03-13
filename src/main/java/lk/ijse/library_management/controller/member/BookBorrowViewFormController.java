@@ -17,6 +17,7 @@ import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.TransactionService;
 import lk.ijse.library_management.service.custom.impl.TransactionServiceImpl;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
+import org.apache.batik.util.Platform;
 
 import java.io.IOException;
 import java.net.URL;
@@ -94,15 +95,17 @@ public class BookBorrowViewFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TransactionDto dto = transactionService.getTransactionData(id);
 
-        List<TransactionDetailsDto> detailsDtos = transactionService.getTransactionDetails(dto);
+        if (MemberGlobalFormController.username.equals(dto.getMember().getUsername())) {
+            List<TransactionDetailsDto> detailsDtos = transactionService.getTransactionDetails(dto);
 
-        txtTransactionId.setText(String.valueOf(dto.getId()));
-        txtMemberMobile.setText(dto.getMember().getMobile());
-        txtMemberName.setText(dto.getMember().getName());
-        txtIssedDate.setText(String.valueOf(dto.getAddedDate()));
-        txtDueDate.setText(String.valueOf(dto.getDueDate()));
+            txtTransactionId.setText(String.valueOf(dto.getId()));
+            txtMemberMobile.setText(dto.getMember().getMobile());
+            txtMemberName.setText(dto.getMember().getName());
+            txtIssedDate.setText(String.valueOf(dto.getAddedDate()));
+            txtDueDate.setText(String.valueOf(dto.getDueDate()));
 
 
-        getAllData(detailsDtos);
+            getAllData(detailsDtos);
+        }
     }
 }

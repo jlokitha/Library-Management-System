@@ -15,6 +15,7 @@ import lk.ijse.library_management.dto.BookDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BookService;
 import lk.ijse.library_management.service.custom.impl.BookServiceImpl;
+import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +50,13 @@ public class BookManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
-
+        try {
+            BookViewFormController.id = Integer.parseInt(txtSearch.getText());
+            MemberNavigation.popupPane("BookViewForm.fxml");
+            txtSearch.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

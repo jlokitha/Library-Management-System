@@ -25,8 +25,6 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lk.ijse.library_management.controller.admin.SignUpVerifyOtpFormController.dto;
-
 public class TransactionServiceImpl implements TransactionService {
 
     private Session session;
@@ -324,6 +322,57 @@ public class TransactionServiceImpl implements TransactionService {
 
             transaction.rollback();
             e.printStackTrace();
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public MemberDto getMemberData(int id) {
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+            memberRepository.setSession(session);
+
+            Member member = memberRepository.get(id);
+
+            return member.toDto();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<TransactionDto> getAllTransactionDataToId(int id) {
+        MemberDto member = getMemberData(id);
+
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            transactionRepository.setSession(session);
+            List<Transaction> list = transactionRepository.getAllToMember(member.toEntity());
+
+            List<TransactionDto> dto = new ArrayList<>();
+
+            for (Transaction entity : list) {
+                dto.add(entity.toDto());
+            }
+
+            return dto;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
 
         } finally {
             session.close();

@@ -30,4 +30,8 @@ public interface TransactionService extends SuperService {
     List<TransactionDto> getAllTransactionDataToUsername(String username);
 
     void updateTransactionStatus(List<TransactionDto> updateList);
+
+    MemberDto getMemberData(int id);
+
+    List<TransactionDto> getAllTransactionDataToId(int id);
 }

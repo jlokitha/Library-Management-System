@@ -69,7 +69,13 @@ public class BookManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
-
+        try {
+            BookViewFormController.id = Integer.parseInt(txtSearch.getText());
+            AdminNavigation.popupPane("BookViewForm.fxml");
+            txtSearch.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
