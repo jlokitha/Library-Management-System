@@ -87,7 +87,8 @@ public class BookManageFormController implements Initializable {
                 AdminNavigation.popupPane("BookViewForm.fxml");
                 txtSearch.clear();
             } catch (IOException e) {
-                e.printStackTrace();
+                AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
+                AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
             }
         }
     }
@@ -104,7 +105,9 @@ public class BookManageFormController implements Initializable {
         vBox.getChildren().clear();
 
         for(BookDto dto : data) {
-            loadDataTable(dto);
+            if (!dto.getAvailability().equals("Removed")) {
+                loadDataTable(dto);
+            }
         }
     }
 

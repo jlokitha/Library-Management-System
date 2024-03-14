@@ -68,7 +68,7 @@
             </font>
         </JFXButton>
         <Pane fx:id="paneShutDown" layoutX="944.5" layoutY="6.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #C7FFDE; -fx-background-radius: 10;" visible="false" />
-        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="950.0" layoutY="11.0" onMouseClicked="#imgShutDownOnMouseClicked" onMouseEntered="#imgShutDownOnMouseEntered" onMouseExited="#imgShutDownOnMouseExited" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="950.0" layoutY="10.0" onMouseClicked="#imgShutDownOnMouseClicked" onMouseEntered="#imgShutDownOnMouseEntered" onMouseExited="#imgShutDownOnMouseExited" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../assests/icon/close.png" />
             </image>

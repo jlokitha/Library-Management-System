@@ -100,10 +100,15 @@
             </Label>
             </children>
         </AnchorPane>
-      <JFXButton fx:id="btnSignUp1" layoutX="15.0" layoutY="15.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: WHITE; -fx-border-radius: 10; -fx-border-width: 3;" text="Sign Up" textFill="WHITE">
+      <JFXButton fx:id="btnSignIn" layoutX="15.0" layoutY="15.0" onAction="#btnSignInOnAction" onMouseEntered="#btnSignInOnMouseEntered" onMouseExited="#btnSignInOnMouseExited" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: WHITE; -fx-border-radius: 10; -fx-border-width: 3;" text="Sign In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="950.0" layoutY="10.0" onMouseClicked="#imgShutDownOnMouseClicked" onMouseEntered="#imgShutDownOnMouseEntered" onMouseExited="#imgShutDownOnMouseExited" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assests/icon/close.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

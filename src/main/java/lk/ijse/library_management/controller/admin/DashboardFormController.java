@@ -95,13 +95,17 @@ public class DashboardFormController implements Initializable {
             id = adminDashboardService.getMemberIdFormMobile(txtMemberId.getText());
         }
 
-        try {
-            MemberViewFormController.id = id;
-            AdminNavigation.popupPane("MemberViewForm.fxml");
-            txtMemberId.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (id > 0) {
+            try {
+                MemberViewFormController.id = id;
+                AdminNavigation.popupPane("MemberViewForm.fxml");
+            } catch (IOException e) {
+                AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
+                AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
+            }
         }
+
+        txtMemberId.clear();
     }
 
     public void btnAddAttendanceMouseEntered(MouseEvent mouseEvent) {
@@ -113,7 +117,7 @@ public class DashboardFormController implements Initializable {
     }
 
     public void txtMemberIdOnAction(ActionEvent actionEvent) {
-
+        btnSearchOnAction(actionEvent);
     }
 
     @Override

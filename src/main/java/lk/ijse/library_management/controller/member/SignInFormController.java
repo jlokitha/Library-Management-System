@@ -61,6 +61,8 @@ public class SignInFormController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                lblPassword.setText("Invalid username or password !");
             }
         }
     }
@@ -132,6 +134,7 @@ public class SignInFormController {
 
     @FXML
     void txtPasswordOnMouseClicked(MouseEvent event) {
+        lblUserName.setText("");
         lblPassword.setText("");
     }
 
@@ -149,6 +152,7 @@ public class SignInFormController {
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
         lblUserName.setText("");
+        lblPassword.setText("");
     }
 
     public boolean validateSignIn() {

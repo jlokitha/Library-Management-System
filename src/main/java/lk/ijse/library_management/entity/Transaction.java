@@ -25,13 +25,13 @@ public class Transaction {
     @Column(name = "transaction_id")
     private int id;
 
-    @Column(name = "book_qty")
+    @Column(name = "book_qty", nullable = false)
     private int qty;
 
-    @Column(name = "due_date")
+    @Column(name = "due_date", nullable = false)
     private Date dueDate;
 
-    @Column(name = "transaction_status")
+    @Column(name = "transaction_status", nullable = false)
     private String status;
 
     @CreationTimestamp
@@ -42,8 +42,12 @@ public class Transaction {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "transaction")
-    private List<TransactionDetails> details = new ArrayList<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            mappedBy = "transaction"
+    )
+    private List<TransactionDetails> transactionDetails = new ArrayList<>();
 
     public TransactionDto toDto() {
         return new TransactionDto(

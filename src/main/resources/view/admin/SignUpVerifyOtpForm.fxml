@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="txtOtp" focusColor="#139547" layoutX="45.0" layoutY="316.0" onAction="#txtOtpOnAction" onMouseClicked="#txtOtpOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="OTP" unFocusColor="#727374">
+                <JFXTextField fx:id="txtOtp" focusColor="#1351cb" layoutX="45.0" layoutY="316.0" onAction="#txtOtpOnAction" onMouseClicked="#txtOtpOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="OTP" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
                     </font>

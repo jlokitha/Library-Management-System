@@ -135,6 +135,8 @@ public class MemberServiceImpl implements MemberService {
 
             int id  = memberRepository.getIdFormMobile(mobile);
 
+            if (id <= 0) throw new Exception();
+
             return id;
 
         } catch (Exception e) {

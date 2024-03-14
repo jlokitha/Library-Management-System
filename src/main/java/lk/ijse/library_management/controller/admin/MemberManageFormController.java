@@ -52,13 +52,16 @@ public class MemberManageFormController implements Initializable {
             id = memberService.getMemberIdFormMobile(txtSearch.getText());
         }
 
-        try {
-            MemberViewFormController.id = id;
-            AdminNavigation.popupPane("MemberViewForm.fxml");
-            txtSearch.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (id > 0) {
+            try {
+                MemberViewFormController.id = id;
+                AdminNavigation.popupPane("MemberViewForm.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        txtSearch.clear();
     }
 
     @FXML

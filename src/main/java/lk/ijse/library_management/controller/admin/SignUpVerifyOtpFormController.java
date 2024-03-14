@@ -95,7 +95,7 @@ public class SignUpVerifyOtpFormController {
     void txtOtpOnAction(ActionEvent event) {
         String userName = txtOtp.getText();
 
-        if (Regex.userName(userName)) {
+        if (Regex.otp(userName)) {
             lblOtp.setText("Invalid OTP");
         } else {
             btnVerifyOnAction(event);

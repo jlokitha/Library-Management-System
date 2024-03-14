@@ -26,19 +26,19 @@ public class Admin {
     @Column(name = "admin_id")
     private int id;
 
-    @Column(name = "admin_name")
+    @Column(name = "admin_name", nullable = false)
     private NameIdentifier name;
 
-    @Column(name = "admin_mobile")
+    @Column(name = "admin_mobile", nullable = false, unique = true)
     private String mobile;
 
-    @Column(name = "admin_email")
+    @Column(name = "admin_email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @CreationTimestamp
@@ -49,10 +49,18 @@ public class Admin {
     @Column(name = "admin_updated")
     private Timestamp updatedDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "admin")
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "admin"
+    )
     private List<Branch> branches = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "admin")
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "admin"
+    )
     private List<Book> books = new ArrayList<>();
 
     public AdminDto toDto() {

@@ -8,12 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
+import lk.ijse.library_management.util.Style;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
@@ -26,10 +29,28 @@ import java.util.ResourceBundle;
 public class MemberGlobalFormController implements Initializable {
 
     @FXML
+    private Label lblBorrow;
+
+    @FXML
     public Label lblTime;
 
     @FXML
     public Label lblDate;
+
+    @FXML
+    public ImageView imgBorrow;
+
+    @FXML
+    public ImageView imgBranch;
+
+    @FXML
+    public Label lblBranch;
+
+    @FXML
+    public ImageView imgBook;
+
+    @FXML
+    public Label lblBook;
 
     @FXML
     private JFXButton btnDashboard;
@@ -44,19 +65,7 @@ public class MemberGlobalFormController implements Initializable {
     private JFXButton btnIssued;
 
     @FXML
-    private ImageView imgOrder;
-
-    @FXML
-    private Label lblOrder;
-
-    @FXML
     private JFXButton btnBranch;
-
-    @FXML
-    private ImageView imgSupplier;
-
-    @FXML
-    private Label lblSupplier;
 
     @FXML
     private JFXButton btnLogOut;
@@ -72,9 +81,6 @@ public class MemberGlobalFormController implements Initializable {
 
     @FXML
     private ImageView imgItem;
-
-    @FXML
-    private Label lblItem;
 
     @FXML
     private Label labelUser;
@@ -98,6 +104,11 @@ public class MemberGlobalFormController implements Initializable {
 
     public Stage popupStage;
 
+    private boolean dashboard;
+    private boolean borrow;
+    private boolean book;
+    private boolean branch;
+
     private static MemberGlobalFormController globalFormController;
 
     public MemberGlobalFormController() {
@@ -114,8 +125,12 @@ public class MemberGlobalFormController implements Initializable {
 
     @FXML
     void btnBookOnAction(ActionEvent event) {
+        unSelected();
+
         try {
+            Style.btnSelected(btnBook,imgBook,"book_color.png", lblBook);
             MemberNavigation.switchPaging("BookManageForm.fxml");
+            book = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,88 +138,50 @@ public class MemberGlobalFormController implements Initializable {
 
     @FXML
     void btnBranchOnAction(ActionEvent event) {
+        unSelected();
+
         try {
+            Style.btnSelected(btnBranch,imgBranch,"branch_color.png", lblBranch);
             MemberNavigation.switchPaging("BranchManageForm.fxml");
+            branch = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void btnBranchOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnBranchOnMouseExited(MouseEvent event) {
-
     }
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
+        unSelected();
+
         try {
+            Style.btnSelected(btnDashboard,imgDashboard,"dashboard_color.png", lblDashboard);
             MemberNavigation.switchPaging("DashboardForm.fxml");
+            dashboard = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void btnDashboardOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnDashboardOnMouseExited(MouseEvent event) {
-
     }
 
     @FXML
     void btnIssuedOnAction(ActionEvent event) {
+        unSelected();
+
         try {
+            Style.btnSelected(btnIssued,imgBorrow,"borrow_color.png", lblBorrow);
             MemberNavigation.switchPaging("BookBorrowManageForm.fxml");
+            borrow = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void btnIssuedOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnIssuedOnMouseExited(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnItemOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnItemOnMouseExited(MouseEvent event) {
-
     }
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) {
         try {
-            MemberNavigation.switchNavigation("SignInForm.fxml", event);
+            MemberNavigation.switchNavigation("MemberGlobalLoginForm.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void btnLogOutOnMouseEntered(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnLogOutOnMouseExited(MouseEvent event) {
-
     }
 
     @FXML
@@ -217,13 +194,83 @@ public class MemberGlobalFormController implements Initializable {
     }
 
     @FXML
-    void btnProfileOnMouseEntered(MouseEvent event) {
+    void btnBranchOnMouseEntered(MouseEvent event) {
+        if ( !branch ) {
+            Style.btnHover(btnBranch, imgBranch, "branch.png", lblBranch);
+        }
+    }
 
+    @FXML
+    void btnBranchOnMouseExited(MouseEvent event) {
+        if ( !branch ) {
+            Style.btnUnselected(btnBranch, imgBranch, "branch.png", lblBranch);
+        }
+    }
+
+    @FXML
+    void btnDashboardOnMouseEntered(MouseEvent event) {
+        if ( !dashboard ) {
+            Style.btnHover(btnDashboard, imgDashboard, "dashboard.png", lblDashboard);
+        }
+    }
+
+    @FXML
+    void btnDashboardOnMouseExited(MouseEvent event) {
+        if ( !dashboard ) {
+            Style.btnUnselected(btnDashboard, imgDashboard, "dashboard.png", lblDashboard);
+        }
+    }
+
+    @FXML
+    void btnIssuedOnMouseEntered(MouseEvent event) {
+        if ( !borrow ) {
+            Style.btnHover(btnIssued, imgBorrow, "borrow.png", lblBorrow);
+        }
+    }
+
+    @FXML
+    void btnIssuedOnMouseExited(MouseEvent event) {
+        if ( !borrow ) {
+            Style.btnUnselected(btnIssued, imgBorrow, "borrow.png", lblBorrow);
+        }
+    }
+
+    @FXML
+    void btnItemOnMouseEntered(MouseEvent event) {
+        if ( !book ) {
+            Style.btnHover(btnBook, imgBook, "book.png", lblBook);
+        }
+    }
+
+    @FXML
+    void btnItemOnMouseExited(MouseEvent event) {
+        if ( !book ) {
+            Style.btnUnselected(btnBook, imgBook, "book.png", lblBook);
+        }
+    }
+
+    @FXML
+    void btnLogOutOnMouseEntered(MouseEvent event) {
+        Style.btnSelectedLogOut(btnLogOut, lblLogout, imgLogOut);
+    }
+
+    @FXML
+    void btnLogOutOnMouseExited(MouseEvent event) {
+        Style.btnUnselected(btnLogOut, imgLogOut, "logout.png", lblLogout);
+    }
+
+    @FXML
+    void btnProfileOnMouseEntered(MouseEvent event) {
+        Tooltip tooltip = new Tooltip("Profile");
+        tooltip.setShowDelay(Duration.millis(150));
+        btnProfile.setTooltip(tooltip);
+
+        Style.btnSelectedProfile(imgProfile);
     }
 
     @FXML
     void btnProfileOnMouseExited(MouseEvent event) {
-
+        Style.btnUnselectedProfile(imgProfile);
     }
 
     private void updateClock() {
@@ -239,6 +286,19 @@ public class MemberGlobalFormController implements Initializable {
     public static String timeNow() {
         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss"); //In 24hr Format
         return dateFormat.format(new Date()) ;
+    }
+
+    public void unSelected() {
+        Style.btnUnselected(btnDashboard, imgDashboard, "dashboard.png", lblDashboard);
+        Style.btnUnselected(btnIssued, imgBorrow, "borrow.png", lblBorrow);
+        Style.btnUnselected(btnBook, imgBook, "book.png", lblBook);
+        Style.btnUnselected(btnBranch, imgBranch, "branch.png", lblBranch);
+        Style.btnUnselected(btnLogOut, imgLogOut, "logout.png", lblLogout);
+
+        dashboard = false;
+        borrow = false;
+        branch = false;
+        book = false;
     }
 
     @Override

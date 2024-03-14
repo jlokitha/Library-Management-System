@@ -39,7 +39,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public void delete(Book book) {
-        session.delete(book);
+        session.update(book);
     }
 
     @Override

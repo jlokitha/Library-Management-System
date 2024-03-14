@@ -17,6 +17,11 @@
                 <Image url="@../../assests/icon/book.png" />
             </image>
         </ImageView>
+        <JFXTextField fx:id="txtTitle" focusColor="#1351cb" layoutX="20.0" layoutY="119.0" onAction="#txtTitleOnAction" onMouseClicked="#txtTiltleOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Title" unFocusColor="#727374">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </JFXTextField>
         <Label layoutX="99.0" layoutY="27.0" text="Update Book">
             <font>
                 <Font size="25.0" />
@@ -52,11 +57,6 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="txtTitle" focusColor="#1351cb" layoutX="20.0" layoutY="119.0" onAction="#txtTitleOnAction" onMouseClicked="#txtTiltleOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Title" unFocusColor="#727374">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </JFXTextField>
         <Label fx:id="lblTitle" layoutX="20.0" layoutY="180.0" prefWidth="560.0" textFill="RED">
             <font>
                 <Font size="15.0" />

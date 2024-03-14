@@ -24,16 +24,16 @@ public class Branch implements Serializable {
     @Column(name = "branch_id")
     private int id;
 
-    @Column(name = "branch_name")
+    @Column(name = "branch_name", nullable = false, unique = true)
     private String name;
 
-    @Column(name = "branch_location")
+    @Column(name = "branch_location", nullable = false)
     private String location;
 
-    @Column(name = "branch_moobile")
+    @Column(name = "branch_moobile", nullable = false, unique = true)
     private String mobile;
 
-    @Column(name = "branch_email")
+    @Column(name = "branch_email", nullable = false)
     private String email;
 
     @CreationTimestamp

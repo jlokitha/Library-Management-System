@@ -19,12 +19,20 @@ public class TransactionDetails {
     @EmbeddedId
     private TransactionDetailPK id;
 
-    @ManyToOne
-    @JoinColumn(name = "transaction_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "transaction_id",
+            insertable = false,
+            updatable = false
+    )
     private Transaction transaction;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "book_id",
+            insertable = false,
+            updatable = false
+    )
     private Book book;
 
     public TransactionDetailsDto toDto() {

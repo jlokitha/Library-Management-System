@@ -48,6 +48,14 @@
                   <Insets left="150.0" />
                </HBox.margin>
             </ImageView>
+            <ImageView fx:id="imgReturn" fitHeight="27.0" fitWidth="27.0" layoutX="1383.0" layoutY="32.0" onMouseClicked="#imgReturnOnMouseClicked" onMouseEntered="#imgReturnOnMouseEntered" onMouseExited="#imgReturnOnMouseExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assests/icon/return.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </ImageView>
          </children>
          <padding>
             <Insets bottom="12.0" left="40.0" top="12.0" />

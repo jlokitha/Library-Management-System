@@ -70,7 +70,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgOrder" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="imgBorrow" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../../assests/icon/borrow.png" />
                            </image>
@@ -78,7 +78,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="lblOrder" text="Issued" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblBorrow" text="Borrow" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -103,7 +103,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgCustomer" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="imgMember" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../../assests/icon/member.png" />
                            </image>
@@ -111,7 +111,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="lblCustomer" prefHeight="30.0" prefWidth="88.0" text="Members" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblMember" prefHeight="30.0" prefWidth="88.0" text="Member" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -136,7 +136,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgSupplier" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="imgBranch" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../../assests/icon/branch.png" />
                            </image>
@@ -144,7 +144,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="lblSupplier" text="Branch" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblBranch" text="Branch" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -202,7 +202,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgItem" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="imgBook" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../../assests/icon/book.png" />
                            </image>
@@ -210,7 +210,7 @@
                               <Insets left="5.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="lblItem" prefHeight="30.0" prefWidth="71.0" text="Book" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="lblBook" prefHeight="30.0" prefWidth="71.0" text="Book" textFill="#727374" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="20.0" />
                            </font>

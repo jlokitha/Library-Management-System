@@ -44,15 +44,19 @@ public class BookManageRowFormController {
 
     @FXML
     void imgDeleteOnMouseClicked(MouseEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Delete Book");
-        alert.setContentText("Are you sure you want to delete this Book?");
+        if (!lblAvailability.getText().equals("Not Available")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Delete Book");
+            alert.setContentText("Are you sure you want to delete this Book?");
 
-        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
 
-        if (result == ButtonType.OK) {
-            boolean isDeleted = bookService.deleteBook(Integer.parseInt(lblId.getText()));
-            BookManageFormController.controller.getAllData();
+            if (result == ButtonType.OK) {
+                boolean isDeleted = bookService.deleteBook(Integer.parseInt(lblId.getText()));
+                BookManageFormController.controller.getAllData();
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Book cannot be deleted because it is already borrowed !").show();
         }
     }
 

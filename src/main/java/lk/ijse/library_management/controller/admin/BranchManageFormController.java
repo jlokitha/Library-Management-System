@@ -87,7 +87,8 @@ public class BranchManageFormController implements Initializable {
                 AdminNavigation.popupPane("BranchViewForm.fxml");
                 txtSearch.clear();
             } catch (IOException e) {
-                e.printStackTrace();
+                AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
+                AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
             }
         }
     }

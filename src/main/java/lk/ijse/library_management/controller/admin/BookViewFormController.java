@@ -58,6 +58,8 @@ public class BookViewFormController implements Initializable {
     public void setData() {
         BookDto dto = bookService.getBookData(id);
 
+        if (dto.getAvailability().equals("Removed")) throw new RuntimeException();
+
         lblId.setText(String.valueOf(dto.getId()));
         lblTitle.setText(dto.getTitle());
         lblAuthor.setText(dto.getAuthor());
@@ -67,6 +69,10 @@ public class BookViewFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setData();
+        try {
+            setData();
+        } catch (Exception e) {
+            AdminNavigation.closePane();
+        }
     }
 }

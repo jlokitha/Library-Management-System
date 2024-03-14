@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
 import lk.ijse.library_management.dto.BookDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BookService;
@@ -67,7 +68,8 @@ public class BookManageFormController implements Initializable {
             MemberNavigation.popupPane("BookViewForm.fxml");
             txtSearch.clear();
         } catch (IOException e) {
-            e.printStackTrace();
+            MemberGlobalFormController.getInstance().popUpPane.setVisible(false);
+            MemberGlobalFormController.getInstance().imgGreyBack.setVisible(false);
         }
     }
 
@@ -83,7 +85,9 @@ public class BookManageFormController implements Initializable {
         vBox.getChildren().clear();
 
         for(BookDto dto : data) {
-            loadDataTable(dto);
+            if (!dto.getAvailability().equals("Removed")) {
+                loadDataTable(dto);
+            }
         }
     }
 

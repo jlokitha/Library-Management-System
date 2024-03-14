@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
 import lk.ijse.library_management.dto.BranchDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.BranchService;
@@ -66,7 +67,8 @@ public class BranchManageFormController implements Initializable {
                 MemberNavigation.popupPane("BranchViewForm.fxml");
                 txtSearch.clear();
             } catch (IOException e) {
-                e.printStackTrace();
+                AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
+                AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
             }
         }
     }

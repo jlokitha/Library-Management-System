@@ -160,6 +160,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public boolean deleteBook(int id) {
         BookDto dto = getBookData(id);
+        dto.setAvailability("Removed");
 
         session = SessionFactoryConfig.getInstance().getSession();
 

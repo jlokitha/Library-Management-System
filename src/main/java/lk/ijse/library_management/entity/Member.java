@@ -27,19 +27,19 @@ public class Member {
     @Column(name = "member_id")
     private int id;
 
-    @Column(name = "member_name")
+    @Column(name = "member_name", nullable = false)
     private String name;
 
-    @Column(name = "member_mobile")
+    @Column(name = "member_mobile", nullable = false, unique = true)
     private String mobile;
 
-    @Column(name = "member_email")
+    @Column(name = "member_email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "member_username")
+    @Column(name = "member_username", nullable = false, unique = true)
     private String username;
 
-    @Column(name = "member_password")
+    @Column(name = "member_password", nullable = false)
     private String password;
 
     @CreationTimestamp
@@ -50,7 +50,11 @@ public class Member {
     @Column(name = "member_updated")
     private Timestamp updatedDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "member")
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "member"
+    )
     private List<Transaction> transactions = new ArrayList<>();
 
     public MemberDto toDto() {

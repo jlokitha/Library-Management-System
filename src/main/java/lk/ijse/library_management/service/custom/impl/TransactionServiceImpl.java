@@ -100,6 +100,8 @@ public class TransactionServiceImpl implements TransactionService {
                 bookRepository.setSession(session);
                 bookRepository.update(bookDto.toEntity());
 
+                session.clear();
+
                 transactionDetailRepository.setSession(session);
                 TransactionDetailPK pk = transactionDetailRepository.save(new TransactionDetails(
                         new TransactionDetailPK(entity.getId(), bookDto.getId()),

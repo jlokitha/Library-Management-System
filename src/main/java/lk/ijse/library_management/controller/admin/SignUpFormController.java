@@ -32,6 +32,9 @@ public class SignUpFormController {
     public Label lblFirstName;
 
     @FXML
+    public JFXButton btnSignIn;
+
+    @FXML
     private JFXTextField txtUsername;
 
     @FXML
@@ -265,4 +268,32 @@ public class SignUpFormController {
         return true;
     }
 
+    public void btnSignInOnAction(ActionEvent actionEvent) {
+        try {
+            AdminNavigation.switchLoginPage("SignInForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnSignInOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    public void btnSignInOnMouseExited(MouseEvent mouseEvent) {
+
+    }
+
+    public void imgShutDownOnMouseClicked(MouseEvent mouseEvent) {
+        AdminGlobalLoginFormController.stage.close();
+        System.exit(0);
+    }
+
+    public void imgShutDownOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    public void imgShutDownOnMouseExited(MouseEvent mouseEvent) {
+
+    }
 }

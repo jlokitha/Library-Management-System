@@ -19,7 +19,7 @@
                 <Font size="16.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="txtMemberName" editable="false" focusColor="#139547" layoutX="33.0" layoutY="310.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Name" unFocusColor="#727374">
+        <JFXTextField fx:id="txtMemberName" editable="false" focusColor="#139547" focusTraversable="false" layoutX="33.0" layoutY="310.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Name" unFocusColor="#727374">
             <font>
                 <Font size="16.0" />
             </font></JFXTextField>
@@ -59,32 +59,17 @@
                 </HBox>
             </children>
         </AnchorPane>
-        <JFXButton fx:id="btnCancel" layoutX="966.0" layoutY="597.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="50.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #1351CB; -fx-border-width: 2; -fx-border-radius: 15;" text="CANCEL" textFill="#1351cb">
+        <JFXButton fx:id="btnCancel" focusTraversable="false" layoutX="966.0" layoutY="597.0" onAction="#btnCancelOnAction" onMouseEntered="#btnCancelOnMouseEntered" onMouseExited="#btnCancelOnMouseExited" prefHeight="50.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #1351CB; -fx-border-width: 2; -fx-border-radius: 15;" text="CANCEL" textFill="#1351cb">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <Label layoutX="357.0" layoutY="586.0" text="Total Amount">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label layoutX="357.0" layoutY="620.0" text="Rs.">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
-        <Label fx:id="labelTotal" layoutX="393.0" layoutY="620.0" text="0.00">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
         <JFXTextField fx:id="txtIssedDate" editable="false" focusColor="#139547" focusTraversable="false" layoutX="33.0" layoutY="375.0" prefHeight="40.0" prefWidth="246.0" promptText="Issed Date" unFocusColor="#727374">
             <font>
                 <Font size="16.0" />
             </font>
         </JFXTextField>
-      <JFXTextField fx:id="txtMemberMobile" editable="false" focusColor="#139547" layoutX="33.0" layoutY="244.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Mobile" unFocusColor="#727374">
+      <JFXTextField fx:id="txtMemberMobile" editable="false" focusColor="#139547" focusTraversable="false" layoutX="33.0" layoutY="244.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Mobile" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>
@@ -94,7 +79,7 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtTransactionId" editable="false" focusColor="#139547" layoutX="33.0" layoutY="186.0" prefHeight="40.0" prefWidth="246.0" promptText="Transaction ID" unFocusColor="#727374">
+      <JFXTextField fx:id="txtTransactionId" editable="false" focusColor="#139547" focusTraversable="false" layoutX="33.0" layoutY="186.0" prefHeight="40.0" prefWidth="246.0" promptText="Transaction ID" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>

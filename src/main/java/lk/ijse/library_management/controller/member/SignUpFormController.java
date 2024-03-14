@@ -20,6 +20,9 @@ import java.io.IOException;
 public class SignUpFormController {
 
     @FXML
+    public JFXButton btnSignIn;
+
+    @FXML
     private JFXTextField txtUsername;
 
     @FXML
@@ -234,4 +237,38 @@ public class SignUpFormController {
         return true;
     }
 
+    @FXML
+    public void btnSignInOnAction(ActionEvent actionEvent) {
+        try {
+            MemberNavigation.switchLoginPage("SignInForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void btnSignInOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void btnSignInOnMouseExited(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void imgShutDownOnMouseClicked(MouseEvent mouseEvent) {
+        MemberGlobalLoginFormController.stage.close();
+        System.exit(0);
+    }
+
+    @FXML
+    public void imgShutDownOnMouseEntered(MouseEvent mouseEvent) {
+
+    }
+
+    @FXML
+    public void imgShutDownOnMouseExited(MouseEvent mouseEvent) {
+
+    }
 }

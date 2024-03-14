@@ -34,13 +34,13 @@ public class SendEmail {
 
         newSession = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("alokagreenofficial@gmail.com", "izue ksnw vqye lhbi");
+                return new PasswordAuthentication("bookwormlibraryofficial@gmail.com", "wwtb trbd rykx ljnc");
             }
         });
     }
 
     public void draftEmail(String[] data) throws MessagingException, IOException {
-        mimeMessage.setFrom(new InternetAddress("alokagreenofficial@gmail.com"));
+        mimeMessage.setFrom(new InternetAddress("bookwormlibraryofficial@gmail.com"));
         String recipient = data[0];
         String subject = data[1];
 
@@ -79,8 +79,8 @@ public class SendEmail {
 
     public void sendEmail() throws MessagingException {
         String host = "smtp.gmail.com";
-        String userName = "alokagreenofficial@gmail.com";
-        String password = "izue ksnw vqye lhbi";
+        String userName = "bookwormlibraryofficial@gmail.com";
+        String password = "wwtb trbd rykx ljnc";
 
         Transport transport = newSession.getTransport("smtp");
         transport.connect(host, userName, password);

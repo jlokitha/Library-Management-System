@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowManageFormController">
+<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.BookBorrowManageFormController">
    <children>
       <AnchorPane layoutX="57.0" layoutY="157.0" prefHeight="771.0" prefWidth="1551.0" style="-fx-background-radius: 20; -fx-background-color: #A0C0FF;">
          <children>
@@ -102,7 +94,7 @@
             </GridPane>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1258.0" layoutY="80.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="300.0" promptText="Search by borrow ID" unFocusColor="#727374">
+      <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1258.0" layoutY="80.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="300.0" promptText="Search by borrow Id" unFocusColor="#727374">
          <font>
             <Font size="20.0" />
          </font>

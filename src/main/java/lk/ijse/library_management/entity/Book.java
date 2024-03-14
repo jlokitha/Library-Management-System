@@ -25,16 +25,16 @@ public class Book {
     @Column(name = "book_id")
     private int id;
 
-    @Column(name = "book_title")
+    @Column(name = "book_title", nullable = false)
     private String title;
 
-    @Column(name = "book_author")
+    @Column(name = "book_author", nullable = false)
     private String author;
 
-    @Column(name = "book_genre")
+    @Column(name = "book_genre", nullable = false)
     private String genre;
 
-    @Column(name = "book_availability")
+    @Column(name = "book_availability", nullable = false)
     private String availability;
 
     @CreationTimestamp
@@ -49,8 +49,12 @@ public class Book {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
-    private List<TransactionDetails> details = new ArrayList<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "book"
+    )
+    private List<TransactionDetails> transactionDetails = new ArrayList<>();
 
     public BookDto toDto() {
         return new BookDto(

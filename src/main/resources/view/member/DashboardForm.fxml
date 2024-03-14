@@ -29,9 +29,12 @@
                         <Font size="30.0" />
                     </font>
                 </Label>
+            <AnchorPane layoutX="21.0" layoutY="80.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
+            <AnchorPane layoutX="31.0" layoutY="90.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
+            <AnchorPane layoutX="328.0" layoutY="-219.0" prefHeight="590.0" prefWidth="10.0" rotate="90.0" style="-fx-background-color: white;" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="711.0" layoutY="342.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
+        <AnchorPane layoutX="710.0" layoutY="342.0" prefHeight="578.0" prefWidth="20.0" style="-fx-background-color: white;" />
         <ImageView fitHeight="214.0" fitWidth="472.0" layoutX="921.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../assests/img/logo.png" />
@@ -64,7 +67,7 @@
                   <Line endX="180.0" layoutX="178.0" layoutY="65.0" startX="-175.0" />
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../assests/icon/book_color.png" />
+                        <Image url="@../../assests/icon/book_shortcut.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="82.0" layoutY="23.0" text="Total Returned Books">
