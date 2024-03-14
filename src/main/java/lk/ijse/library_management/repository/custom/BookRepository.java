@@ -2,19 +2,11 @@ package lk.ijse.library_management.repository.custom;
 
 import lk.ijse.library_management.entity.Book;
 import lk.ijse.library_management.repository.SuperRepository;
+import lk.ijse.library_management.util.CrudUtil;
 
 import java.util.List;
 
-public interface BookRepository extends SuperRepository {
-    List<Book> getAllData();
-
-    int save(Book entity);
-
-    Book get(int id);
-
-    void delete(Book book);
-
-    void update(Book entity);
+public interface BookRepository extends CrudUtil<Book> {
 
     List<String> getAllTitles();
 
@@ -24,4 +16,5 @@ public interface BookRepository extends SuperRepository {
 
     int getIdFormTitle(String title);
 
+    int getCount();
 }

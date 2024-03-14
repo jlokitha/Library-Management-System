@@ -4,7 +4,9 @@ import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.entity.Member;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.MemberRepository;
+import lk.ijse.library_management.repository.custom.TransactionRepository;
 import lk.ijse.library_management.repository.custom.impl.MemberRepositoryImpl;
+import lk.ijse.library_management.repository.custom.impl.TransactionRepositoryImpl;
 import lk.ijse.library_management.service.custom.MemberService;
 import lk.ijse.library_management.util.SessionFactoryConfig;
 import org.hibernate.Session;
@@ -19,6 +21,9 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository =
             (MemberRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.MEMBER);
+
+    private final TransactionRepository transactionRepository =
+            (TransactionRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.TRANSACTION);
 
     @Override
     public MemberDto getMemberData(int id) {
@@ -68,18 +73,43 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public boolean deleteTransactionsOfMember(Member member) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            transactionRepository.setSession(session);
+            List<lk.ijse.library_management.entity.Transaction> allToMember = transactionRepository.getAllToMember(member);
+
+            for (lk.ijse.library_management.entity.Transaction entity : allToMember) {
+                transactionRepository.setSession(session);
+                transactionRepository.delete(entity);
+            }
+
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
     public boolean deleteMember(int id) {
-        MemberDto dto = getMemberData(id);
+        Member dto = getMemberData(id).toEntity();
+
+        boolean isDelelted = deleteTransactionsOfMember(dto);
 
         session = SessionFactoryConfig.getInstance().getSession();
 
         Transaction transaction = session.beginTransaction();
 
         try {
-
             memberRepository.setSession(session);
-
-            memberRepository.delete(dto.toEntity());
+            memberRepository.delete(dto);
 
             transaction.commit();
 

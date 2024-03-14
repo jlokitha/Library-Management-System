@@ -14,7 +14,7 @@ public class ServiceFactory {
     }
 
     public enum ServiceType {
-        BRANCH, SIGNIN, SIGNUP, ADMINPROFILE, BOOK, MEMBER, MEMBERPROFILE, MEMBERSIGNUP, MEMBERSIGNIN, TRANSACTION
+        BRANCH, SIGNIN, SIGNUP, ADMINPROFILE, BOOK, MEMBER, MEMBERPROFILE, MEMBERSIGNUP, MEMBERSIGNIN, TRANSACTION, DASHBOARD
     }
 
     public SuperService getService (ServiceType type) {
@@ -39,6 +39,8 @@ public class ServiceFactory {
                 return new MemberSignInServiceImpl();
             case TRANSACTION:
                 return new TransactionServiceImpl();
+            case DASHBOARD:
+                return new DashboardServiceImpl();
             default:
                 return null;
         }

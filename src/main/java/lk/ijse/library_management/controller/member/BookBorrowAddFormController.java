@@ -232,7 +232,7 @@ public class BookBorrowAddFormController implements Initializable {
     public boolean validate() {
         String title = txtBookTitle.getText();
 
-        if (Regex.title(title)) {
+        if (Regex.name(title)) {
             lblTitle.setText("Should contain at least 3 letters");
             return false;
         }

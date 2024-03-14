@@ -37,7 +37,7 @@ public class BookServiceImpl implements BookService {
 
             bookRepository.setSession(session);
 
-            List<Book> ids = bookRepository.getAllData();
+            List<Book> ids = bookRepository.getAll();
 
             List<BookDto> dtos = new ArrayList<>();
 

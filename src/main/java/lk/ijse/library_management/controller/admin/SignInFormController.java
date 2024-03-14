@@ -60,7 +60,7 @@ public class SignInFormController {
                     AdminGlobalFormController.username = username;
                     AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
             }
         }

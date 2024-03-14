@@ -17,6 +17,11 @@
             <Image url="@../../assests/icon/branch.png" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="txtBranchName" focusColor="#1351cb" layoutX="20.0" layoutY="108.0" onAction="#txtNameOnAction" onMouseClicked="#txtNameOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Branch Name" unFocusColor="#727374">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
       <JFXTextField fx:id="txtBranchMobile" focusColor="#1351cb" layoutX="20.0" layoutY="199.0" onAction="#txtMobileOnAction" onMouseClicked="#txtMobileOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Branch Mobile" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
@@ -62,11 +67,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtBranchName" focusColor="#1351cb" layoutX="20.0" layoutY="108.0" onAction="#txtNameOnAction" onMouseClicked="#txtNameOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Branch Name" unFocusColor="#727374">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXTextField>
       <Label fx:id="lblName" layoutX="20.0" layoutY="169.0" prefWidth="560.0" textFill="RED">
          <font>
             <Font size="15.0" />

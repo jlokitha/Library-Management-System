@@ -169,9 +169,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="imgLogOut" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="imgLogOut" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/log_out.png" />
+                              <Image url="@../../assests/icon/logout.png" />
                            </image>
                            <GridPane.margin>
                               <Insets left="5.0" />
@@ -246,12 +246,23 @@
                </image>
             </ImageView>
             <JFXButton fx:id="btnProfile" focusTraversable="false" layoutX="1584.0" layoutY="25.0" onAction="#btnProfileOnAction" onMouseEntered="#btnProfileOnMouseEntered" onMouseExited="#btnProfileOnMouseExited" prefHeight="50.0" prefWidth="50.0" text=" " />
+            <Label fx:id="lblTime" alignment="TOP_RIGHT" layoutX="1442.0" layoutY="25.0" prefHeight="25.0" prefWidth="100.0" text="time" textAlignment="RIGHT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" alignment="TOP_RIGHT" layoutX="1442.0" layoutY="50.0" prefHeight="25.0" prefWidth="100.0" text="Date" textAlignment="RIGHT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Line endX="-15.0" layoutX="1613.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#1351cb" strokeLineCap="ROUND" strokeWidth="5.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pagingPane" layoutX="251.0" layoutY="101.0" prefHeight="979.0" prefWidth="1670.0" />
       <ImageView fx:id="imgGreyBack" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/image/grey_background.png" />
+            <Image url="@../../assests/img/grey_background.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="popUpPane" prefHeight="1080.0" prefWidth="1920.0" visible="false" />

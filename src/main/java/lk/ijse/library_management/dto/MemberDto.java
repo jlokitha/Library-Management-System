@@ -33,16 +33,17 @@ public class MemberDto {
     private Timestamp updatedDate;
 
     public Member toEntity() {
-        return new Member(
-                id,
-                name,
-                mobile,
-                email,
-                username,
-                password,
-                addedDate,
-                updatedDate,
-                new ArrayList<>()
-        );
+        Member member = new Member();
+
+        member.setId(id);
+        member.setName(name);
+        member.setMobile(mobile);
+        member.setEmail(email);
+        member.setUsername(username);
+        member.setPassword(password);
+        member.setAddedDate(addedDate);
+        member.setUpdatedDate(updatedDate);
+
+        return member;
     }
 }

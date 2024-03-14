@@ -20,12 +20,13 @@
                 <Font size="16.0" />
             </font>
         </Label>
+      <TextField fx:id="txtBookTitle" layoutX="33.0" layoutY="423.0" onAction="#txtBookTitleOnAction" onMouseClicked="#txtBookTitleOnMouseClicked" prefHeight="40.0" prefWidth="246.0" promptText="Book Title" style="-fx-background-color: rgba(0,0,0,0); -fx-border-color: #727374; -fx-border-width: 0 0 1 0; -fx-font-size: 16;" />
         <Label layoutX="33.0" layoutY="385.0" text="Book DETAIL">
             <font>
                 <Font size="16.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="txtMemberName" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="158.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Name" unFocusColor="#727374">
+        <JFXTextField fx:id="txtMemberName" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="33.0" layoutY="158.0" prefHeight="40.0" prefWidth="246.0" promptText="Member Name" unFocusColor="#727374">
             <font>
                 <Font size="16.0" />
             </font></JFXTextField>
@@ -113,12 +114,12 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtAuthor" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="505.0" prefHeight="40.0" prefWidth="246.0" promptText="Author" unFocusColor="#727374">
+      <JFXTextField fx:id="txtAuthor" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="33.0" layoutY="505.0" prefHeight="40.0" prefWidth="246.0" promptText="Author" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtMemberId" editable="false" focusColor="#1351cb" layoutX="33.0" layoutY="96.0" prefHeight="40.0" prefWidth="246.0" promptText="Member ID" unFocusColor="#727374">
+      <JFXTextField fx:id="txtMemberId" editable="false" focusColor="#1351cb" focusTraversable="false" layoutX="33.0" layoutY="96.0" prefHeight="40.0" prefWidth="246.0" promptText="Member ID" unFocusColor="#727374">
          <font>
             <Font size="16.0" />
          </font>
@@ -128,6 +129,5 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <TextField fx:id="txtBookTitle" layoutX="33.0" layoutY="423.0" onAction="#txtBookTitleOnAction" onMouseClicked="#txtBookTitleOnMouseClicked" prefHeight="40.0" prefWidth="246.0" promptText="Book Title" style="-fx-background-color: rgba(0,0,0,0); -fx-border-color: #727374; -fx-border-width: 0 0 1 0; -fx-font-size: 16;" />
     </children>
 </AnchorPane>

@@ -5,6 +5,8 @@ import lk.ijse.library_management.repository.custom.AdminRepository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.List;
+
 public class AdminRepositoryImpl implements AdminRepository {
 
     private Session session;
@@ -17,6 +19,11 @@ public class AdminRepositoryImpl implements AdminRepository {
     @Override
     public Admin get(int id) {
         return session.get(Admin.class, id);
+    }
+
+    @Override
+    public List<Admin> getAll() {
+        return null;
     }
 
     @Override

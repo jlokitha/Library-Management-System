@@ -17,7 +17,7 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public List<Book> getAllData() {
+    public List<Book> getAll() {
         String hql = "SELECT b FROM Book b";
 
         Query<Book> query = session.createQuery(hql, Book.class);
@@ -88,5 +88,16 @@ public class BookRepositoryImpl implements BookRepository {
         query.setParameter("title", title);
 
         return (int) query.uniqueResult();
+    }
+
+    @Override
+    public int getCount() {
+        String hql = "SELECT COUNT (b) FROM Book b";
+
+        Query query = session.createQuery(hql);
+
+        Long count = (Long) query.uniqueResult();
+
+        return Math.toIntExact(count);
     }
 }

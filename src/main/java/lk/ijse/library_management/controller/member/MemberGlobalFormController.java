@@ -2,6 +2,8 @@ package lk.ijse.library_management.controller.member;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,14 +12,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MemberGlobalFormController implements Initializable {
+
+    @FXML
+    public Label lblTime;
+
+    @FXML
+    public Label lblDate;
 
     @FXML
     private JFXButton btnDashboard;
@@ -66,9 +78,6 @@ public class MemberGlobalFormController implements Initializable {
 
     @FXML
     private Label labelUser;
-
-    @FXML
-    private JFXTextField txtSearch;
 
     @FXML
     private ImageView imgProfile;
@@ -217,20 +226,27 @@ public class MemberGlobalFormController implements Initializable {
 
     }
 
-    @FXML
-    void txtSearchOnAction(ActionEvent event) {
-
+    private void updateClock() {
+        lblTime.setText(timeNow());
     }
 
-    @FXML
-    void txtSearchOnMouseClicked(MouseEvent event) {
+    private void setTimeLine() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateClock()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
 
+    public static String timeNow() {
+        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss"); //In 24hr Format
+        return dateFormat.format(new Date()) ;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lblDate.setText(String.valueOf(LocalDate.now()));
         labelUser.setText(username);
         System.out.println(imgGreyBack.isVisible());
         btnDashboardOnAction(new ActionEvent());
+        setTimeLine();
     }
 }

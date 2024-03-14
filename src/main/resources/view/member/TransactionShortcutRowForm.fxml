@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="70.0" minWidth="570.0" prefHeight="70.0" prefWidth="570.0" style="-fx-border-color: #727374; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.TransactionShortcutRowFormController">
+    <children>
+        <Line endX="30.0" layoutX="12.0" layoutY="35.0" rotate="90.0" startX="-30.0" stroke="#1351cb" strokeWidth="3.0" />
+        <Line endX="30.0" layoutX="20.0" layoutY="35.0" rotate="90.0" startX="-30.0" stroke="#1351cb" strokeWidth="3.0" />
+        <Label fx:id="lblTransactionId" layoutX="34.0" layoutY="11.0" text="Label">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblContent" layoutX="34.0" layoutY="41.0" text="Label">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblDate" layoutX="487.0" layoutY="18.0" text="2023-12-18">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblTime" layoutX="487.0" layoutY="38.0" text="20 : 20">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

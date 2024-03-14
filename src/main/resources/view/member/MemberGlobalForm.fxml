@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -137,9 +136,9 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <ImageView fx:id="imgLogOut" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                                <ImageView fx:id="imgLogOut" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                     <image>
-                                        <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/log_out.png" />
+                                        <Image url="@../../assests/icon/logout.png" />
                                     </image>
                                     <GridPane.margin>
                                         <Insets left="5.0" />
@@ -208,22 +207,23 @@
                         <Image url="@../../assests/icon/waving_hand.png" />
                     </image>
                 </ImageView>
-                <JFXTextField fx:id="txtSearch" focusColor="#1351cb" layoutX="1082.0" layoutY="24.0" onAction="#txtSearchOnAction" onMouseClicked="#txtSearchOnMouseClicked" prefHeight="45.0" prefWidth="470.0" promptText="Search by book name " unFocusColor="#727374">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </JFXTextField>
-                <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1040.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../../../../Alokagreen-Management-System-Using-Layered-Architecture/src/main/resources/assets/icon/search.png" />
-                    </image>
-                </ImageView>
                 <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1584.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../assests/icon/profile.png" />
                     </image>
                 </ImageView>
                 <JFXButton fx:id="btnProfile" focusTraversable="false" layoutX="1584.0" layoutY="25.0" onAction="#btnProfileOnAction" onMouseEntered="#btnProfileOnMouseEntered" onMouseExited="#btnProfileOnMouseExited" prefHeight="50.0" prefWidth="50.0" text=" " />
+            <Line endX="-15.0" layoutX="1613.0" layoutY="50.0" rotate="90.0" startX="-100.0" stroke="#1351cb" strokeLineCap="ROUND" strokeWidth="5.0" />
+            <Label fx:id="lblTime" alignment="TOP_RIGHT" layoutX="1442.0" layoutY="25.0" prefHeight="25.0" prefWidth="100.0" text="time" textAlignment="RIGHT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" alignment="TOP_RIGHT" layoutX="1442.0" layoutY="50.0" prefHeight="25.0" prefWidth="100.0" text="Date" textAlignment="RIGHT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="pagingPane" layoutX="251.0" layoutY="101.0" prefHeight="979.0" prefWidth="1670.0" />

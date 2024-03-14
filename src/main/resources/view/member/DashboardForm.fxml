@@ -1,5 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.DashboardFormController" />
+<AnchorPane prefHeight="980.0" prefWidth="1670.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.member.DashboardFormController">
+    <children>
+        <ImageView fitHeight="465.0" fitWidth="666.0" layoutX="901.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../assests/img/dashboard_book.png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="102.0" layoutY="261.0" prefHeight="678.0" prefWidth="640.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;">
+            <children>
+                <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="37.0" layoutY="79.0" prefHeight="581.0" prefWidth="590.0" style="-fx-border-color: white;" vbarPolicy="ALWAYS">
+                    <content>
+                        <VBox fx:id="vBoxTransaction" alignment="TOP_CENTER" prefHeight="577.0" prefWidth="570.0" spacing="5.0" style="-fx-background-color: white;" />
+                    </content>
+                </ScrollPane>
+                <Label focusTraversable="false" layoutX="198.0" layoutY="24.0" text="Transaction History">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="711.0" layoutY="342.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
+        <ImageView fitHeight="214.0" fitWidth="472.0" layoutX="921.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../assests/img/logo.png" />
+            </image>
+        </ImageView>
+        <HBox layoutX="67.0" layoutY="48.0" prefHeight="150.0" prefWidth="200.0" spacing="30.0">
+            <children>
+                <AnchorPane maxHeight="200.0" prefHeight="150.0" prefWidth="360.0" style="-fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                    <children>
+                        <Line endX="180.0" layoutX="178.0" layoutY="65.0" startX="-175.0" />
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../assests/icon/borrow_book_color.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="82.0" layoutY="23.0" text="Total Borrowed Books">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblTotBorrowBooks" layoutX="17.0" layoutY="87.0" prefHeight="35.0" prefWidth="328.0" text="0">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="200.0" prefHeight="150.0" prefWidth="360.0" style="-fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+               <children>
+                  <Line endX="180.0" layoutX="178.0" layoutY="65.0" startX="-175.0" />
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../assests/icon/book_color.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="82.0" layoutY="23.0" text="Total Returned Books">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotBooks" layoutX="17.0" layoutY="87.0" prefHeight="35.0" prefWidth="328.0" text="0">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+                <AnchorPane prefHeight="150.0" prefWidth="300.0" style="-fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                    <children>
+                        <Line endX="180.0" layoutX="178.0" layoutY="65.0" startX="-175.0" />
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../assests/icon/returned_transaction.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="82.0" layoutY="23.0" text="Total Returned Transactions">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblTotReturned" layoutX="17.0" layoutY="87.0" prefHeight="35.0" prefWidth="328.0" text="0">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="150.0" prefWidth="360.0" style="-fx-border-radius: 10; -fx-background-color: white; -fx-background-radius: 10;">
+                    <children>
+                        <Line endX="180.0" layoutX="178.0" layoutY="65.0" startX="-175.0" />
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="15.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../assests/icon/due_transations.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="82.0" layoutY="23.0" text="Total Due Transactions">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblTotDue" layoutX="17.0" layoutY="87.0" prefHeight="35.0" prefWidth="328.0" text="0">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

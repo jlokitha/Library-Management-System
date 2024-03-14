@@ -18,6 +18,11 @@
         </ImageView>
         <AnchorPane layoutX="591.0" prefHeight="650.0" prefWidth="369.0">
             <children>
+            <JFXTextField fx:id="txtFullName" focusColor="#1351cb" layoutX="46.0" layoutY="192.0" onAction="#txtFullNameOnAction" onMouseClicked="#txtFullNameOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="Full Name" unFocusColor="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
                 <Label layoutX="111.0" layoutY="49.0" text="Sign Up" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="40.0" />
@@ -58,11 +63,6 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-            <JFXTextField fx:id="txtFullName" focusColor="#1351cb" layoutX="46.0" layoutY="192.0" onAction="#txtFullNameOnAction" onMouseClicked="#txtFullNameOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="Full Name" unFocusColor="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXTextField>
             <JFXTextField fx:id="txtMobile" focusColor="#1351cb" layoutX="46.0" layoutY="262.0" onAction="#txtMobileOnAction" onMouseClicked="#txtMobileOnMouseClicked" prefHeight="35.0" prefWidth="274.0" promptText="Mobile" unFocusColor="#727374">
                <font>
                   <Font size="16.0" />

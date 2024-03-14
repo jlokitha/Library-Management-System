@@ -28,6 +28,11 @@
                         <Font name="System Bold" size="15.0" />
                     </font>
                 </Label>
+            <JFXTextField fx:id="txtFirstName" focusColor="#1351cb" layoutX="48.0" layoutY="145.0" onAction="#txtFirstNameOnAction" onMouseClicked="#txtFirstNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="First Name" unFocusColor="#727374">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
                 <JFXTextField fx:id="txtUsername" focusColor="#1351cb" layoutX="48.0" layoutY="422.0" onAction="#txtUserNameOnAction" onMouseClicked="#txtUserNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="Username" unFocusColor="#727374">
                     <font>
                         <Font size="16.0" />
@@ -88,11 +93,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtFirstName" focusColor="#1351cb" layoutX="48.0" layoutY="145.0" onAction="#txtFirstNameOnAction" onMouseClicked="#txtFirstNameOnMouseClicked" prefHeight="37.0" prefWidth="274.0" promptText="First Name" unFocusColor="#727374">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXTextField>
             <Label fx:id="lblFirstName" layoutX="48.0" layoutY="189.0" prefWidth="274.0" textFill="RED">
                <font>
                   <Font size="15.0" />

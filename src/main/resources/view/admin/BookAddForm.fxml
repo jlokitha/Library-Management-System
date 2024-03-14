@@ -12,6 +12,11 @@
 <AnchorPane prefHeight="496.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.library_management.controller.admin.BookAddFormController">
    <children>
       <Line endX="415.5" layoutX="182.0" layoutY="89.0" startX="-180.0" />
+      <JFXTextField fx:id="txtTitle" focusColor="#1351cb" layoutX="20.0" layoutY="119.0" onAction="#txtTitleOnAction" onMouseClicked="#txtTiltleOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Title" unFocusColor="#727374">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
       <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="31.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assests/icon/book.png" />
@@ -32,7 +37,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnAdd" layoutX="310.0" layoutY="415.0" onAction="#btnAddOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="270.0" style="-fx-background-color: #1351CB; -fx-background-radius: 15;" text="ADD" textFill="WHITE">
+      <JFXButton fx:id="btnAdd" layoutX="310.0" layoutY="415.0" onAction="#btnAddOnAction" onMouseEntered="#btnAddOnMouseEntered" onMouseExited="#btnAddOnMouseExited" prefHeight="60.0" prefWidth="270.0" style="-fx-background-color: #1351cb; -fx-background-radius: 15;" text="ADD" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -52,11 +57,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtTitle" focusColor="#1351cb" layoutX="20.0" layoutY="119.0" onAction="#txtTitleOnAction" onMouseClicked="#txtTiltleOnMouseClicked" prefHeight="50.0" prefWidth="560.0" promptText="Title" unFocusColor="#727374">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </JFXTextField>
       <Label fx:id="lblTitle" layoutX="20.0" layoutY="180.0" prefWidth="560.0" textFill="RED">
          <font>
             <Font size="15.0" />

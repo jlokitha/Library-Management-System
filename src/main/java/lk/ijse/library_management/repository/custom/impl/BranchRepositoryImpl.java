@@ -26,6 +26,11 @@ public class BranchRepositoryImpl implements BranchRepository {
     }
 
     @Override
+    public List<Branch> getAll() {
+        return null;
+    }
+
+    @Override
     public void update(Branch entity) {
         session.update(entity);
     }
@@ -59,5 +64,16 @@ public class BranchRepositoryImpl implements BranchRepository {
         } catch (Exception e) {
             return -1;
         }
+    }
+
+    @Override
+    public int getCount() {
+        String hql = "SELECT COUNT (b) FROM Branch b";
+
+        Query query = session.createQuery(hql);
+
+        Long count = (Long) query.uniqueResult();
+
+        return Math.toIntExact(count);
     }
 }

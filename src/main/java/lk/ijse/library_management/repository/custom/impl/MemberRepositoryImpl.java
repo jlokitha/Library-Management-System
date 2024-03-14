@@ -78,4 +78,15 @@ public class MemberRepositoryImpl implements MemberRepository {
         Integer id = query.uniqueResult();
         return (id != null) ? id : -1;
     }
+
+    @Override
+    public int getCount() {
+        String hql = "SELECT COUNT (m) FROM Member m";
+
+        Query query = session.createQuery(hql);
+
+        Long count = (Long) query.uniqueResult();
+
+        return Math.toIntExact(count);
+    }
 }
