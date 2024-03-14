@@ -20,4 +20,6 @@ public interface BranchService extends SuperService {
     void deleteBranch(int id);
 
     List<BranchDto> getAllBranchData();
+
+    int getIdFormLocation(String location);
 }

@@ -81,12 +81,14 @@ public class BookManageFormController implements Initializable {
 
         }
 
-        try {
-            BookViewFormController.id = id;
-            AdminNavigation.popupPane("BookViewForm.fxml");
-            txtSearch.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (id > 0) {
+            try {
+                BookViewFormController.id = id;
+                AdminNavigation.popupPane("BookViewForm.fxml");
+                txtSearch.clear();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

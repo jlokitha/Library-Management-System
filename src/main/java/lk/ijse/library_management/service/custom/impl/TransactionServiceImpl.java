@@ -378,4 +378,25 @@ public class TransactionServiceImpl implements TransactionService {
             session.close();
         }
     }
+
+    @Override
+    public int getMemberIdFormMobile(String mobile) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+            memberRepository.setSession(session);
+
+            int id = memberRepository.getIdFormMobile(mobile);
+
+            return id;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
 }

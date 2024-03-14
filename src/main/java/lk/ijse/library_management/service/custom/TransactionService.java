@@ -34,4 +34,6 @@ public interface TransactionService extends SuperService {
     MemberDto getMemberData(int id);
 
     List<TransactionDto> getAllTransactionDataToId(int id);
+
+    int getMemberIdFormMobile(String mobile);
 }

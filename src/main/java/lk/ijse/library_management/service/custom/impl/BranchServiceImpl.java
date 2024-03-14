@@ -195,4 +195,23 @@ public class BranchServiceImpl implements BranchService {
             session.close();
         }
     }
+
+    @Override
+    public int getIdFormLocation(String location) {
+        session = SessionFactoryConfig.getInstance().getSession();
+
+        try {
+
+            branchRepository.setSession(session);
+            int id = branchRepository.getIdFormLocation(location);
+            return id;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+
+        } finally {
+            session.close();
+        }
+    }
 }

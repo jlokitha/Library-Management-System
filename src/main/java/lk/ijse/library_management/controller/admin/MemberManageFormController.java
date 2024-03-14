@@ -42,8 +42,17 @@ public class MemberManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
+        int id = -1;
+
         try {
-            int id = memberService.getMemberIdFormMobile(txtSearch.getText());
+            id = Integer.parseInt(txtSearch.getText());
+
+        } catch (NumberFormatException e) {
+
+            id = memberService.getMemberIdFormMobile(txtSearch.getText());
+        }
+
+        try {
             MemberViewFormController.id = id;
             AdminNavigation.popupPane("MemberViewForm.fxml");
             txtSearch.clear();

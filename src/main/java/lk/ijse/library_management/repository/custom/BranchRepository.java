@@ -18,4 +18,6 @@ public interface BranchRepository extends SuperRepository {
     void delete(Branch entity);
 
     List<Branch> getAllId();
+
+    int getIdFormLocation(String location);
 }

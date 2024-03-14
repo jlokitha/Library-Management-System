@@ -70,12 +70,25 @@ public class BranchManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
+        int id = -1;
+
         try {
-            BranchViewFormController.id = Integer.parseInt(txtSearch.getText());
-            AdminNavigation.popupPane("BranchViewForm.fxml");
-            txtSearch.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            id = Integer.parseInt(txtSearch.getText());
+
+        } catch (NumberFormatException e) {
+
+            id = branchService.getIdFormLocation(txtSearch.getText());
+        }
+
+        if (id > 0) {
+            try {
+                BranchViewFormController.id = id;
+                AdminNavigation.popupPane("BranchViewForm.fxml");
+                txtSearch.clear();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

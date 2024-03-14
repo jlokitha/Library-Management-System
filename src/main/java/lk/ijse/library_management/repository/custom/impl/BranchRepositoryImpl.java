@@ -45,4 +45,19 @@ public class BranchRepositoryImpl implements BranchRepository {
 
         return list;
     }
+
+    @Override
+    public int getIdFormLocation(String location) {
+        try {
+            String hql = "SELECT b.id FROM Branch b WHERE b.location = :location";
+
+            Query query = session.createQuery(hql);
+            query.setParameter("location", location);
+
+            return (int) query.uniqueResult();
+
+        } catch (Exception e) {
+            return -1;
+        }
+    }
 }

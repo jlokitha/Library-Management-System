@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import lk.ijse.library_management.dto.TransactionDto;
@@ -48,9 +49,25 @@ public class BookBorrowManageFormController implements Initializable {
 
     @FXML
     public void txtSearchOnAction(ActionEvent actionEvent) {
-        List<TransactionDto> data = transactionService.getAllTransactionDataToId(Integer.parseInt(txtSearch.getText()));
-        getAllData(data);
-        txtSearch.clear();
+        int id = -1;
+
+        try {
+
+            id = Integer.parseInt(txtSearch.getText());
+
+        } catch (NumberFormatException e) {
+
+            id = transactionService.getMemberIdFormMobile(txtSearch.getText());
+        }
+
+        if (id > 0) {
+            List<TransactionDto> data = transactionService.getAllTransactionDataToId(id);
+            getAllData(data);
+            txtSearch.clear();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Invalid member !").show();
+            txtSearch.clear();
+        }
     }
 
     @FXML
