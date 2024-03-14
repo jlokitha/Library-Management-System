@@ -27,34 +27,6 @@ public class Regex {
         return !Pattern.matches("([A-Za-z0-9/\",\\s]{3,})", address);
     }
 
-    public static boolean houseNo(String no) {
-        return !Pattern.matches("([\\d/]+)", no);
-    }
-
-    public static boolean street(String street) {
-        return !Pattern.matches("([A-Za-z\\s]{3,})", street);
-    }
-
-    public static boolean city(String city) {
-        return !Pattern.matches("([A-Za-z\\s]{3,})", city);
-    }
-
-    public static boolean nic(String nic) {
-        return !Pattern.matches("([\\dV]{10,12})", nic);
-    }
-
-    public static boolean qty(String qty) {
-        return !Pattern.matches("([\\d.]+)", qty);
-    }
-
-    public static boolean money(String money) {
-        return !Pattern.matches("[\\d.]+", money);
-    }
-
-    public static boolean employee(String id) {
-        return !Pattern.matches("(E-0\\d+)", id);
-    }
-
     public static boolean userName(String user) {
         return !Pattern.matches("[A-Za-z]+", user);
     }

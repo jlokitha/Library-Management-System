@@ -49,6 +49,7 @@ public class SignInFormController {
     void btnLogInOnAction(ActionEvent event) {
 
         if (validateSignIn()) {
+
             String username = txtUsername.getText();
             String password = txtPassword.getText();
 
@@ -121,22 +122,34 @@ public class SignInFormController {
 
     @FXML
     void txtPasswordOnAction(ActionEvent event) {
+        String password = txtPassword.getText();
 
+        if ( Regex.password(password) ) {
+            lblPassword.setText("Please enter a password");
+        } else {
+            btnLogInOnAction(event);
+        }
     }
 
     @FXML
     void txtPasswordOnMouseClicked(MouseEvent event) {
-
+        lblPassword.setText("");
     }
 
     @FXML
     void txtUserNameOnAction(ActionEvent event) {
+        String userName = txtUsername.getText();
 
+        if (Regex.userName(userName)) {
+            lblUserName.setText("Invalid Username");
+        } else {
+            txtPassword.requestFocus();
+        }
     }
 
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
-
+        lblUserName.setText("");
     }
 
     public boolean validateSignIn() {

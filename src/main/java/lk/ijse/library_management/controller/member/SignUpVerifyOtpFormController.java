@@ -10,6 +10,7 @@ import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.MemberSignUpService;
 import lk.ijse.library_management.service.custom.impl.MemberSignUpServiceImpl;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
 
 import java.io.IOException;
@@ -59,21 +60,23 @@ public class SignUpVerifyOtpFormController {
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
 
-        if (txtOtp.getText().equals(otp)) {
-            boolean isSaved = memberSignUpService.saveMember(dto);
+        if (validate()) {
+            if (txtOtp.getText().equals(otp)) {
+                boolean isSaved = memberSignUpService.saveMember(dto);
 
-            if (isSaved) {
-                try {
-                    MemberGlobalFormController.username = dto.getUsername();
-                    MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
-                    dto = null;
-                    otp = null;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (isSaved) {
+                    try {
+                        MemberGlobalFormController.username = dto.getUsername();
+                        MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
+                        dto = null;
+                        otp = null;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            } else {
+                lblOtp.setText("Please enter valid OTP !");
             }
-        } else {
-            lblOtp.setText("Please enter valid OTP !");
         }
     }
 
@@ -89,12 +92,28 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void txtOtpOnAction(ActionEvent event) {
+        String otp = txtOtp.getText();
 
+        if (Regex.otp(otp)) {
+            lblOtp.setText("Invalid OTP");
+        } else {
+            btnVerifyOnAction(event);
+        }
     }
 
     @FXML
     void txtOtpOnMouseClicked(MouseEvent event) {
-
+        lblOtp.setText("");
     }
 
+    public boolean validate() {
+        String otp = txtOtp.getText();
+
+        if (Regex.otp(otp)) {
+            lblOtp.setText("Invalid OTP");
+            return false;
+        }
+
+        return true;
+    }
 }

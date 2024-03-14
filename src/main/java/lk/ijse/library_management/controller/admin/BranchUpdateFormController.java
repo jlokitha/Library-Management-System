@@ -106,42 +106,66 @@ public class BranchUpdateFormController implements Initializable {
 
     @FXML
     void txtAddressOnAction(ActionEvent event) {
+        String location = txtBranchLocation.getText();
 
+        if (Regex.address(location)) {
+            lblAddress.setText("Should contain at least 3 letters");
+        } else {
+            btnUpdateOnAction(event);
+        }
     }
 
     @FXML
     void txtAddressOnMouseClicked(MouseEvent event) {
-
+        lblAddress.setText("");
     }
 
     @FXML
     void txtEmailOnAction(ActionEvent event) {
+        String email = txtBranchEmail.getText();
 
+        if (Regex.email(email)) {
+            lblEmail.setText("Please enter valid email");
+        } else {
+            txtBranchLocation.requestFocus();
+        }
     }
 
     @FXML
     void txtEmailOnMouseClicked(MouseEvent event) {
-
+        lblEmail.setText("");
     }
 
     @FXML
     void txtMobileOnAction(ActionEvent event) {
+        String mobile = txtBranchMobile.getText();
 
+        if (Regex.mobile(mobile)) {
+            lblMobile.setText("Please enter valid mobile number");
+        } else {
+            txtBranchEmail.requestFocus();
+        }
     }
 
     @FXML
     void txtMobileOnMouseClicked(MouseEvent event) {
-
+        lblMobile.setText("");
     }
 
     @FXML
-    void txtNameOnAction(ActionEvent event) {
+    public void txtNameOnAction(ActionEvent actionEvent) {
+        String name = txtBranchName.getText();
 
+        if (Regex.fullName(name)) {
+            lblName.setText("Should contain at least 3 letters");
+        } else {
+            txtBranchMobile.requestFocus();
+        }
     }
 
     @FXML
-    void txtNameOnMouseClicked(MouseEvent event) {
-
+    public void txtNameOnMouseClicked(MouseEvent mouseEvent) {
+        lblName.setText("");
     }
 
     public boolean validate() {
@@ -149,13 +173,6 @@ public class BranchUpdateFormController implements Initializable {
 
         if (Regex.fullName(name)) {
             lblName.setText("Should contain at least 3 letters");
-            return false;
-        }
-
-        String location = txtBranchLocation.getText();
-
-        if (Regex.address(location)) {
-            lblAddress.setText("Should contain at least 3 letters");
             return false;
         }
 
@@ -170,6 +187,13 @@ public class BranchUpdateFormController implements Initializable {
 
         if (Regex.email(email)) {
             lblEmail.setText("Please enter valid email");
+            return false;
+        }
+
+        String location = txtBranchLocation.getText();
+
+        if (Regex.address(location)) {
+            lblAddress.setText("Should contain at least 3 letters");
             return false;
         }
 

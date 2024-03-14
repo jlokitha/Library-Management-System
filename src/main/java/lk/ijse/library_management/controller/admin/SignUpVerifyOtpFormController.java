@@ -10,6 +10,7 @@ import lk.ijse.library_management.dto.AdminDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.AdminSignUpService;
 import lk.ijse.library_management.service.custom.impl.AdminSignUpServiceImpl;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -59,22 +60,24 @@ public class SignUpVerifyOtpFormController {
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
 
-        if (txtOtp.getText().equals(otp)) {
+        if (validate()) {
+            if (txtOtp.getText().equals(otp)) {
 
-            boolean isSaved = signUpService.saveAdmin(dto);
+                boolean isSaved = signUpService.saveAdmin(dto);
 
-            if (isSaved) {
-                try {
-                    AdminGlobalFormController.username = dto.getUsername();
-                    AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
-                    dto = null;
-                    otp = null;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (isSaved) {
+                    try {
+                        AdminGlobalFormController.username = dto.getUsername();
+                        AdminNavigation.switchNavigation("AdminGlobalForm.fxml", event);
+                        dto = null;
+                        otp = null;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+            } else {
+                lblOtp.setText("Please enter valid OTP !");
             }
-        } else {
-            lblOtp.setText("Please enter valid OTP !");
         }
     }
 
@@ -90,7 +93,13 @@ public class SignUpVerifyOtpFormController {
 
     @FXML
     void txtOtpOnAction(ActionEvent event) {
-        btnVerifyOnAction(event);
+        String userName = txtOtp.getText();
+
+        if (Regex.userName(userName)) {
+            lblOtp.setText("Invalid OTP");
+        } else {
+            btnVerifyOnAction(event);
+        }
     }
 
     @FXML
@@ -98,4 +107,14 @@ public class SignUpVerifyOtpFormController {
         lblOtp.setText("");
     }
 
+    public boolean validate() {
+        String otp = txtOtp.getText();
+
+        if (Regex.otp(otp)) {
+            lblOtp.setText("Invalid OTP");
+            return false;
+        }
+
+        return true;
+    }
 }

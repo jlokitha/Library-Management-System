@@ -69,7 +69,7 @@ public class SignUpFormController {
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
 
-        if (true) {
+        if (validate()) {
             String otp = OTPGenerator.generateOTP();
 
             AdminDto adminDto = new AdminDto();
@@ -125,47 +125,77 @@ public class SignUpFormController {
 
     @FXML
     void txtEmailOnAction(ActionEvent event) {
+        String email = txtEmail.getText();
 
+        if (Regex.email(email)) {
+            lblEmail.setText("Please enter valid email");
+        } else {
+            txtUsername.requestFocus();
+        }
     }
 
     @FXML
     void txtEmailOnMouseClicked(MouseEvent event) {
-
+        lblUsername.setText("");
     }
 
     @FXML
     void txtFirstNameOnAction(ActionEvent event) {
+        String firstName = txtFirstName.getText();
 
+        if (Regex.name(firstName)) {
+            lblFirstName.setText("Should contain at least 3 letters");
+        } else {
+            txtLastName.requestFocus();
+        }
     }
 
     @FXML
     void txtFirstNameOnMouseClicked(MouseEvent event) {
-
+        lblFirstName.setText("");
     }
 
     @FXML
     void txtLastNameOnAction(ActionEvent event) {
+        String lastName = txtLastName.getText();
 
+        if (Regex.name(lastName)) {
+            lblLastName.setText("Should contain at least 3 letters");
+        } else {
+            txtMobile.requestFocus();
+        }
     }
 
     @FXML
     void txtLastNameOnMouseClicked(MouseEvent event) {
-
+        lblLastName.setText("");
     }
 
     @FXML
     void txtMobileOnAction(ActionEvent event) {
+        String mobile = txtMobile.getText();
 
+        if (Regex.mobile(mobile)) {
+            lblMobile.setText("Please enter valid mobile number");
+        } else {
+            txtEmail.requestFocus();
+        }
     }
 
     @FXML
     void txtMobileOnMouseClicked(MouseEvent event) {
-
+        lblMobile.setText("");
     }
 
     @FXML
     void txtPasswordOnAction(ActionEvent event) {
+        String password = txtPassword.getText();
 
+        if ( Regex.password(password) ) {
+            lblPassword.setText("Password should contain at least 6 characters");
+        } else {
+            btnSignUpOnAction(event);
+        }
     }
 
     @FXML
@@ -175,15 +205,21 @@ public class SignUpFormController {
 
     @FXML
     void txtUserNameOnAction(ActionEvent event) {
+        String userName = txtUsername.getText();
 
+        if (Regex.userName(userName)) {
+            lblUsername.setText("Please enter a username");
+        } else {
+            txtPassword.requestFocus();
+        }
     }
 
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
-
+        lblUsername.setText("");
     }
 
-    public boolean validateSignUp() {
+    public boolean validate() {
         String firstName = txtFirstName.getText();
 
         if (Regex.name(firstName)) {

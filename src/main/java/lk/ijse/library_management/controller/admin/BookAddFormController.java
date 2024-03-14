@@ -95,38 +95,56 @@ public class BookAddFormController {
 
     @FXML
     void txtAuthorOnAction(ActionEvent event) {
+        String name = txtAuthor.getText();
 
+        if (Regex.fullName(name)) {
+            lblAuthor.setText("Should contain at least 3 letters");
+        } else {
+            txtGenre.requestFocus();
+        }
     }
 
     @FXML
     void txtAuthorOnMouseClicked(MouseEvent event) {
-
+        lblAuthor.setText("");
     }
 
     @FXML
     void txtGenreOnAction(ActionEvent event) {
+        String genre = txtGenre.getText();
 
+        if (Regex.genre(genre)) {
+            lblGenre.setText("Please enter valid mobile number");
+        } else {
+            btnAddOnAction(event);
+        }
     }
 
     @FXML
     void txtGenreOnMouseClicked(MouseEvent event) {
-
+        lblGenre.setText("");
     }
 
     @FXML
     void txtTiltleOnMouseClicked(MouseEvent event) {
-
+        lblTitle.setText("");
     }
 
     @FXML
     void txtTitleOnAction(ActionEvent event) {
+        String title = txtTitle.getText();
 
+        if (Regex.title(title)) {
+            lblTitle.setText("Should contain at least 3 letters");
+        } else {
+            txtAuthor.requestFocus();
+        }
     }
 
     public boolean validate() {
         String title = txtTitle.getText();
 
-        if (Regex.fullName(title)) {
+        if (Regex.title(title)) {
             lblTitle.setText("Should contain at least 3 letters");
             return false;
         }

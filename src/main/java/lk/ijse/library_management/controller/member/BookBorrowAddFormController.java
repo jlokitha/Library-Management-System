@@ -18,6 +18,7 @@ import lk.ijse.library_management.dto.TransactionDto;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.TransactionService;
 import lk.ijse.library_management.service.custom.impl.TransactionServiceImpl;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.MemberNavigation;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
@@ -87,7 +88,7 @@ public class BookBorrowAddFormController implements Initializable {
     @FXML
     void btnAddBookOnAction(ActionEvent event) {
 
-        if (true) {
+        if (validate()) {
             BookDto dto = transactionService.getBookDataFromTitle(txtBookTitle.getText());
 
             if (dto != null) {
@@ -226,6 +227,17 @@ public class BookBorrowAddFormController implements Initializable {
         }
 
         return flag;
+    }
+
+    public boolean validate() {
+        String title = txtBookTitle.getText();
+
+        if (Regex.title(title)) {
+            lblTitle.setText("Should contain at least 3 letters");
+            return false;
+        }
+
+        return true;
     }
 
     @Override

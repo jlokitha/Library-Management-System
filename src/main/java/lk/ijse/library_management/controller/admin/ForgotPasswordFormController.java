@@ -11,6 +11,7 @@ import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.AdminSignInService;
 import lk.ijse.library_management.service.custom.impl.AdminSignInServiceImpl;
 import lk.ijse.library_management.util.OTPGenerator;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -68,34 +69,53 @@ public class ForgotPasswordFormController {
     @FXML
     void btnRequesOtpOnAction(ActionEvent event) {
 
-        int id = adminSignInService.getIdFormUsername(txtUsername.getText());
+        if (validate()) {
+            int id = adminSignInService.getIdFormUsername(txtUsername.getText());
 
-        if (id > 0) {
-            AdminDto dto = adminSignInService.getAdminData(id);
+            if (id > 0) {
+                AdminDto dto = adminSignInService.getAdminData(id);
 
-            String otp = OTPGenerator.generateOTP();
+                String otp = OTPGenerator.generateOTP();
 
-            SignInVerifyOtpFormController.otp = otp;
-            SignInVerifyOtpFormController.dto = dto;
+                SignInVerifyOtpFormController.otp = otp;
+                SignInVerifyOtpFormController.dto = dto;
 
-            adminSignInService.sendEmail(dto.getEmail(), subject , "ForgotPasswordEmail.html", otp);
+                adminSignInService.sendEmail(dto.getEmail(), subject , "ForgotPasswordEmail.html", otp);
 
-            try {
-                AdminNavigation.switchLoginPage("SignInVerifyOtpForm.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    AdminNavigation.switchLoginPage("SignInVerifyOtpForm.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     @FXML
     void txtUserNameOnAction(ActionEvent event) {
+        String userName = txtUsername.getText();
 
+        if (Regex.userName(userName)) {
+            lblUserName.setText("Invalid Username");
+        } else {
+            btnRequesOtpOnAction(event);
+        }
     }
 
     @FXML
     void txtUserNameOnMouseClicked(MouseEvent event) {
+        lblUserName.setText("");
+    }
 
+    public boolean validate() {
+        String userName = txtUsername.getText();
+
+        if (Regex.userName(userName)) {
+            lblUserName.setText("Invalid Username");
+            return false;
+        }
+
+        return true;
     }
 
 }

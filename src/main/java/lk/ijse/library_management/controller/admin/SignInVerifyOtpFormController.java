@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.AdminDto;
+import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
@@ -53,14 +54,16 @@ public class SignInVerifyOtpFormController {
     @FXML
     void btnVerifyOnAction(ActionEvent event) {
 
-        if (txtOtp.getText().equals(otp)) {
-            try {
-                ResetPasswordFormController.dto = dto;
-                AdminNavigation.switchLoginPage("ResetPasswordForm.fxml");
-                dto = null;
-                otp= null;
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (validate()) {
+            if (txtOtp.getText().equals(otp)) {
+                try {
+                    ResetPasswordFormController.dto = dto;
+                    AdminNavigation.switchLoginPage("ResetPasswordForm.fxml");
+                    dto = null;
+                    otp= null;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -77,12 +80,29 @@ public class SignInVerifyOtpFormController {
 
     @FXML
     void txtOtpOnAction(ActionEvent event) {
+        String userName = txtOtp.getText();
 
+        if (Regex.userName(userName)) {
+            lblOtp.setText("Invalid OTP");
+        } else {
+            btnVerifyOnAction(event);
+        }
     }
 
     @FXML
     void txtOtpOnMouseClicked(MouseEvent event) {
+        lblOtp.setText("");
+    }
 
+    public boolean validate() {
+        String otp = txtOtp.getText();
+
+        if (Regex.otp(otp)) {
+            lblOtp.setText("Invalid OTP");
+            return false;
+        }
+
+        return true;
     }
 
 }

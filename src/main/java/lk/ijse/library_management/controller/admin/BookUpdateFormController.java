@@ -94,36 +94,6 @@ public class BookUpdateFormController implements Initializable {
 
     }
 
-    @FXML
-    void txtAuthorOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtAuthorOnMouseClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void txtGenreOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtGenreOnMouseClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void txtTiltleOnMouseClicked(MouseEvent event) {
-
-    }
-
-    @FXML
-    void txtTitleOnAction(ActionEvent event) {
-
-    }
-
     public void setData() {
         BookDto dto = bookService.getBookData(id);
 
@@ -134,10 +104,58 @@ public class BookUpdateFormController implements Initializable {
         this.dto = dto;
     }
 
+    @FXML
+    void txtAuthorOnAction(ActionEvent event) {
+        String name = txtAuthor.getText();
+
+        if (Regex.fullName(name)) {
+            lblAuthor.setText("Should contain at least 3 letters");
+        } else {
+            txtGenre.requestFocus();
+        }
+    }
+
+    @FXML
+    void txtAuthorOnMouseClicked(MouseEvent event) {
+        lblAuthor.setText("");
+    }
+
+    @FXML
+    void txtGenreOnAction(ActionEvent event) {
+        String genre = txtGenre.getText();
+
+        if (Regex.genre(genre)) {
+            lblGenre.setText("Please enter valid mobile number");
+        } else {
+            btnUpdateOnAction(event);
+        }
+    }
+
+    @FXML
+    void txtGenreOnMouseClicked(MouseEvent event) {
+        lblGenre.setText("");
+    }
+
+    @FXML
+    void txtTiltleOnMouseClicked(MouseEvent event) {
+        lblTitle.setText("");
+    }
+
+    @FXML
+    void txtTitleOnAction(ActionEvent event) {
+        String title = txtTitle.getText();
+
+        if (Regex.title(title)) {
+            lblTitle.setText("Should contain at least 3 letters");
+        } else {
+            txtAuthor.requestFocus();
+        }
+    }
+
     public boolean validate() {
         String title = txtTitle.getText();
 
-        if (Regex.fullName(title)) {
+        if (Regex.title(title)) {
             lblTitle.setText("Should contain at least 3 letters");
             return false;
         }
@@ -158,7 +176,6 @@ public class BookUpdateFormController implements Initializable {
 
         return true;
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setData();
