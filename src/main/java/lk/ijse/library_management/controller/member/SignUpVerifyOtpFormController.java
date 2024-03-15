@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.library_management.dto.MemberDto;
@@ -62,17 +63,23 @@ public class SignUpVerifyOtpFormController {
 
         if (validate()) {
             if (txtOtp.getText().equals(otp)) {
-                boolean isSaved = memberSignUpService.saveMember(dto);
+                try {
 
-                if (isSaved) {
-                    try {
-                        MemberGlobalFormController.username = dto.getUsername();
-                        MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
-                        dto = null;
-                        otp = null;
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    boolean isSaved = memberSignUpService.saveMember(dto);
+
+                    if (isSaved) {
+                        try {
+                            MemberGlobalFormController.username = dto.getUsername();
+                            MemberNavigation.switchNavigation("MemberGlobalForm.fxml", event);
+                            dto = null;
+                            otp = null;
+                        } catch (IOException e) {
+                            new Alert( Alert.AlertType.ERROR, e.getMessage() ).show();
+                        }
                     }
+
+                } catch (Exception e) {
+                    new Alert( Alert.AlertType.ERROR, e.getMessage() ).show();
                 }
             } else {
                 lblOtp.setText("Please enter valid OTP !");

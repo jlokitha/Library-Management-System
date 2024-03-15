@@ -34,7 +34,7 @@ public class SendEmail {
 
         newSession = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("bookwormlibraryofficial@gmail.com", "wwtb trbd rykx ljnc");
+                return new PasswordAuthentication("bookwormlibraryofficial@gmail.com", "");
             }
         });
     }
@@ -80,7 +80,7 @@ public class SendEmail {
     public void sendEmail() throws MessagingException {
         String host = "smtp.gmail.com";
         String userName = "bookwormlibraryofficial@gmail.com";
-        String password = "wwtb trbd rykx ljnc";
+        String password = "";
 
         Transport transport = newSession.getTransport("smtp");
         transport.connect(host, userName, password);

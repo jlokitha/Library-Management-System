@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.mail.MessagingException;
+import java.sql.SQLException;
 
 public class MemberSignUpServiceImpl implements MemberSignUpService {
 
@@ -20,7 +21,7 @@ public class MemberSignUpServiceImpl implements MemberSignUpService {
             (MemberRepositoryImpl) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.MEMBER);
 
     @Override
-    public boolean saveMember(MemberDto memberDto) {
+    public boolean saveMember(MemberDto memberDto) throws SQLException {
         session = SessionFactoryConfig.getInstance().getSession();
 
         Transaction transaction = session.beginTransaction();
@@ -35,8 +36,7 @@ public class MemberSignUpServiceImpl implements MemberSignUpService {
         } catch (Exception e) {
 
             transaction.rollback();
-            e.printStackTrace();
-            return false;
+            throw e;
 
         } finally {
             session.close();

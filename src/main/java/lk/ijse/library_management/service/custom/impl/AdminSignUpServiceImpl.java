@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.mail.MessagingException;
+import java.sql.SQLException;
 
 public class AdminSignUpServiceImpl implements AdminSignUpService {
 
@@ -31,7 +32,7 @@ public class AdminSignUpServiceImpl implements AdminSignUpService {
     }
 
     @Override
-    public boolean saveAdmin(AdminDto adminDto) {
+    public boolean saveAdmin(AdminDto adminDto) throws SQLException {
         session = SessionFactoryConfig.getInstance().getSession();
 
         Transaction transaction = session.beginTransaction();
@@ -46,8 +47,7 @@ public class AdminSignUpServiceImpl implements AdminSignUpService {
         } catch (Exception e) {
 
             transaction.rollback();
-            e.printStackTrace();
-            return false;
+            throw e;
 
         } finally {
             session.close();
