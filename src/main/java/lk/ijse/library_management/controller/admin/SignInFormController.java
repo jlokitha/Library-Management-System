@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,8 +18,19 @@ import lk.ijse.library_management.util.Regex;
 import lk.ijse.library_management.util.navigation.AdminNavigation;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SignInFormController {
+
+    @FXML
+    public JFXTextField txtPasswordVisible;
+
+    @FXML
+    public JFXButton btnView;
+
+    @FXML
+    public ImageView imgEye;
 
     @FXML
     private JFXTextField txtUsername;
@@ -41,6 +54,8 @@ public class SignInFormController {
     private Pane paneShutDown;
 
     public static Stage stage;
+
+    private boolean view = true;
 
     private final AdminSignInService signInService =
             (AdminSignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.SIGNIN);
@@ -174,4 +189,18 @@ public class SignInFormController {
         return true;
     }
 
+    @FXML
+    public void btnViewOnAction(ActionEvent actionEvent) {
+        if (view) {
+            txtPasswordVisible.setText(txtPassword.getText());
+            txtPassword.setVisible( false );
+            txtPasswordVisible.setVisible( true );
+            view = false;
+        } else {
+            txtPassword.setText(txtPasswordVisible.getText());
+            txtPasswordVisible.setVisible( false );
+            txtPassword.setVisible( true );
+            view = true;
+        }
+    }
 }

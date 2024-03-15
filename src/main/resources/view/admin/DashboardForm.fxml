@@ -33,7 +33,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="710.0" layoutY="342.0" prefHeight="578.0" prefWidth="21.0" style="-fx-background-color: white;" />
+      <AnchorPane layoutX="711.0" layoutY="341.0" prefHeight="578.0" prefWidth="21.0" style="-fx-background-color: white;" />
       <ImageView fitHeight="214.0" fitWidth="472.0" layoutX="921.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assests/img/logo.png" />
@@ -147,6 +147,6 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="124.0" layoutY="339.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
+      <AnchorPane layoutX="123.0" layoutY="339.0" prefHeight="578.0" prefWidth="18.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

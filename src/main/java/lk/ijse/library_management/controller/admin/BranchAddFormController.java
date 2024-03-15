@@ -61,7 +61,7 @@ public class BranchAddFormController {
                     txtBranchEmail.getText(),
                     null,
                     null,
-                    branchService.getAdminData(id).toEntity()
+                    branchService.getAdminData(id)
             ) );
 
             if (isSaved) {

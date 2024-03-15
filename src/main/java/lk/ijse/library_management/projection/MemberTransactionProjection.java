@@ -9,7 +9,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TransactionProjection {
+public class MemberTransactionProjection {
 
     private int id;
 
@@ -18,6 +18,4 @@ public class TransactionProjection {
     private Date dueDate;
 
     private Date addedDate;
-
-    private String status;
 }

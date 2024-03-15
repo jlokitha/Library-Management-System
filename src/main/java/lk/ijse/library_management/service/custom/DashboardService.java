@@ -1,7 +1,8 @@
 package lk.ijse.library_management.service.custom;
 
 import lk.ijse.library_management.dto.MemberDto;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
+import lk.ijse.library_management.projection.MemberTransactionProjection;
 import lk.ijse.library_management.service.SuperService;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface DashboardService extends SuperService {
 
     int getBranchCount();
 
-    List<TransactionProjection> getAllTransactions();
+    List<AdminTransactionProjection> getAllTransactions();
 
     int getMemberIdFormMobile(String mobile);
 
@@ -29,7 +30,7 @@ public interface DashboardService extends SuperService {
 
     int getMemberDueCount(MemberDto dto);
 
-    List<TransactionProjection> getAllTransactionsOfMember(MemberDto dto);
+    List<MemberTransactionProjection> getAllTransactionsOfMember(MemberDto dto);
 
     int getMemberBorrowBookCount(MemberDto dto);
 }

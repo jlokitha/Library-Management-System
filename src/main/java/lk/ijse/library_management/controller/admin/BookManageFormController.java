@@ -85,12 +85,12 @@ public class BookManageFormController implements Initializable {
             try {
                 BookViewFormController.id = id;
                 AdminNavigation.popupPane("BookViewForm.fxml");
-                txtSearch.clear();
             } catch (IOException e) {
                 AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
                 AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
             }
         }
+        txtSearch.clear();
     }
 
     @FXML

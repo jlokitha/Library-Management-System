@@ -87,12 +87,16 @@ public class BookRepositoryImpl implements BookRepository {
         Query query = session.createQuery(hql);
         query.setParameter("title", title);
 
-        return (int) query.uniqueResult();
+        Object id = query.uniqueResult();
+
+        if (id == null) return -1;
+
+        return (int) id;
     }
 
     @Override
     public int getCount() {
-        String hql = "SELECT COUNT (b) FROM Book b";
+        String hql = "SELECT COUNT (b) FROM Book b WHERE b.availability = 'Available' OR b.availability = 'Not Available'";
 
         Query query = session.createQuery(hql);
 

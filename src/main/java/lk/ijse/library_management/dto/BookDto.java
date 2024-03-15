@@ -27,7 +27,7 @@ public class BookDto {
 
     private Timestamp updatedDate;
 
-    private Admin admin;
+    private AdminDto admin;
 
     public Book toEntity() {
         return new Book(
@@ -38,7 +38,7 @@ public class BookDto {
                 availability,
                 addedDate,
                 updatedDate,
-                admin,
+                admin.toEntity(),
                 new ArrayList<>()
         );
     }

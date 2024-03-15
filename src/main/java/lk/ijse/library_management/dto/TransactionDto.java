@@ -27,7 +27,7 @@ public class TransactionDto {
 
     private Timestamp addedDate;
 
-    private Member member;
+    private MemberDto member;
 
     public Transaction toEntity() {
         return new Transaction(
@@ -36,7 +36,7 @@ public class TransactionDto {
                 dueDate,
                 status,
                 addedDate,
-                member,
+                member.toEntity(),
                 new ArrayList<>()
         );
     }

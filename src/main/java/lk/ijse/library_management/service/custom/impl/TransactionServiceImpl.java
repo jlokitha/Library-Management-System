@@ -83,8 +83,8 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public boolean saveTransaction(TransactionDto dto, MemberDto member, List<BookDto> books) {
+        dto.setMember(member);
         Transaction entity = dto.toEntity();
-        entity.setMember(member.toEntity());
 
         session = SessionFactoryConfig.getInstance().getSession();
         org.hibernate.Transaction transaction = session.beginTransaction();

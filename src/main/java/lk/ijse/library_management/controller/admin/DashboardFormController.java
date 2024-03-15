@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.DashboardService;
 import lk.ijse.library_management.service.custom.impl.DashboardServiceImpl;
@@ -61,18 +61,19 @@ public class DashboardFormController implements Initializable {
     }
 
     public void loadTransactionData() {
-        List<TransactionProjection> list = adminDashboardService.getAllTransactions();
+        List<AdminTransactionProjection> list = adminDashboardService.getAllTransactions();
 
         if (list != null) {
             vBoxTransaction.getChildren().clear();
 
-            for (TransactionProjection dto : list) {
-                loadDataTable(dto);
+            for (AdminTransactionProjection dto : list) {
+
+                loadDataTable( dto );
             }
         }
     }
 
-    private void loadDataTable(TransactionProjection dto) {
+    private void loadDataTable(AdminTransactionProjection dto) {
         try {
             FXMLLoader loader = new FXMLLoader(DashboardFormController.class.getResource("/view/admin/TransactionShortcutRowForm.fxml"));
             Parent root = loader.load();
@@ -90,9 +91,12 @@ public class DashboardFormController implements Initializable {
         try {
             id = Integer.parseInt(txtMemberId.getText());
 
-        } catch (NumberFormatException e) {
+            if (txtMemberId.getText().startsWith("07")) {
 
-            id = adminDashboardService.getMemberIdFormMobile(txtMemberId.getText());
+                id = adminDashboardService.getMemberIdFormMobile(txtMemberId.getText());
+            }
+        } catch (Exception e) {
+
         }
 
         if (id > 0) {

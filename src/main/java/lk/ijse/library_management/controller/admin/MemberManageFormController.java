@@ -45,19 +45,23 @@ public class MemberManageFormController implements Initializable {
         int id = -1;
 
         try {
-            id = Integer.parseInt(txtSearch.getText());
+            id = Integer.parseInt( txtSearch.getText() );
 
-        } catch (NumberFormatException e) {
+            if (txtSearch.getText().startsWith( "07" )) {
 
-            id = memberService.getMemberIdFormMobile(txtSearch.getText());
+                id = memberService.getMemberIdFormMobile( txtSearch.getText() );
+            }
+        } catch (Exception e) {
+
         }
 
         if (id > 0) {
             try {
                 MemberViewFormController.id = id;
-                AdminNavigation.popupPane("MemberViewForm.fxml");
+                AdminNavigation.popupPane( "MemberViewForm.fxml" );
             } catch (IOException e) {
-                e.printStackTrace();
+                AdminGlobalFormController.getInstance().popUpPane.setVisible( false );
+                AdminGlobalFormController.getInstance().imgGreyBack.setVisible( false );
             }
         }
 

@@ -7,7 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import lk.ijse.library_management.dto.MemberDto;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
+import lk.ijse.library_management.projection.MemberTransactionProjection;
 import lk.ijse.library_management.service.ServiceFactory;
 import lk.ijse.library_management.service.custom.DashboardService;
 import lk.ijse.library_management.service.custom.impl.DashboardServiceImpl;
@@ -55,18 +56,18 @@ public class DashboardFormController implements Initializable {
     }
 
     public void loadTransactionData(MemberDto dto) {
-        List<TransactionProjection> list = dashboardService.getAllTransactionsOfMember(dto);
+        List<MemberTransactionProjection> list = dashboardService.getAllTransactionsOfMember(dto);
 
         if (list != null) {
             vBoxTransaction.getChildren().clear();
 
-            for (TransactionProjection projection : list) {
+            for (MemberTransactionProjection projection : list) {
                 loadDataTable(projection);
             }
         }
     }
 
-    private void loadDataTable(TransactionProjection dto) {
+    private void loadDataTable(MemberTransactionProjection dto) {
         try {
             FXMLLoader loader = new FXMLLoader(lk.ijse.library_management.controller.member.DashboardFormController.class.getResource("/view/member/TransactionShortcutRowForm.fxml"));
             Parent root = loader.load();

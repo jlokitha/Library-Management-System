@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -20,6 +21,14 @@
         </ImageView>
         <AnchorPane layoutX="591.0" layoutY="67.0" prefHeight="495.0" prefWidth="369.0">
             <children>
+            <ImageView fx:id="imgEye" fitHeight="25.0" fitWidth="25.0" layoutX="288.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assests/icon/eye_open.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
                 <Label layoutX="106.0" layoutY="28.0" text="Sign In" textFill="#1351cb">
                     <font>
                         <Font name="System Bold" size="40.0" />
@@ -60,6 +69,12 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
+            <JFXTextField fx:id="txtPasswordVisible" focusColor="#1351cb" focusTraversable="false" layoutX="39.0" layoutY="276.0" prefHeight="37.0" prefWidth="274.0" promptText="Password" unFocusColor="#727374" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnView" focusTraversable="false" layoutX="285.0" layoutY="282.0" onAction="#btnViewOnAction" prefHeight="30.0" prefWidth="30.0" text=" " />
             </children>
         </AnchorPane>
         <JFXButton fx:id="btnSignUp" layoutX="20.0" layoutY="11.0" onAction="#btnSignUpOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: WHITE; -fx-border-radius: 10; -fx-border-width: 3;" text="Sign Up" textFill="WHITE">

@@ -29,7 +29,7 @@ public class BranchDto {
 
     private Timestamp updatedDate;
 
-    private Admin admin;
+    private AdminDto admin;
 
     public Branch toEntity() {
         return new Branch(
@@ -40,7 +40,7 @@ public class BranchDto {
                 email,
                 createdDate,
                 updatedDate,
-                admin
+                admin.toEntity()
         );
     }
 }

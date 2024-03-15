@@ -3,12 +3,13 @@ package lk.ijse.library_management.repository.custom.impl;
 import lk.ijse.library_management.entity.Member;
 import lk.ijse.library_management.entity.Transaction;
 import lk.ijse.library_management.entity.TransactionDetails;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
+import lk.ijse.library_management.projection.MemberTransactionProjection;
 import lk.ijse.library_management.repository.custom.TransactionRepository;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 public class TransactionRepositoryImpl implements TransactionRepository {
@@ -87,14 +88,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     }
 
     @Override
-    public List<TransactionProjection> getAllTransactionProjection() {
+    public List<AdminTransactionProjection> getAllTransactionProjection() {
+
         String hql = "SELECT " +
-                "new lk.ijse.library_management.projection.TransactionProjection(t.id, t.qty, t.dueDate, t.addedDate, t.status) " +
-                "FROM Transaction AS t";
+                "new lk.ijse.library_management.projection.AdminTransactionProjection(t.id, t.qty, t.dueDate, t.addedDate, t.member.id) " +
+                "FROM Transaction t WHERE t.dueDate < CURRENT_DATE ";
 
         Query query = session.createQuery(hql);
 
-        List<TransactionProjection> list = query.list();
+        List<AdminTransactionProjection> list = query.list();
 
         return list;
     }
@@ -136,15 +138,15 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     }
 
     @Override
-    public List<TransactionProjection> getAllTransactionProjectionOfMember(Member entity) {
+    public List<MemberTransactionProjection> getAllTransactionProjectionOfMember(Member entity) {
         String hql = "SELECT " +
-                "new lk.ijse.library_management.projection.TransactionProjection(t.id, t.qty, t.dueDate, t.addedDate, t.status) " +
-                "FROM Transaction AS t WHERE t.member = :member";
+                "new lk.ijse.library_management.projection.MemberTransactionProjection(t.id, t.qty, t.dueDate, t.addedDate) " +
+                "FROM Transaction AS t WHERE t.member = :member AND t.status = 'Due' OR t.status = 'Overdue'";
 
         Query query = session.createQuery(hql);
         query.setParameter("member", entity);
 
-        List<TransactionProjection> list = query.list();
+        List<MemberTransactionProjection> list = query.list();
 
         return list;
     }

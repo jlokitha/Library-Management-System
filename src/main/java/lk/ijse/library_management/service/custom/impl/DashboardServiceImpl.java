@@ -2,7 +2,8 @@ package lk.ijse.library_management.service.custom.impl;
 
 import lk.ijse.library_management.dto.MemberDto;
 import lk.ijse.library_management.entity.Member;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
+import lk.ijse.library_management.projection.MemberTransactionProjection;
 import lk.ijse.library_management.repository.RepositoryFactory;
 import lk.ijse.library_management.repository.custom.BookRepository;
 import lk.ijse.library_management.repository.custom.BranchRepository;
@@ -116,13 +117,13 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<TransactionProjection> getAllTransactions() {
+    public List<AdminTransactionProjection> getAllTransactions() {
         session = SessionFactoryConfig.getInstance().getSession();
 
         try {
 
             transactionRepository.setSession(session);
-            List<TransactionProjection> list = transactionRepository.getAllTransactionProjection();
+            List<AdminTransactionProjection> list = transactionRepository.getAllTransactionProjection();
 
             return list;
 
@@ -262,13 +263,13 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<TransactionProjection> getAllTransactionsOfMember(MemberDto dto) {
+    public List<MemberTransactionProjection> getAllTransactionsOfMember(MemberDto dto) {
         session = SessionFactoryConfig.getInstance().getSession();
 
         try {
 
             transactionRepository.setSession(session);
-            List<TransactionProjection> list = transactionRepository.getAllTransactionProjectionOfMember(dto.toEntity());
+            List<MemberTransactionProjection> list = transactionRepository.getAllTransactionProjectionOfMember(dto.toEntity());
 
             return list;
 

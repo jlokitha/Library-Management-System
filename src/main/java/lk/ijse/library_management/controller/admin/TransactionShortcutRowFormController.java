@@ -1,14 +1,14 @@
 package lk.ijse.library_management.controller.admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import lk.ijse.library_management.projection.TransactionProjection;
+import lk.ijse.library_management.projection.AdminTransactionProjection;
+import lk.ijse.library_management.util.navigation.AdminNavigation;
 
-import java.sql.Date;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.*;
-import java.time.LocalDate;
 
 public class TransactionShortcutRowFormController {
 
@@ -35,26 +35,20 @@ public class TransactionShortcutRowFormController {
         lblTime.setText(time);
     }
 
-    public void setStatus(TransactionProjection dto) {
-        java.util.Date date = new java.util.Date(System.currentTimeMillis());
-
-        if ( (date.after(dto.getDueDate())) && (dto.getStatus().equals("Due") || (dto.getStatus().equals("Overdue")))) {
-            setStatusStyle();
-        }
-    }
-
-    public void setStatusStyle() {
-
-        lblTransactionId.setStyle(
-                "-fx-background-color: #FFD3D3;" +
-                        "-fx-background-radius: 20px;" +
-                        "-fx-text-fill: #FF0E0E");
-    }
-
-    public void setData(TransactionProjection dto) {
+    public void setData(AdminTransactionProjection dto) {
         lblTransactionId.setText(String.valueOf(dto.getId()));
         lblContent.setText("Borrowed " + dto.getQty() + " Books Due " + dto.getDueDate());
+        lblContent.setText("Member Id : " + dto.getId() + " borrowed " + dto.getQty() + " books, due on " + dto.getDueDate());
         setDateAndTime((Timestamp) dto.getAddedDate());
-        setStatus(dto);
+    }
+
+    @FXML
+    public void btnViewOnAction(ActionEvent actionEvent) {
+        try {
+            BookBorrowViewFormController.id = Integer.parseInt(lblTransactionId.getText());
+            AdminNavigation.popupPane("BookBorrowViewForm.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

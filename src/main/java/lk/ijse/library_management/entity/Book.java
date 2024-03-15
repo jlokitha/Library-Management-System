@@ -65,7 +65,7 @@ public class Book {
                 availability,
                 addedDate,
                 updatedDate,
-                admin
+                admin.toDto()
         );
     }
 }

@@ -63,14 +63,16 @@ public class BookManageFormController implements Initializable {
 
         }
 
-        try {
-            BookViewFormController.id = id;
-            MemberNavigation.popupPane("BookViewForm.fxml");
-            txtSearch.clear();
-        } catch (IOException e) {
-            MemberGlobalFormController.getInstance().popUpPane.setVisible(false);
-            MemberGlobalFormController.getInstance().imgGreyBack.setVisible(false);
+        if (id > 0) {
+            try {
+                BookViewFormController.id = id;
+                MemberNavigation.popupPane("BookViewForm.fxml");
+            } catch (IOException e) {
+                MemberGlobalFormController.getInstance().popUpPane.setVisible(false);
+                MemberGlobalFormController.getInstance().imgGreyBack.setVisible(false);
+            }
         }
+        txtSearch.clear();
     }
 
     @FXML

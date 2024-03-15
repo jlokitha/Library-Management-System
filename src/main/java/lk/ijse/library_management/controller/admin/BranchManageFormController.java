@@ -85,12 +85,12 @@ public class BranchManageFormController implements Initializable {
             try {
                 BranchViewFormController.id = id;
                 AdminNavigation.popupPane("BranchViewForm.fxml");
-                txtSearch.clear();
             } catch (IOException e) {
                 AdminGlobalFormController.getInstance().popUpPane.setVisible(false);
                 AdminGlobalFormController.getInstance().imgGreyBack.setVisible(false);
             }
         }
+        txtSearch.clear();
     }
 
     @FXML

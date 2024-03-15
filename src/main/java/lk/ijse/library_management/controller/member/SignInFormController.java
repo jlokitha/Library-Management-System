@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.library_management.controller.admin.AdminGlobalFormController;
@@ -20,6 +21,15 @@ import lk.ijse.library_management.util.navigation.MemberNavigation;
 import java.io.IOException;
 
 public class SignInFormController {
+
+    @FXML
+    public JFXTextField txtPasswordVisible;
+
+    @FXML
+    public JFXButton btnView;
+
+    @FXML
+    public ImageView imgEye;
 
     @FXML
     private JFXTextField txtUsername;
@@ -41,6 +51,8 @@ public class SignInFormController {
 
     @FXML
     private Pane paneShutDown;
+
+    private boolean view = true;
 
     private final MemberSignInService signInService =
             (MemberSignInServiceImpl) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBERSIGNIN);
@@ -171,6 +183,21 @@ public class SignInFormController {
         }
 
         return true;
+    }
+
+    @FXML
+    public void btnViewOnAction(ActionEvent actionEvent) {
+        if (view) {
+            txtPasswordVisible.setText(txtPassword.getText());
+            txtPassword.setVisible( false );
+            txtPasswordVisible.setVisible( true );
+            view = false;
+        } else {
+            txtPassword.setText(txtPasswordVisible.getText());
+            txtPasswordVisible.setVisible( false );
+            txtPassword.setVisible( true );
+            view = true;
+        }
     }
 
 }

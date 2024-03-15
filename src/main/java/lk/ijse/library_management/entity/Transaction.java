@@ -56,7 +56,7 @@ public class Transaction {
                 dueDate,
                 status,
                 addedDate,
-                member
+                member.toDto()
         );
     }
 }

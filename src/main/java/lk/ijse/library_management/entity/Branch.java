@@ -57,7 +57,7 @@ public class Branch implements Serializable {
                 email,
                 createdDate,
                 updatedDate,
-                admin
+                admin.toDto()
         );
     }
 }

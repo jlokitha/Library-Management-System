@@ -89,21 +89,6 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </JFXButton>
-        <Label layoutX="357.0" layoutY="586.0" text="Total Amount">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label layoutX="357.0" layoutY="620.0" text="Rs.">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
-        <Label fx:id="labelTotal" layoutX="393.0" layoutY="620.0" text="0.00">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
         <Label fx:id="lblTitle" layoutX="34.0" layoutY="475.0" prefWidth="245.0" textFill="RED">
             <font>
                 <Font size="15.0" />

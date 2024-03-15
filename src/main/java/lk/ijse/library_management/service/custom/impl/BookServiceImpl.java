@@ -107,7 +107,7 @@ public class BookServiceImpl implements BookService {
 
         AdminDto data = getAdminData(id);
 
-        dto.setAdmin(data.toEntity());
+        dto.setAdmin(data);
 
         session = SessionFactoryConfig.getInstance().getSession();
 
@@ -222,11 +222,12 @@ public class BookServiceImpl implements BookService {
 
             bookRepository.setSession(session);
             int id = bookRepository.getIdFormTitle(title);
+
+            if (id == -1) throw new RuntimeException();
             return id;
 
         } catch (Exception e) {
 
-            e.printStackTrace();
             return -1;
 
         } finally {
